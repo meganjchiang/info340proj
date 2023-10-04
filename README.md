@@ -4,4 +4,4 @@ This repository contains code for an interactive information web app, created fo
 
 Sunghee Park
 Lasya Suravajhela
-
+Megan Chiang
