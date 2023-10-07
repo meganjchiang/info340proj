@@ -1,11 +1,16 @@
-h1{
+h1 {
     color: rebeccapurple;
     text-align: center;
 }
-p{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+p {
     margin-bottom: 1.2em;
 }
+
+h1, h2, p, li {
+    font-family: 'Georgia', 'Times', 'Times New Roman', serif;
+}
+
 .line {
     border-bottom: 2px solid #D4AF37;
-  }
+}
