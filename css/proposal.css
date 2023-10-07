@@ -1,16 +1,24 @@
+body {
+    line-height: 1.5;
+}
+
 h1 {
     color: rebeccapurple;
     text-align: center;
 }
 
-p {
-    margin-bottom: 1.2em;
-}
-
-h1, h2,h3, p, li {
+h1, h2, h3, p, li {
     font-family: 'Georgia', 'Times', 'Times New Roman', serif;
 }
 
 .line {
-    border-bottom: 2px solid #D4AF37;
+    border-bottom: 1.5px solid #D4AF37;
+}
+
+h3, .problem-domain {
+    margin-bottom: 0;
+}
+
+p, ul {
+    margin-top: 0;
 }
