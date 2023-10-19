@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 header {
     position: relative;
     display: flex;
@@ -38,7 +39,7 @@ header {
 }
 
 .application-form {
-    margin: 4rem;
+    margin: 8rem;
 }
 
 .application-form h1 {
@@ -59,5 +60,21 @@ ol, .notes-list {
     color: red;
 }
 
+.submit {
+    background-color: #4B2E83;
+    color: white;
+    padding: .8rem;
+    border: none;
+    border-radius: 20px;
+}
+
+.form-label {
+    margin: 0rem;
+}
+
+.form-control,
+.form-select {
+    margin-bottom: 2rem;
+}
 
 

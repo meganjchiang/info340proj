@@ -35,36 +35,62 @@
         <p class="notes-list">
         <ol>1. You must be a University of Washington Graduate</ol>
         <ol>2. Something else I can't think of</ol>
-        <o1>3. Maybe we don't even need this.</o1>
         </p>
+
+        <hr>
+
         <form>
+
             <div class="row">
+
                 <div class="col-6 mb-3">
                     <label for="first-name" class="form-label">First Name <span class="required"> *</span></label>
                     <input type="text" class="form-control" name="fn" id="fn" required>
                 </div>
-
                 <div class="col-6 mb-3">
                     <label for="last-name" class="form-label">Last Name<span class="required"> *</span></label>
                     <input type="text" class="form-control" name="ln" id="ln" required>
                 </div>
-            </div>
-            <div class="col-6 mb-3">
-                <label for="Email" class="form-label">Email address<span class="required"> *</span></label>
-                <input type="email" class="form-control" placeholder="name@example.com" name="email" id="email"
-                    required>
-            </div>
 
-            <div class="col-6 mb-3">
-                <label for="Gender" class="form-label">Gender<span class="required"> *</span></label>
-                <select class="form-select" aria-label="Select">
-                    <option disabled selected>Select</option>
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
-                    <option value="3">Preferred not to say</option>
-                </select>
-            </div>
 
+                <div class="col-7 mb-3">
+                    <label for="Email" class="form-label">Email address<span class="required"> *</span></label>
+                    <input type="email" class="form-control" placeholder="name@example.com" name="email" id="email"
+                        required>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <label for="Gender" class="form-label">Gender<span class="required"> *</span></label>
+                    <select class="form-select" aria-label="Select">
+                        <option disabled selected>Select Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        <option value="3">Preferred not to say</option>
+                    </select>
+                </div>
+
+                <div class="col-7 mb-3">
+                    <label for="grad-year" class="form-label">Graduation Year<span class="required"> *</span></label>
+                    <input type="text" class="form-control" placeholder="example: 2015" name="grad-year" id="grad-year"
+                        required>
+                </div>
+
+                <div class="col-7 mb-3">
+                    <label for="degree" class="form-label">Degree obtained and Discipline<span class="required">
+                            *</span></label>
+                    <input type="text" class="form-control" name="degree" id="degree" required>
+                </div>
+
+                <div class="col-7 mb-3">
+                    <label for="career" class="form-label">Current career<span class="required"> *</span></label>
+                    <input type="text" class="form-control" name="career" id="career" required>
+                </div>
+
+                <div class="col-12 text-center">
+                    <button class="submit" type="submit">Submit Application</button>
+                </div>
+
+            </div>
 
         </form>
     </div>
