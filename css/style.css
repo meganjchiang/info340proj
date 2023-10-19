@@ -10,10 +10,16 @@ header {
     z-index: 100;
 }
 
-.logo img{
+.logo img, .profile{
     width: 50px;
     height: 50px;
-    margin-left: 1rem;
+    margin: 1rem 2rem;
+    
+}
+
+.navbar-profile {
+    display: flex;
+    align-items: center;
 }
 
 .navbar{
@@ -36,6 +42,48 @@ header {
     border-radius: 30px;  
     background-color: #4B2E83;
     color: white;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; left: 0;
+    background-color: white;
+    border: 0px solid #ccc;
+    padding: 0;
+    display: none;
+}
+
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    padding: 0 .5rem;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    font-size: 90%;
+    color: black;
+    display: block;
+    padding: 1rem 0 1rem 0;
+    margin: 0;
+}
+
+.profile-container:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    padding: 1rem 0 1rem 0;
+    background-color: #F3F3F3;
 }
 
 .application-form {
