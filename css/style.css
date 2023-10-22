@@ -10,7 +10,7 @@ header {
     z-index: 100;
 }
 
-.logo img, .profile{
+.logo img, .profile {
     width: 50px;
     height: 50px;
     margin: 1rem 2rem;
@@ -22,7 +22,7 @@ header {
     align-items: center;
 }
 
-.navbar{
+.navbar {
     /* background-color: #F3F3F3; */
     padding: 1rem;
     margin: 0;
@@ -176,10 +176,104 @@ textarea {
     width: 100%;
 }
 
-/*profile css*/
+/* mentors heading styling */
+.mentors-page {
+    margin: 2rem 5rem 4rem 5rem;
+}
 
-.profile h1{
+.page-title, .home-section-title, .mentor-title {
     font-family: 'Merriweather', serif;
-    color: #4B2E83;
+    color: #4B2E83;    
+}
+
+.mentor-title, .mentor-page-description {
     text-align: center;
+    margin: auto;
+    padding-bottom: .5em;
+}
+
+/* search bar styling */
+.search-bar {
+    display: flex;
+    margin: 2em 0 0 1em;
+}
+
+.search-bar input {
+    width: 100%;
+    border: 1px solid #9e9e9e;
+    border-radius: 5px 0 0 5px;
+    
+}
+
+.search {
+    border: 1px solid #9e9e9e;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+}
+
+.search img {
+    width: 30px;
+}
+
+/* cards styling */
+.mentor-name {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.card-img-top {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .mentor-page-description {
+        max-width: 50%;
+    }
+
+    .search-bar input {
+        width: 30%;
+    }
+}
+
+.splash {
+    width: 100%;
+    min-height: 95vh;
+    background-image: url('../img/uw.jpg');
+    background-size: cover;
+    background-position: top;
+}
+
+.page-title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+@media (min-width: 598px) {
+    .page-title {
+        font-size: 5rem;
+    }
+}
+
+.about-us-text, .become-mentor-text {
+    padding: 4em;
+}
+
+.about-us h2 {
+    font-size: 3rem;
+}
+
+.uw-logo {
+    height: 200px;
+    width: auto;
+}
+
+.about-us-section {
+    display: flex;
+    align-items: baseline;
+}
+.become-mentor-section {
+    display: flex;
+    align-items: end;
 }
