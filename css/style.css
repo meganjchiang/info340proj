@@ -289,6 +289,10 @@ textarea {
     margin: 4rem 2rem;
 }
 
+main {
+    margin-top: 20vh;
+}
+
 /* #apply-now {
     margin-top: 4rem;
 } */
@@ -340,3 +344,45 @@ textarea {
 .headingProfile{
     text-align: left;
 }
+
+/*Login styling*/
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 2rem;
+}
+
+.login-form h1 {
+    font-family: 'Merriweather', serif;
+    color: #4B2E83;
+    text-align: center;
+}
+
+.login-form .mb-3 {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.login-form .form-label {
+    display: block; 
+    text-align: left;
+    width: 200px; 
+}
+
+.login-form .form-control {
+    width: 300px; 
+    padding: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.login-form .submit {
+    background-color: #4B2E83;
+    color: white;
+    padding: .8rem;
+    border: none;
+    border-radius: 20px;
+}
+
+
