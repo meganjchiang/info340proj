@@ -10,11 +10,12 @@ header {
     z-index: 100;
 }
 
-.logo img, .profile {
+.logo img,
+.profile {
     width: 50px;
     height: 50px;
     margin: 1rem 2rem;
-    
+
 }
 
 .navbar-profile {
@@ -33,20 +34,21 @@ header {
     text-decoration: none;
     color: black;
     margin: 1rem;
-    padding: 0.75rem 1rem; 
-    transition: all 0.15s ease-in-out; 
+    padding: 0.75rem 1rem;
+    transition: all 0.15s ease-in-out;
 }
 
 .navbar a:hover {
     /* font-weight: 300; /* if bold, it moves :( */
-    border-radius: 30px;  
+    border-radius: 30px;
     background-color: #4B2E83;
     color: white;
 }
 
 .dropdown-menu {
     position: absolute;
-    top: 100%; left: 0;
+    top: 100%;
+    left: 0;
     background-color: white;
     border: 0px solid #ccc;
     padding: 0;
@@ -87,16 +89,18 @@ header {
 }
 
 .application-form {
-    margin: 8rem;
+    margin: 2rem;
 }
 
 .application-form h1 {
-    font-family: 'Merriweather', serif;;
+    font-family: 'Merriweather', serif;
+    
     color: #4B2E83;
     text-align: center;
 }
 
-ol, .notes-list {
+ol,
+.notes-list {
     margin: 0;
 }
 
@@ -128,7 +132,7 @@ ol, .notes-list {
 
 /*appointment css*/
 .appointment-form {
-    margin: 8rem;
+    margin: 2rem;
 }
 
 .appointment-form h1 {
@@ -181,12 +185,15 @@ textarea {
     margin: 2rem 5rem 4rem 5rem;
 }
 
-.page-title, .home-section-title, .mentor-title {
+.page-title,
+.home-section-title,
+.mentor-title {
     font-family: 'Merriweather', serif;
-    color: #4B2E83;    
+    color: #4B2E83;
 }
 
-.mentor-title, .mentor-page-description {
+.mentor-title,
+.mentor-page-description {
     text-align: center;
     margin: auto;
     padding-bottom: .5em;
@@ -202,7 +209,7 @@ textarea {
     width: 100%;
     border: 1px solid #9e9e9e;
     border-radius: 5px 0 0 5px;
-    
+
 }
 
 .search {
@@ -243,6 +250,7 @@ textarea {
     background-image: url('../img/uw.jpg');
     background-size: cover;
     background-position: top;
+
 }
 
 .page-title {
@@ -256,7 +264,8 @@ textarea {
     }
 }
 
-.about-us-text, .become-mentor-text {
+.about-us-text,
+.become-mentor-text {
     padding: 4em;
 }
 
@@ -273,7 +282,22 @@ textarea {
     display: flex;
     align-items: baseline;
 }
+
 .become-mentor-section {
     display: flex;
     align-items: end;
+}
+
+/*Admin */
+
+.headingForMentor {
+    color: #4B2E83;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: Merriweather;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
 }
