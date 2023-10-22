@@ -289,6 +289,10 @@ textarea {
     margin: 4rem 2rem;
 }
 
+main {
+    margin-top: 20vh;
+}
+
 /* #apply-now {
     margin-top: 4rem;
 } */
