@@ -94,7 +94,7 @@ header {
 
 .application-form h1 {
     font-family: 'Merriweather', serif;
-    
+
     color: #4B2E83;
     text-align: center;
 }
@@ -297,7 +297,32 @@ textarea {
     flex-shrink: 0;
     font-family: Merriweather;
     font-style: normal;
-    font-weight: 400;
     line-height: normal;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+}
 
+#approvalTable {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Profile */
+
+.headingProfile {
+    color: #4B2E83;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: Merriweather;
+    font-style: normal;
+    line-height: normal;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    
+}
+
+.aboutMeAll{
+    display: grid;
 }
