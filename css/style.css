@@ -327,3 +327,16 @@ textarea {
     
 }
 
+.aboutMeAll{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutMe{
+    width: 50%;
+    text-align: right;
+}
+.headingProfile{
+    text-align: left;
+}
