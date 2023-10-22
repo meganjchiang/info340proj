@@ -126,3 +126,52 @@ ol, .notes-list {
 }
 
 
+/*appointment css*/
+.appointment-form {
+    margin: 8rem;
+}
+
+.appointment-form h1 {
+    font-family: 'Merriweather', serif;
+    color: #4B2E83;
+    text-align: center;
+}
+
+
+.form-label {
+    margin: 0rem;
+}
+
+.form-control,
+.form-select {
+    margin-bottom: 2rem;
+}
+
+.form-control,
+.form-select,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.col-6 {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
+
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.form-select {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
