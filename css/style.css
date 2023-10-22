@@ -249,8 +249,7 @@ textarea {
     min-height: 95vh;
     background-image: url('../img/uw.jpg');
     background-size: cover;
-    background-position: top;
-
+    background-position: center;
 }
 
 .page-title {
@@ -264,11 +263,6 @@ textarea {
     }
 }
 
-.about-us-text,
-.become-mentor-text {
-    padding: 4em;
-}
-
 .about-us h2 {
     font-size: 3rem;
 }
@@ -280,14 +274,19 @@ textarea {
 
 .about-us-section {
     display: flex;
-    align-items: baseline;
+    /* align-items: baseline; */
+    margin: 4rem 2rem;
 }
 
 .become-mentor-section {
     display: flex;
-    align-items: end;
+    /* align-items: end; */
+    margin: 4rem 2rem;
 }
 
+/* #apply-now {
+    margin-top: 4rem;
+} */
 /*Admin */
 
 .headingForMentor {
