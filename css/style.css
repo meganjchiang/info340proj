@@ -272,6 +272,11 @@ textarea {
     width: auto;
 }
 
+.mentor-graphic {
+    height: 200px;
+    width: auto;
+}
+
 .about-us-section {
     display: flex;
     /* align-items: baseline; */
