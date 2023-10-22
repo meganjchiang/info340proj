@@ -175,3 +175,11 @@ textarea {
     display: block;
     width: 100%;
 }
+
+/*profile css*/
+
+.profile h1{
+    font-family: 'Merriweather', serif;
+    color: #4B2E83;
+    text-align: center;
+}
