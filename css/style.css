@@ -11,6 +11,11 @@ header {
     z-index: 100;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+}
+
 /* navigation var */
 .logo img,
 .profile {
