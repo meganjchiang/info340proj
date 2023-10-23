@@ -330,7 +330,9 @@ main {
     margin-bottom: 2rem;
     
 }
-
+.nameProfile, .bio{
+    font-size: 2rem;
+}
 
 .aboutMeAll{
     display: flex;
@@ -341,9 +343,33 @@ main {
     margin-left: 2rem;
 }
 .aboutMe{
-    width: 45%;
+    width: 40%;
     margin-right: 2rem;
-    margin-top: 1.8rem;
+}
+
+.upcomingMeeting{
+    color: #4B2E83;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: Merriweather;
+    font-style: normal;
+    line-height: normal;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+.calendarImg{
+    display: block;
+    margin: auto;
+}
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: ){
+    
 }
 
 /*Login styling*/
