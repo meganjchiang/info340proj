@@ -383,4 +383,11 @@ main .btn {
     border-radius: 4px;
 }
 
+.about-us-section img, .become-mentor-section img {
+    display: block;
+    margin: auto;
+}
 
+.home-section-title {
+    margin-top: 2rem;
+}
