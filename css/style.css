@@ -127,7 +127,9 @@ form {
 }
 
 
-/*appointment css*/
+
+
+/*appointment styling*/
 .appointment-form {
     margin: 2rem;
 }
@@ -175,6 +177,28 @@ textarea {
     margin: 0 auto;
     display: block;
     width: 100%;
+}
+
+@media (min-width: 598px) {
+    .appointment-form h1 {
+        font-size: 1.5rem;
+    }
+    .form-control,
+    .form-select,
+    textarea {
+        padding: 0.75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .appointment-form h1 {
+        font-size: 2rem;
+    }
+    
+    .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
 }
 
 /* mentors heading styling */
