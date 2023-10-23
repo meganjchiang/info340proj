@@ -99,7 +99,7 @@ footer {
     margin: 2rem;
 }
 
-.application-form h1 {
+h1 {
     font-family: 'Merriweather', serif;
 
     color: #4B2E83;
@@ -126,21 +126,10 @@ form {
     margin: 0rem;
 }
 
-
-
-
-
 /*appointment styling*/
 .appointment-form {
     margin: 2rem;
 }
-
-.appointment-form h1 {
-    font-family: 'Merriweather', serif;
-    color: #4B2E83;
-    text-align: center;
-}
-
 
 .form-label {
     margin: 0rem;
@@ -456,12 +445,6 @@ main .btn {
     align-items: center;
     text-align: center;
     margin: 2rem;
-}
-
-.login-form h1 {
-    font-family: 'Merriweather', serif;
-    color: #4B2E83;
-    text-align: center;
 }
 
 .login-form .mb-3 {
