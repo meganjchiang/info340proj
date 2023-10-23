@@ -378,12 +378,5 @@ main {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.login-form .submit {
-    background-color: #4B2E83;
-    color: white;
-    padding: .8rem;
-    border: none;
-    border-radius: 20px;
-}
 
 
