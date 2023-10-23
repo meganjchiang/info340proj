@@ -356,12 +356,7 @@ main .btn {
         width: 50%;
     }
 
-    .aboutMeAll{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-family: Inter;
-    }
+    
 
 }
 
@@ -382,7 +377,6 @@ main .btn {
 }
 
 @media (min-width: 992px) {
-
     .extraInfo,
     .aboutMe {
         font-size: large;
