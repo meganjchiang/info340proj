@@ -116,6 +116,7 @@ header {
 form {
     margin-top: 4rem;
 }
+
 .form-label {
     margin: 0rem;
 }
@@ -297,6 +298,7 @@ main .btn {
 /* #apply-now {
     margin-top: 4rem;
 } */
+
 /*Admin */
 
 .headingForMentor {
@@ -319,6 +321,53 @@ main .btn {
 
 /*Profile */
 
+@media (min-width: 576px) {
+
+
+    .headingProfile {
+        font-size: 2rem;
+    }
+    img{
+        width: 50%;
+    }
+
+    .aboutMeAll{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Inter;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    .extraInfo,
+    .aboutMe {
+        font-size: medium;
+    }
+
+    .headingProfile {
+        font-size: 2.5rem;
+    }
+    img{
+        width: 90%;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .extraInfo,
+    .aboutMe {
+        font-size: large;
+    }
+
+    .headingProfile {
+        font-size: 3rem;
+    }
+}
+
 .headingProfile {
     color: #4B2E83;
     display: flex;
@@ -329,26 +378,30 @@ main .btn {
     line-height: normal;
     margin-top: 0.8rem;
     margin-bottom: 2rem;
-    
+
 }
-.nameProfile, .bio{
+
+.nameProfile,
+.bio {
     font-size: 2rem;
 }
 
-.aboutMeAll{
+.aboutMeAll {
     display: flex;
     justify-content: space-between;
     font-family: Inter;
 }
-.extraInfo{
+
+.extraInfo {
     margin-left: 2rem;
 }
-.aboutMe{
+
+.aboutMe {
     width: 40%;
     margin-right: 2rem;
 }
 
-.upcomingMeeting{
+.upcomingMeeting {
     color: #4B2E83;
     display: flex;
     justify-content: center;
@@ -360,15 +413,15 @@ main .btn {
     margin-bottom: 2rem;
 }
 
-.calendarImg{
+.calendarImg {
     display: block;
     margin: auto;
+    width: 90%;
 }
 
 /* Admin approval */
 .headingForMentor {
     margin-bottom: 4rem;
-
 }
 
 /*Login styling*/
@@ -392,19 +445,20 @@ main .btn {
 }
 
 .login-form .form-label {
-    display: block; 
+    display: block;
     text-align: left;
-    width: 200px; 
+    width: 200px;
 }
 
 .login-form .form-control {
-    width: 300px; 
+    width: 300px;
     padding: .5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.about-us-section img, .become-mentor-section img {
+.about-us-section img,
+.become-mentor-section img {
     display: block;
     margin: auto;
 }
