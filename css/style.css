@@ -293,6 +293,10 @@ main {
     margin-top: 20vh;
 }
 
+main .btn {
+    width: 6rem;
+}
+
 /* #apply-now {
     margin-top: 4rem;
 } */
