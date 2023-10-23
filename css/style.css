@@ -344,6 +344,15 @@ main .btn {
     img{
         width: 50%;
     }
+    .aboutMeAll{
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutMe{
+        margin-left: 2rem;
+        width: 80%;
+    }
+
 
     
 
@@ -354,6 +363,7 @@ main .btn {
     .extraInfo,
     .aboutMe {
         font-size: medium;
+        width: 40%;
     }
 
     .headingProfile {
@@ -362,6 +372,13 @@ main .btn {
     img{
         width: 90%;
     }
+    .aboutMeAll {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    
+    }
+    
 
 }
 
@@ -369,10 +386,16 @@ main .btn {
     .extraInfo,
     .aboutMe {
         font-size: large;
+        width: 40%;
     }
 
     .headingProfile {
         font-size: 3rem;
+    }
+    .aboutMeAll {
+        display: flex;
+        justify-content: space-between;
+        
     }
 }
 
@@ -405,7 +428,6 @@ main .btn {
 }
 
 .aboutMe {
-    width: 40%;
     margin-right: 2rem;
 }
 
