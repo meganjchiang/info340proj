@@ -99,15 +99,6 @@ header {
     text-align: center;
 }
 
-ol,
-.notes-list {
-    margin: 0;
-}
-
-.notes {
-    margin: .5rem;
-}
-
 .required {
     color: red;
 }
@@ -120,6 +111,9 @@ ol,
     border-radius: 20px;
 }
 
+form {
+    margin-top: 4rem;
+}
 .form-label {
     margin: 0rem;
 }
