@@ -37,6 +37,12 @@ footer {
 
 }
 
+.hamburger {
+    width: 40px;
+    height: 40px;
+    margin: 1rem;
+}
+
 .navbar-profile {
     display: flex;
     align-items: center;
@@ -72,10 +78,12 @@ footer {
     display: none;
 }
 
-.profile-container {
+.profile-container,
+.hamburger-menu {
     position: relative;
     display: inline-block;
 }
+
 
 .dropdown-menu ul {
     list-style: none;
@@ -96,7 +104,8 @@ footer {
     margin: 0;
 }
 
-.profile-container:hover .dropdown-menu {
+.profile-container:hover .dropdown-menu,
+.hamburger-menu:hover .dropdown-menu {
     display: block;
 }
 
