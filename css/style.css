@@ -83,7 +83,6 @@ footer {
     display: inline-block;
 }
 
-
 .dropdown-menu ul {
     list-style: none;
     padding: 0;
@@ -113,11 +112,13 @@ footer {
     background-color: #F3F3F3;
 }
 
-/* Mentor Application form */
+/* Application form (Mentor + Sign Up) */
 
+/* margin 2rem */
 .application-form,
 .appointment-form,
-.become-mentor-section {
+.become-mentor-section,
+.login-form {
     margin: 2rem;
 }
 
@@ -136,12 +137,6 @@ footer {
 form {
     margin-top: 4rem;
 }
-
-.form-label {
-    margin: 0rem;
-}
-
-/* appointment styling */
 
 .form-label {
     margin: 0rem;
@@ -236,16 +231,6 @@ textarea {
     object-fit: cover;
 }
 
-@media (min-width: 768px) {
-    .mentor-page-description {
-        max-width: 50%;
-    }
-
-    .search-bar input {
-        width: 30%;
-    }
-}
-
 .splash {
     width: 100%;
     min-height: 95vh;
@@ -257,12 +242,6 @@ textarea {
 .page-title {
     font-size: 3rem;
     text-align: center;
-}
-
-@media (min-width: 598px) {
-    .page-title {
-        font-size: 5rem;
-    }
 }
 
 .about-us h2 {
@@ -298,12 +277,7 @@ main .btn {
     width: 6rem;
 }
 
-/* #apply-now {
-    margin-top: 4rem;
-} */
-
 /*Admin */
-
 .headingForMentor {
     color: #4B2E83;
     display: flex;
@@ -316,8 +290,8 @@ main .btn {
     margin-bottom: 1rem;
 }
 
-.table {
-    width: 95%;
+table {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -379,7 +353,6 @@ main .btn {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 2rem;
 }
 
 .login-form .mb-3 {
@@ -413,6 +386,7 @@ main .btn {
 /* media queries */
 
 @media (min-width: 598px) {
+
     /* appointment form */
     .appointment-form h1 {
         font-size: 1.5rem;
@@ -448,9 +422,16 @@ main .btn {
         width: 80%;
         margin-top: 1rem;
     }
+
+    /* home page */
+    .page-title {
+        font-size: 5rem;
+    }
+
 }
 
 @media (max-width: 598px) {
+
     /* make navbar disappear */
     .navbar a {
         display: none;
@@ -458,6 +439,7 @@ main .btn {
 }
 
 @media (min-width: 768px) {
+
     /* appointment form */
     .appointment-form h1 {
         font-size: 2rem;
