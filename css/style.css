@@ -314,7 +314,8 @@ table {
 
 .aboutMeAll {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-direction: column;
 
 }
 
@@ -323,7 +324,7 @@ table {
 }
 
 .aboutMe {
-    margin-right: 2rem;
+    margin: 2rem;
 }
 
 .upcomingMeeting {
@@ -436,6 +437,7 @@ table {
     .navbar a {
         display: none;
     }
+
 }
 
 @media (min-width: 768px) {
@@ -477,7 +479,7 @@ table {
 
     .aboutMeAll {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         flex-direction: row;
 
     }
@@ -496,7 +498,7 @@ table {
 
     .aboutMeAll {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
 
     }
 }
