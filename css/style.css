@@ -8,7 +8,8 @@ h1 {
     color: #4B2E83 !important;
     text-align: center;
 }
-p{
+
+p {
     font-family: 'Inter', serif;
     color: black;
 }
@@ -20,8 +21,6 @@ header {
     align-items: center;
     z-index: 100;
 }
-
-
 
 footer {
     display: flex;
@@ -116,7 +115,9 @@ footer {
 
 /* Mentor Application form */
 
-.application-form {
+.application-form,
+.appointment-form,
+.become-mentor-section {
     margin: 2rem;
 }
 
@@ -140,10 +141,7 @@ form {
     margin: 0rem;
 }
 
-/*appointment styling*/
-.appointment-form {
-    margin: 2rem;
-}
+/* appointment styling */
 
 .form-label {
     margin: 0rem;
@@ -183,37 +181,6 @@ textarea {
     width: 100%;
 }
 
-@media (min-width: 598px) {
-    .appointment-form h1 {
-        font-size: 1.5rem;
-    }
-    .form-control,
-    .form-select,
-    textarea {
-        padding: 0.75rem;
-    }
-    .hamburger-menu {
-        display: none;
-    }
-}
-
-@media (max-width: 598px) {
-    
-    .navbar a{
-        display: none;
-    }
-}
-
-@media (min-width: 768px) {
-    .appointment-form h1 {
-        font-size: 2rem;
-    }
-    
-    .col-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
 
 /* mentors heading styling */
 .mentors-page {
@@ -320,8 +287,6 @@ textarea {
 
 .become-mentor-section {
     display: flex;
-    /* align-items: end; */
-    margin: 2rem;
     margin-bottom: 4rem;
 }
 
@@ -351,73 +316,10 @@ main .btn {
     margin-bottom: 1rem;
 }
 
-.table{
+.table {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-}
-
-/*Profile */
-
-@media (min-width: 500px) {
-
-
-    .headingProfile {
-        font-size: 2rem;
-    }
-    img{
-        width: 50%;
-    }
-    .aboutMeAll{
-        display: flex;
-        flex-direction: column;
-    }
-    .aboutMe{
-        margin-left: 2rem;
-        width: 80%;
-        margin-top: 1rem;
-    }
-
-}
-
-@media (min-width: 768px) {
-
-    .extraInfo,
-    .aboutMe {
-        font-size: medium;
-        width: 40%;
-        margin-top: 0;
-    }
-
-    .headingProfile {
-        font-size: 2.5rem;
-    }
-    img{
-        width: 90%;
-    }
-    .aboutMeAll {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-    
-    }
-    
-
-}
-
-@media (min-width: 992px) {
-    .extraInfo,
-    .aboutMe {
-        font-size: large;
-        width: 40%;
-    }
-
-   
-    .aboutMeAll {
-        display: flex;
-        justify-content: space-between;
-        
-    }
 }
 
 .headingProfile {
@@ -506,4 +408,113 @@ main .btn {
 
 .home-section-title {
     margin-top: 2rem;
+}
+
+/* media queries */
+
+@media (min-width: 598px) {
+    /* appointment form */
+    .appointment-form h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-control,
+    .form-select,
+    textarea {
+        padding: 0.75rem;
+    }
+
+    /* hamburger-menu */
+    .hamburger-menu {
+        display: none;
+    }
+
+    /* profile */
+    .headingProfile {
+        font-size: 2rem;
+    }
+
+    img {
+        width: 50%;
+    }
+
+    .aboutMeAll {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aboutMe {
+        margin-left: 2rem;
+        width: 80%;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 598px) {
+    /* make navbar disappear */
+    .navbar a {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    /* appointment form */
+    .appointment-form h1 {
+        font-size: 2rem;
+    }
+
+    .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    /* mentor page */
+    .mentor-page-description {
+        max-width: 50%;
+    }
+
+    .search-bar input {
+        width: 30%;
+    }
+
+    /* profile page */
+    .extraInfo,
+    .aboutMe {
+        font-size: medium;
+        width: 40%;
+        margin-top: 0;
+    }
+
+    .headingProfile {
+        font-size: 2.5rem;
+    }
+
+    img {
+        width: 90%;
+    }
+
+    .aboutMeAll {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+
+    }
+}
+
+
+@media (min-width: 992px) {
+
+    /* profile */
+    .extraInfo,
+    .aboutMe {
+        font-size: large;
+        width: 40%;
+    }
+
+
+    .aboutMeAll {
+        display: flex;
+        justify-content: space-between;
+
+    }
 }
