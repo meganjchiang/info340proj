@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+h1 {
+    font-family: 'Merriweather', serif;
+
+    color: #4B2E83;
+    text-align: center;
+}
+p{
+    font-family: 'Inter', serif;
+    color: black;
+}
 
 header {
     position: relative;
@@ -97,13 +107,6 @@ footer {
 
 .application-form {
     margin: 2rem;
-}
-
-h1 {
-    font-family: 'Merriweather', serif;
-
-    color: #4B2E83;
-    text-align: center;
 }
 
 .required {
@@ -335,7 +338,7 @@ main .btn {
 
 /*Profile */
 
-@media (min-width: 576px) {
+@media (min-width: 500px) {
 
 
     .headingProfile {
@@ -351,10 +354,8 @@ main .btn {
     .aboutMe{
         margin-left: 2rem;
         width: 80%;
+        margin-top: 1rem;
     }
-
-
-    
 
 }
 
@@ -364,6 +365,7 @@ main .btn {
     .aboutMe {
         font-size: medium;
         width: 40%;
+        margin-top: 0;
     }
 
     .headingProfile {
@@ -400,11 +402,9 @@ main .btn {
 }
 
 .headingProfile {
-    color: #4B2E83;
     display: flex;
     justify-content: center;
     flex-shrink: 0;
-    font-family: Merriweather;
     font-style: normal;
     line-height: normal;
     margin-top: 0.8rem;
@@ -420,7 +420,7 @@ main .btn {
 .aboutMeAll {
     display: flex;
     justify-content: space-between;
-    font-family: Inter;
+
 }
 
 .extraInfo {
@@ -432,11 +432,9 @@ main .btn {
 }
 
 .upcomingMeeting {
-    color: #4B2E83;
     display: flex;
     justify-content: center;
     flex-shrink: 0;
-    font-family: Merriweather;
     font-style: normal;
     line-height: normal;
     margin-top: 5rem;
