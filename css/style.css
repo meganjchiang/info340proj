@@ -21,6 +21,8 @@ header {
     z-index: 100;
 }
 
+
+
 footer {
     display: flex;
     justify-content: center;
@@ -391,9 +393,7 @@ main .btn {
         width: 40%;
     }
 
-    .headingProfile {
-        font-size: 3rem;
-    }
+   
     .aboutMeAll {
         display: flex;
         justify-content: space-between;
