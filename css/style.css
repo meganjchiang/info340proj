@@ -5,7 +5,7 @@
 h1 {
     font-family: 'Merriweather', serif;
 
-    color: #4B2E83;
+    color: #4B2E83 !important;
     text-align: center;
 }
 p{
