@@ -192,6 +192,16 @@ textarea {
     textarea {
         padding: 0.75rem;
     }
+    .hamburger-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 598px) {
+    
+    .navbar a{
+        display: none;
+    }
 }
 
 @media (min-width: 768px) {
