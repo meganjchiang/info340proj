@@ -223,6 +223,8 @@ textarea {
 .mentor-name {
     font-size: 2rem;
     text-align: center;
+    font-weight: bold;
+
 }
 
 .card-img-top {
