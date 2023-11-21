@@ -119,7 +119,9 @@ footer {
 .appointment-form,
 .become-mentor-section,
 .login-form {
-    margin: 2rem;
+    width: 87%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .required {
@@ -197,9 +199,13 @@ textarea {
 }
 
 /* search bar styling */
+.filter-search{
+    margin-left: 31px;
+
+}
 .search-bar {
     display: flex;
-    margin: 2em 0 0 1em;
+    /* margin: 2em 0 0 1em; */
 }
 
 .search-bar input {
@@ -292,8 +298,8 @@ main .btn {
     margin-bottom: 1rem;
 }
 
-table {
-    width: 100%;
+.custom-table{
+    width: 86%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -446,7 +452,7 @@ table {
 
     /* appointment form */
     .appointment-form h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .col-6 {
@@ -459,6 +465,10 @@ table {
         max-width: 50%;
     }
 
+    .mentor-cards{
+        display: flex;
+        flex-wrap: wrap;
+    }
     .search-bar input {
         width: 30%;
     }
