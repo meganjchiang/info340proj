@@ -5,6 +5,7 @@ import App from './components/App.js';
 import './style.css'; // comment out when testing Mentors page
 // import './index.css';
 // import reportWebVitals from './reportWebVitals';
+import SAMPLE_MENTORS from './data/mentorApp.json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
