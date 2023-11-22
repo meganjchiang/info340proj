@@ -4,17 +4,17 @@ import React, { useState } from 'react'; //import React Component
 import { MentorGrid } from './Mentors.js';
 import { LoginPage } from './LoginPage.js';
 import { CreateAccountPage } from './CreateAccount.js';
-import { MentorApplicationPage } from './Mentor_Application.js'
+import { MentorApplicationPage } from './MentorApplication.js'
 import { Appointment } from './Appointment.js';
-import { ApproveAdmin } from './Approve_Admin.js';
+import { ApproveAdmin } from './AdminMentorApproval.js';
 import { Profile } from './Profile.js';
-import { Home } from './Home.js'
+import { Home } from './Home.js';
 import { NavBar } from './NavigationBar';
-import SAMPLE_MENTORS from '../data/mentorApp.json';
-import SAMPLE_PROFILE from '../data/profileData.json'
-import SAMPLE_MEETING from '../data/upcomingMeetings.json'
 
 import MENTORS from '../data/mentors.json';
+import SAMPLE_MENTORS from '../data/mentorApp.json';
+import SAMPLE_PROFILE from '../data/profileData.json';
+import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 
 
 
@@ -83,8 +83,8 @@ function App(props) {
                     majorOptions={uniqueMajors}
                     gradYearOptions={uniqueGradYears}
                     applyFilterCallback={applyFilter} /> */}
-                {/* <MentorApplicationPage /> */}
-                {/* <Appointment /> */}
+                <MentorApplicationPage />
+                <Appointment />
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
                 <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>
 
