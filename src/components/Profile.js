@@ -36,20 +36,20 @@ export function Profile(props) {
             <div>
                 <h1 className="headingProfile"> Profile</h1>
             </div>
-            <div className="row">
+            <div className="row container">
                 <div className="aboutMeAll col-md-6">
                     <div className="extraInfo">
-                        <p className="nameProfile">{name}</p>
+                        <p className="nameProfile specialTitle">{name}</p>
                         <p>Major: <em>{major}</em></p>
                         <p>Grad Year: <em>{gradYear}</em></p>
                         <p>Interests: <em>{interests}</em></p>
 
-                        <p className="bio">About Me!</p>
+                        <p className="bio specialTitle">About Me!</p>
                         <p>{bio}</p>
                     </div>
                 </div>
                 <div className="upcomingMeetings col-md-6">
-                    <h2> Upcoming Meetings </h2>
+                    <p className="specialTitle"> Upcoming Meetings </p>
                     {/* Upcoming meetings */}
                     {meetingSchedule}
                 </div>

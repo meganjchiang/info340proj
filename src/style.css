@@ -235,9 +235,7 @@ footer, .select-options {
     background-color: lightgrey;
 }
 
-.appt-btn {
-    margin: auto;
-}
+
 
 .appt-btn:hover,
 .filter-btn {
@@ -353,7 +351,9 @@ textarea {
     margin-right: 8rem;
 
 }
-
+.specialTitle {
+    font-size: 1.5rem;
+}
 .card-box {
     display: inline-grid;
     padding: 0.5rem;
@@ -363,10 +363,6 @@ textarea {
     font-size: 1.5rem;
 }
 
-.aboutMeAll {
-    display: flex;
-    justify-content: space-evenly;
-}
 
 /*media queries */
 

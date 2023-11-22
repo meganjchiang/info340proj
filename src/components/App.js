@@ -76,7 +76,7 @@ function App(props) {
             </header>
 
             <main>
-                < Home />
+                {/* < Home /> */}
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
                 {/* <MentorGrid
