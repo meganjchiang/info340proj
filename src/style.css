@@ -231,6 +231,38 @@ textarea {
     width: 19.5rem;
 }
 
+/* Admin Approval */
+
+.table-style{
+    margin-left: 8rem;
+    margin-right: 8rem;
+}
+
+/* profile */
+
+.profile-page{
+    margin-left: 8rem;
+    margin-right: 8rem;
+
+}
+
+.card-box{
+    display: inline-grid;
+    padding: 0.5rem;
+
+}
+.nameProfile,
+.bio {
+    font-size: 1.5rem;
+}
+
+.aboutMeAll {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 50%;
+
+}
 
 
 
