@@ -5,7 +5,7 @@ export function MentorCard(props) {
     const mentorName = mentorData.name;
     const mentorBio = mentorData.bio;
     const mentorImg = mentorData.img;
-    const mentorIndustry = mentorData.industry;
+    const mentorCareer = mentorData.career;
     const mentorMajor = mentorData.major;
     const mentorGradYear = mentorData.grad_year;
 
@@ -17,7 +17,7 @@ export function MentorCard(props) {
                     <div className="card-text">
                         <p className="mentor-name">{mentorName}</p>
                         <div className="container mentor-info">
-                            <p><span className="info-label">Industry:</span> {mentorIndustry}</p>
+                            <p><span className="info-label">Career:</span> {mentorCareer}</p>
                             <p><span className="info-label">Major:</span> {mentorMajor}</p>
                             <p><span className="info-label">Graduation Year:</span> {mentorGradYear}</p>
                         </div>
@@ -32,13 +32,13 @@ export function MentorCard(props) {
 
 export function MentorGrid(props) {
     const mentors = props.mentors;
-    const [selectedIndustry, setSelectedIndustry] = useState('');
+    const [selectedCareer, setSelectedCareer] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
     const [selectedGradYear, setSelectedGradYear] = useState('');
 
-    const handleChangeSelectIndustry = (event) => {
-        let newIndustry = event.target.value;
-        setSelectedIndustry(newIndustry);
+    const handleChangeSelectCareer = (event) => {
+        let newCareer = event.target.value;
+        setSelectedCareer(newCareer);
     }
 
     const handleChangeSelectMajor = (event) => {
@@ -51,12 +51,12 @@ export function MentorGrid(props) {
         setSelectedGradYear(newGradYear);
     }
 
-    const handleClick = (selectedIndustry, selectedMajor, selectedGradYear) => {
-        props.applyFilterCallback(selectedIndustry, selectedMajor, selectedGradYear);
+    const handleClick = (selectedCareer, selectedMajor, selectedGradYear) => {
+        props.applyFilterCallback(selectedCareer, selectedMajor, selectedGradYear);
     }
 
-    const industryOptions = props.industryOptions.map((industry) => {
-        return <option key={industry} value={industry}>{industry}</option>
+    const careerOptions = props.careerOptions.map((career) => {
+        return <option key={career} value={career}>{career}</option>
     });
 
     const majorOptions = props.majorOptions.map((major) => {
@@ -89,9 +89,9 @@ export function MentorGrid(props) {
                     <button className="search" type="submit"><img src="img/search.png" alt="magnifying glass icon"></img></button>
                 </form> */}
                 <span>
-                    <select id="industrySelect" value={selectedIndustry} onChange={handleChangeSelectIndustry}>
-                        <option value="">All industries</option>
-                        {industryOptions}
+                    <select id="careerSelect" value={selectedCareer} onChange={handleChangeSelectCareer}>
+                        <option value="">All careers</option>
+                        {careerOptions}
                     </select>
                 </span>
 
@@ -111,7 +111,7 @@ export function MentorGrid(props) {
 
                 <span>
                     <button id="submitButton" type="submit" className="btn filter-btn" onClick={() =>
-                        handleClick(selectedIndustry, selectedMajor, selectedGradYear)}>Apply Filters</button>
+                        handleClick(selectedCareer, selectedMajor, selectedGradYear)}>Apply Filters</button>
                 </span>
 
             </div>
