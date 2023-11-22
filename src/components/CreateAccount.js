@@ -27,10 +27,12 @@ function CreateAccountForm() {
         setPassword("");
     }
 
-
+    const handleClick = () => {
+        console.log('clicked');
+    }
 
     return(
-    <form className='application-form'>
+    <form className='application-form' onSubmit={handleSubmit}>
         <div className="container">
             <div className='row'>
                 <div className="col">
@@ -71,7 +73,7 @@ function CreateAccountForm() {
             </div>
 
             <div className="col-12 text-center">
-                <button className="submit btn tbn-primary" type="submit" onSubmit={handleSubmit}>Submit</button>
+                <button className="submit btn tbn-primary" type="submit"  onClick={handleClick}>Submit</button>
             </div>
         </div>
     </form >
