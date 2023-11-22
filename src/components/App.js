@@ -74,9 +74,9 @@ function App(props) {
             </header>
 
             <main>
-                <Home />
+                {/*< Home /> */}
                 {/* < LoginPage /> */}
-                {/* <CreateAccountPage /> */}
+                <CreateAccountPage />
                 {/* <MentorGrid
                     mentors={displayedMentors}
                     industryOptions={uniqueIndustries}
