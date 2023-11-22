@@ -7,7 +7,9 @@ import { CreateAccountPage } from './CreateAccount.js';
 import { MentorApplicationPage } from './Mentor_Application.js'
 import { Appointment } from './Appointment.js';
 import { ApproveAdmin } from './Approve_Admin.js';
+import { Profile } from './Profile.js';
 import SAMPLE_MENTORS from '../data/mentorApp.json';
+import SAMPLE_PROFILE from '../data/profileData.json'
 
 import MENTORS from '../data/mentors.json';
 
@@ -29,8 +31,8 @@ function App(props) {
                 {/* <MentorGrid mentors={MENTORS} /> */}
                 {/* <MentorApplicationPage /> */}
                 {/* <Appointment /> */}
-                <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />
-
+                {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
+                <Profile profileData={SAMPLE_PROFILE}/>
             </main>
 
             <footer>
