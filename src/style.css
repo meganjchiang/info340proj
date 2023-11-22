@@ -352,11 +352,11 @@ textarea {
 .specialTitle {
     font-size: 1.5rem;
 }
-.card-box {
-    display: inline-grid;
-    padding: 0.5rem;
+/* .card-profile {
+   
+  
 
-}
+} */
 .extraInfo{
     font-size: 1.5rem;
 }
