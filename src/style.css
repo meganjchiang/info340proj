@@ -363,7 +363,7 @@ textarea {
   
 
 } */
-.extraInfo{
+
 
 .card-box {
     display: inline-grid;
@@ -379,7 +379,6 @@ textarea {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    width: 50%;
 
 }
 
@@ -408,9 +407,6 @@ textarea {
         font-size: 2rem;
     }
 
-    img {
-        width: 50%;
-    }
 
     .aboutMeAll {
         display: flex;
@@ -419,7 +415,6 @@ textarea {
 
     .aboutMe {
         margin-left: 2rem;
-        width: 80%;
         margin-top: 1rem;
     }
 
@@ -464,7 +459,6 @@ textarea {
     .extraInfo,
     .aboutMe {
         font-size: medium;
-        width: 40%;
         margin-top: 0;
     }
 
@@ -472,9 +466,7 @@ textarea {
         font-size: 2.5rem;
     }
 
-    img {
-        width: 90%;
-    }
+
 
     .aboutMeAll {
         display: flex;
@@ -491,7 +483,6 @@ textarea {
     .extraInfo,
     .aboutMe {
         font-size: large;
-        width: 40%;
     }
 
 
