@@ -38,7 +38,7 @@
     {
         "netID":"mjchiang2",
         "name":"Megan Chiang",
-        "img":"img/megan2.jpg", 
+        "img":"img/megan2.JPG", 
         "bio":"Hi! I can help you with academic planning.", 
         "career":"Web Developer",
         "major":"Computer Science",
@@ -83,7 +83,7 @@
     {
         "netID":"mjchiang3",
         "name":"Megan Chiang",
-        "img":"img/megan3.jpg", 
+        "img":"img/megan3.JPG", 
         "bio":"Hi! I can help you with academic planning.", 
         "career":"Program Manager",
         "major":"Business Administration",
@@ -137,7 +137,7 @@
     {
         "netID":"mjchiang",
         "name":"Megan Chiang",
-        "img":"img/megan4.jpg", 
+        "img":"img/megan4.JPG", 
         "bio":"Hi! I can help you with academic planning.", 
         "career":"Data Scientist",
         "major":"Statistics",
