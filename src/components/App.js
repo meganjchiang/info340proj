@@ -10,6 +10,7 @@ import { ApproveAdmin } from './Approve_Admin.js';
 import { Profile } from './Profile.js';
 import SAMPLE_MENTORS from '../data/mentorApp.json';
 import SAMPLE_PROFILE from '../data/profileData.json'
+import SAMPLE_MEETING from '../data/upcomingMeetings.json'
 
 import MENTORS from '../data/mentors.json';
 
@@ -32,7 +33,7 @@ function App(props) {
                 {/* <MentorApplicationPage /> */}
                 {/* <Appointment /> */}
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
-                <Profile profileData={SAMPLE_PROFILE}/>
+                <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>
             </main>
 
             <footer>

@@ -10,13 +10,25 @@ export function Profile(props) {
     const gradYear = dataProfile[0].grad_year;
 
     
+    const meetingData = props.meetingData;
+    console.log(meetingData);
     
-    
-    const profileBio = dataProfile.map((mentor, index) => {
-        const returnTable = (
-            <div>hi </div>
+    const meetingSchedule = meetingData.map((meet, index) => {
+        const returnMeetings = (
+            <div key={index}>
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Card.Title>{meetingData[0].date}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{meetingData[0].mentor}</Card.Subtitle>
+                    <Card.Text>
+                    {meetingData[0].reason}
+                    </Card.Text>
+                    <Card.Link href={meetingData[0].link}>Meeting Link</Card.Link>
+                </Card.Body>
+            </Card>
+            </div>
         )
-        return returnTable;
+        return returnMeetings;
         
     })
     return (
@@ -29,23 +41,15 @@ export function Profile(props) {
 
                 <div className="extraInfo">
                     <p className="nameProfile">{name}</p>
-                    <p>Freshman: <em>{major}</em></p>
-                    <p>Interests: <em>{interests}</em></p>
+                    <p>Major: <em>{major}</em></p>
                     <p>Grad Year: <em>{gradYear}</em></p>
+                    <p>Interests: <em>{interests}</em></p>
+                    
 
                 </div>
-
-
-
                 <div className="aboutMe">
                     <p className="bio">About Me!</p>
-                    <p>Hey, I'm Emily, and I'm at that crossroads where I need to figure out what major to dive into. Volleyball
-                        and singing? They're my jam! Volleyball has taught me teamwork and discipline, and singing is where I
-                        let loose. Now, I'm on a mission to find a major that lets me blend both of these worlds, whether it's
-                        sports management, sports science, or maybe even music therapy. I'm all ears for any advice or insights
-                        you've got, and let's tackle this academic journey together, with volleyball and singing as my trusty
-                        guides.
-                    </p>
+                    <p>{bio}</p>
 
                 </div>
 
@@ -58,16 +62,10 @@ export function Profile(props) {
 
             <h2 className="upcomingMeeting"> Upcoming Meetings </h2>
             {/* Upcoming meetings */}
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title>9/24/22</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Steve Singh</Card.Subtitle>
-                    <Card.Text>
-                        Advise on Career Path in Software Engineering
-                    </Card.Text>
-                    <Card.Link href="#">Meeting link</Card.Link>
-                </Card.Body>
-            </Card>
+            <div>
+                {meetingSchedule}
+            </div>
+            
         </div>
     )
 }
