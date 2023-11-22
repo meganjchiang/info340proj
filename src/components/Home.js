@@ -9,7 +9,7 @@ export function Home() {
   return (
     <div className="splash">
   
-      <main>
+      <main className='home-page'>
         <h1 className="page-title">HUSKY2HUSKY</h1>
         <div className="text-center">
           <a href="login.html" class="btn btn-dark mt-auto">Login</a>

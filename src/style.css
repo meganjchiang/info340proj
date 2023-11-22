@@ -168,13 +168,13 @@ footer, .select-options {
     margin: 4rem;
 }
 
-main {
+.home-page {
     margin-top: 20vh;
     background-size: cover;
     background-position: center;
 }
 
-main .btn {
+.home-page .btn {
     width: 8rem; 
 }
 
@@ -188,6 +188,7 @@ main .btn {
 .application-form,
 .appointment-form,
 .become-mentor-section,
+.update_profile
 .login-form {
     margin: 2rem;
 }
@@ -232,6 +233,10 @@ main .btn {
 
 .submit:hover {
     background-color: lightgrey;
+}
+
+.appt-btn {
+    margin: auto;
 }
 
 .appt-btn:hover,
@@ -429,13 +434,13 @@ textarea {
     }
 
     /* mentor page */
-    .mentor-page-description {
+    /* .mentor-page-description {
         max-width: 50%;
     }
 
     .search-bar input {
         width: 30%;
-    }
+    } */
 
     /* profile page */
     .extraInfo,

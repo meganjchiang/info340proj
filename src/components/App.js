@@ -10,6 +10,7 @@ import { ApproveAdmin } from './AdminMentorApproval.js';
 import { Profile } from './Profile.js';
 import { Home } from './Home.js';
 import { NavBar } from './NavigationBar';
+import { UpdateProfile } from "./UpdateProfile.js"
 
 
 import MENTORS from '../data/mentors.json';
@@ -75,7 +76,7 @@ function App(props) {
             </header>
 
             <main>
-                {/* < Home /> */}
+                < Home />
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
                 {/* <MentorGrid
