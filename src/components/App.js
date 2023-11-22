@@ -75,16 +75,16 @@ function App(props) {
 
             <main>
                 {/* < Home /> */}
-                {/* < LoginPage /> */}
+                < LoginPage />
                 {/* <CreateAccountPage /> */}
-                <MentorGrid
+                {/* <MentorGrid
                     mentors={displayedMentors}
                     industryOptions={uniqueIndustries}
                     majorOptions={uniqueMajors}
                     gradYearOptions={uniqueGradYears}
-                    applyFilterCallback={applyFilter} />
-                {/* <MentorApplicationPage /> */}
-                {/* <Appointment /> */}
+                    applyFilterCallback={applyFilter} /> */}
+                <MentorApplicationPage /> */
+                <Appointment />
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
                 {/* <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> */}
 

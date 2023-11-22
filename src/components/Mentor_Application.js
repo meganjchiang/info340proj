@@ -49,9 +49,7 @@ export function MentorApplicationPage() {
         </Form.Group>
 
         <div className="col-12 text-center">
-          <Button className="submit" type="submit">
-            Submit application
-          </Button>
+          <button className="submit btn tbn-primary" type="submit">Submit application</button>
         </div>
       </Form>
     </div>

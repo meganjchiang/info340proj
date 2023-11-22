@@ -47,9 +47,7 @@ export function Appointment() {
             </Form.Group>
     
             <div className="col-12 text-center">
-              <Button className="submit" type="submit">
-                Schedule Appointment
-              </Button>
+              <button className="submit btn tbn-primary" type="submit">Schedule Appointment</button>
             </div>
           </Form>
         </div>
