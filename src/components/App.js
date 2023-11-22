@@ -4,6 +4,8 @@ import React, { useState } from 'react'; //import React Component
 import { MentorGrid } from './Mentors.js';
 import { LoginPage } from './LoginPage.js';
 import { CreateAccountPage } from './CreateAccount.js';
+import { MentorApplicationPage } from './Mentor_Application.js'
+import { Appointment } from './Appointment.js';
 
 import MENTORS from '../data/mentors.json';
 
@@ -20,9 +22,12 @@ function App(props) {
             </header>
 
             <main>
-                < LoginPage />
-                <CreateAccountPage />
+                {/* < LoginPage /> */}
+                {/* <CreateAccountPage /> */}
                 {/* <MentorGrid mentors={MENTORS} /> */}
+                {/* <MentorApplicationPage /> */}
+                {/* <Appointment /> */}
+
             </main>
 
             <footer>

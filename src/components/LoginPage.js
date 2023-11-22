@@ -1,19 +1,20 @@
 import React, { useState } from 'react'; //import React Component
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 function LoginForm() {
     return (
         <div>
-            <Form.Group className="mb-3">
-                    <Form.Label htmlFor="email">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" name="email" id="email" required/>
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label htmlFor="password">Password</Form.Label>
-                <Form.Control type="password" name="password" id="password" placeholder="Password" required/>
-            </Form.Group>
-            <Button className="submit btn tbn-primary" type="submit">Sign In</Button>
+             <form id="login-form" action="login.php" method="POST">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" placeholder="name@example.com" name="email" id="email"
+                    required></input>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" required></input>
+            </div>
+            <button class="submit" type="submit">Sign In</button>
+        </form>
         </div>
     )
 

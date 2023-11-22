@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-const MentorApplicationPage = () => {
+export function MentorApplicationPage() {
   return (
     <div className="application-form">
       <h1>Become a Mentor!</h1>
@@ -58,4 +58,4 @@ const MentorApplicationPage = () => {
   );
 };
 
-export default Mentor_Application;
+// export default Mentor_Application;

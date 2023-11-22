@@ -3,7 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-function Appointment() {
+
+export function Appointment() {
     return (
         <div className="appointment-form">
           <h1>Schedule an Appointment</h1>
@@ -55,4 +56,3 @@ function Appointment() {
       );
   }
   
-  export default Appointment;
