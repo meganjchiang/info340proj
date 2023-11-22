@@ -5,7 +5,7 @@ import uwLogo from './project-draft/img/uw-logo.png';
 import mentorGraphic from './project-draft/img/mentor_graphic.png';
 
 
-const Home = () => {
+export function Home() {
   return (
     <div className="splash">
       <header>
@@ -61,4 +61,3 @@ const Home = () => {
   );
 };
 
-export default Home;
