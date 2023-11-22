@@ -20,13 +20,13 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 
 
 function App(props) {
-    const [selectedIndustry, setSelectedIndustry] = useState('');
+    const [selectedCareer, setSelectedCareer] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
     const [selectedGradYear, setSelectedGradYear] = useState('');
 
     // source: problem-c from Problem Set 07
-    const uniqueIndustries = [...new Set(MENTORS.reduce((all, current) => {
-        return all.concat([current.industry]);
+    const uniqueCareers = [...new Set(MENTORS.reduce((all, current) => {
+        return all.concat([current.career]);
     }, []))].sort();
 
     const uniqueMajors = [...new Set(MENTORS.reduce((all, current) => {
@@ -39,29 +39,29 @@ function App(props) {
 
     let displayedMentors = MENTORS;
 
-    if (selectedIndustry != '') {
+    if (selectedCareer !== '') {
         displayedMentors = MENTORS.filter((mentor) => {
-            const industries = mentor.industry == selectedIndustry;
-            return industries;
+            const careers = mentor.career === selectedCareer;
+            return careers;
         });
     }
 
-    if (selectedMajor != '') {
+    if (selectedMajor !== '') {
         displayedMentors = displayedMentors.filter((mentor) => {
-            const majors = mentor.major == selectedMajor;
+            const majors = mentor.major === selectedMajor;
             return majors;
         });
     }
 
-    if (selectedGradYear != '') {
+    if (selectedGradYear !== '') {
         displayedMentors = displayedMentors.filter((mentor) => {
-            const gradYear = mentor.grad_year == selectedGradYear;
+            const gradYear = mentor.grad_year === selectedGradYear;
             return gradYear;
         });
     }
 
-    const applyFilter = (selectedIndustry, selectedMajor, selectedGradYear) => {
-        setSelectedIndustry(selectedIndustry);
+    const applyFilter = (selectedCareer, selectedMajor, selectedGradYear) => {
+        setSelectedCareer(selectedCareer);
         setSelectedMajor(selectedMajor);
         setSelectedGradYear(selectedGradYear);
     };
@@ -77,16 +77,18 @@ function App(props) {
                 {/* < Home /> */}
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
-                {/* <MentorGrid
+                <MentorGrid
                     mentors={displayedMentors}
-                    industryOptions={uniqueIndustries}
+                    careerOptions={uniqueCareers}
                     majorOptions={uniqueMajors}
                     gradYearOptions={uniqueGradYears}
-                    applyFilterCallback={applyFilter} /> */}
+                    applyFilterCallback={applyFilter} />
                 {/* <MentorApplicationPage />
-                <Appointment /> */}
-                {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
-                <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>
+                <Appointment />
+                <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />
+                <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> 
+                <UpdateProfile/> */}
+            
 
             </main>
 
