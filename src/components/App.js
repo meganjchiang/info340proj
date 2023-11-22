@@ -21,53 +21,7 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 
 
 
-function App(props) {
-    const [selectedCareer, setSelectedCareer] = useState('');
-    const [selectedMajor, setSelectedMajor] = useState('');
-    const [selectedGradYear, setSelectedGradYear] = useState('');
-
-    // source: problem-c from Problem Set 07
-    const uniqueCareers = [...new Set(MENTORS.reduce((all, current) => {
-        return all.concat([current.career]);
-    }, []))].sort();
-
-    const uniqueMajors = [...new Set(MENTORS.reduce((all, current) => {
-        return all.concat([current.major]);
-    }, []))].sort();
-
-    const uniqueGradYears = [...new Set(MENTORS.reduce((all, current) => {
-        return all.concat([current.grad_year]);
-    }, []))].sort();
-
-    let displayedMentors = MENTORS;
-
-    if (selectedCareer !== '') {
-        displayedMentors = MENTORS.filter((mentor) => {
-            const careers = mentor.career === selectedCareer;
-            return careers;
-        });
-    }
-
-    if (selectedMajor !== '') {
-        displayedMentors = displayedMentors.filter((mentor) => {
-            const majors = mentor.major === selectedMajor;
-            return majors;
-        });
-    }
-
-    if (selectedGradYear !== '') {
-        displayedMentors = displayedMentors.filter((mentor) => {
-            const gradYear = mentor.grad_year === selectedGradYear;
-            return gradYear;
-        });
-    }
-
-    const applyFilter = (selectedCareer, selectedMajor, selectedGradYear) => {
-        setSelectedCareer(selectedCareer);
-        setSelectedMajor(selectedMajor);
-        setSelectedGradYear(selectedGradYear);
-    };
-
+function App() {
     return (
         <div>
 
@@ -79,16 +33,11 @@ function App(props) {
                 {/* < Home /> */}
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
-                {/* <MentorGrid
-                    mentors={displayedMentors}
-                    careerOptions={uniqueCareers}
-                    majorOptions={uniqueMajors}
-                    gradYearOptions={uniqueGradYears}
-                    applyFilterCallback={applyFilter} /> */}
+                <MentorGrid mentors={MENTORS} />
                 {/* <MentorApplicationPage />
                 <Appointment />
                 <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />*/}
-                <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> 
+                {/* <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>  */}
                 {/* <UpdateProfile/>  */}
             
 

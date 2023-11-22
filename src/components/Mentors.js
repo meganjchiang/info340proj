@@ -36,6 +36,29 @@ export function MentorGrid(props) {
     const [selectedMajor, setSelectedMajor] = useState('');
     const [selectedGradYear, setSelectedGradYear] = useState('');
 
+    let displayedMentors = mentors;
+
+    if (selectedCareer !== '') {
+        displayedMentors = mentors.filter((mentor) => {
+            const careers = mentor.career === selectedCareer;
+            return careers;
+        });
+    }
+
+    if (selectedMajor !== '') {
+        displayedMentors = displayedMentors.filter((mentor) => {
+            const majors = mentor.major === selectedMajor;
+            return majors;
+        });
+    }
+
+    if (selectedGradYear !== '') {
+        displayedMentors = displayedMentors.filter((mentor) => {
+            const gradYear = mentor.grad_year === selectedGradYear;
+            return gradYear;
+        });
+    }
+
     const handleChangeSelectCareer = (event) => {
         let newCareer = event.target.value;
         setSelectedCareer(newCareer);
@@ -51,24 +74,32 @@ export function MentorGrid(props) {
         setSelectedGradYear(newGradYear);
     }
 
-    const handleClick = (selectedCareer, selectedMajor, selectedGradYear) => {
-        props.applyFilterCallback(selectedCareer, selectedMajor, selectedGradYear);
-    }
+    // source: problem-c from Problem Set 07
+    const uniqueCareers = [...new Set(mentors.reduce((all, current) => {
+        return all.concat([current.career]);
+    }, []))].sort();
 
-    const careerOptions = props.careerOptions.map((career) => {
+    const uniqueMajors = [...new Set(mentors.reduce((all, current) => {
+        return all.concat([current.major]);
+    }, []))].sort();
+
+    const uniqueGradYears = [...new Set(mentors.reduce((all, current) => {
+        return all.concat([current.grad_year]);
+    }, []))].sort();
+
+    const careerOptions = uniqueCareers.map((career) => {
         return <option key={career} value={career}>{career}</option>
     });
 
-    const majorOptions = props.majorOptions.map((major) => {
+    const majorOptions = uniqueMajors.map((major) => {
         return <option key={major} value={major}>{major}</option>
     });
 
-    const gradYearOptions = props.gradYearOptions.map((gradYear) => {
+    const gradYearOptions = uniqueGradYears.map((gradYear) => {
         return <option key={gradYear} value={gradYear}>{gradYear}</option>
-    });
+    }).reverse();
 
-
-    const cardArray = mentors.map((mentor) => {
+    const cardArray = displayedMentors.map((mentor) => {
         const card = <MentorCard key={mentor.netID} mentorData={mentor} />
         return card;
     });
@@ -108,12 +139,6 @@ export function MentorGrid(props) {
                         {gradYearOptions}
                     </select>
                 </span>
-
-                <span>
-                    <button id="submitButton" type="submit" className="btn filter-btn" onClick={() =>
-                        handleClick(selectedCareer, selectedMajor, selectedGradYear)}>Apply Filters</button>
-                </span>
-
             </div>
 
             <div className="row container mentor-cards">
