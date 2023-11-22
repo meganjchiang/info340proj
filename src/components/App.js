@@ -39,23 +39,23 @@ function App(props) {
 
     let displayedMentors = MENTORS;
 
-    if (selectedIndustry != '') {
+    if (selectedIndustry !== '') {
         displayedMentors = MENTORS.filter((mentor) => {
-            const industries = mentor.industry == selectedIndustry;
+            const industries = mentor.industry === selectedIndustry;
             return industries;
         });
     }
 
-    if (selectedMajor != '') {
+    if (selectedMajor !== '') {
         displayedMentors = displayedMentors.filter((mentor) => {
-            const majors = mentor.major == selectedMajor;
+            const majors = mentor.major === selectedMajor;
             return majors;
         });
     }
 
-    if (selectedGradYear != '') {
+    if (selectedGradYear !== '') {
         displayedMentors = displayedMentors.filter((mentor) => {
-            const gradYear = mentor.grad_year == selectedGradYear;
+            const gradYear = mentor.grad_year === selectedGradYear;
             return gradYear;
         });
     }

@@ -13,7 +13,7 @@ export function NavBar() {
                     </nav>
 
                     <div className="hamburger-menu">
-                        <img src="img/hamburger.png" className="hamburger"></img>
+                        <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                         <div className="dropdown-menu">
                             <ul>
                                 <li><a href="mentor_application.html">Apply</a></li>
