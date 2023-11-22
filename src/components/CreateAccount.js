@@ -10,6 +10,7 @@ function CreateAccountForm() {
     const [password, setPassword] = useState("");
 
     const handleSubmit = (event) => {
+        event.preventDefault();
 
         console.log("Submit form with:");
         console.log("First Name:", firstn);
@@ -37,7 +38,7 @@ function CreateAccountForm() {
             <div className='row'>
                 <div className="col">
                     <label htmlFor="first-name" className="form-label">First Name <span className="required"> *</span></label>
-                    <input type="text" className="form-control" onChange={(e) => setFirstN(e.target.value)} name="first-name" id="first-name" required></input>
+                    <input type="text" className="form-control" onChange={(e) => setFirstN(e.target.value)} value={firstn} name="first-name" id="first-name" required></input>
                 </div>
 
                 <div className="col">
@@ -73,7 +74,7 @@ function CreateAccountForm() {
             </div>
 
             <div className="col-12 text-center">
-                <button className="submit btn tbn-primary" type="submit"  onClick={handleClick}>Submit</button>
+                <button className="submit btn tbn-primary" type="submit" onClick={handleClick}>Submit</button>
             </div>
         </div>
     </form >
