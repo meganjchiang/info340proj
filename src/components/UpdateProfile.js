@@ -1,6 +1,27 @@
 import React from "react";
 
 export function UpdateProfile ()  {
+    
+    const handleClick = (event) => {
+        console.log("clicked");
+    }
+    
+      const [typedVal, setTypedVal] = useState("");
+      const [name, setName] = useState("");
+      const [major, setMajor] = useState("");
+      const [extracurriculars, setExtracurriculars] = useState("");
+      const [aboutMeSummary, setAboutMeSummary] = useState("");
+    
+      const handleChange = (event) => {
+      const inputValue = event.target.value;
+      setTypedVal(inputValue);
+      }
+    
+      const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log("submit form with", typedVal);
+    }
+
     return (
       <div className="update_profile">
         <h1>Update Profile</h1>
@@ -11,14 +32,14 @@ export function UpdateProfile ()  {
               <label htmlFor="name" className="form-label">
                 Name
               </label>
-              <input type="text" className="form-control" id="name" name="name" />
+              <input type="text" className="form-control" id="name" name="name" onChange={handleChange}/>
             </div>
   
             <div className="col-6 mb-3">
               <label htmlFor="year" className="form-label">
                 Year
               </label>
-              <select className="form-select" id="year" name="year">
+              <select className="form-select" id="year" name="year" onChange={handleChange}>
                 <option value="freshman">Freshman</option>
                 <option value="sophomore">Sophomore</option>
                 <option value="junior">Junior</option>
@@ -30,25 +51,25 @@ export function UpdateProfile ()  {
               <label htmlFor="major" className="form-label">
                 Major
               </label>
-              <input type="text" className="form-control" id="major" name="major" />
+              <input type="text" className="form-control" id="major" name="major" onChange={handleChange}/>
             </div>
   
             <div className="col-12 mb-3">
               <label htmlFor="extracurriculars" className="form-label">
                 Extracurriculars
               </label>
-              <textarea className="form-control" id="extracurriculars" name="extracurriculars" rows="4" />
+              <textarea className="form-control" id="extracurriculars" name="extracurriculars" rows="4" onChange={handleChange}/>
             </div>
   
             <div className="col-12 mb-3">
               <label htmlFor="aboutMeSummary" className="form-label">
                 About Me Summary
               </label>
-              <textarea className="form-control" id="aboutMeSummary" name="aboutMeSummary" rows="6" />
+              <textarea className="form-control" id="aboutMeSummary" name="aboutMeSummary" rows="6" onChange={handleChange}/>
             </div>
   
             <div className="col-12 text-center">
-              <button className="submit" type="submit">
+              <button className="submit" type="submit" onClick={handleClick} onSubmit={handleSubmit}>
                 Save Changes
               </button>
             </div>
