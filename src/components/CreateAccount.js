@@ -71,7 +71,7 @@ function CreateAccountForm() {
             </div>
 
             <div className="col-12 text-center">
-                <button className="submit btn tbn-primary" type="submit" onSubmit={handleSubmit} onClick={handleClick}>Submit</button>
+                <button className="submit btn tbn-primary" type="submit" onSubmit={handleSubmit}>Submit</button>
             </div>
         </div>
     </form >
