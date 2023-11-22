@@ -4,9 +4,9 @@ import React, { useState } from 'react'; //import React Component
 import { MentorGrid } from './Mentors.js';
 import { LoginPage } from './LoginPage.js';
 import { CreateAccountPage } from './CreateAccount.js';
-import { MentorApplicationPage } from './Mentor_Application.js'
+import { MentorApplicationPage } from './MentorApplication.js'
 import { Appointment } from './Appointment.js';
-import { ApproveAdmin } from './Approve_Admin.js';
+import { ApproveAdmin } from './AdminMentorApproval.js';
 import { Profile } from './Profile.js';
 import { Home } from './Home.js'
 import { NavBar } from './NavigationBar';
