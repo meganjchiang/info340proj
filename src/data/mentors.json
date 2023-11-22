@@ -1,0 +1,146 @@
+[
+    {
+        "netID":"dganes1",
+        "name":"Divya Ganesh",
+        "img":"img/divya.jpeg", 
+        "bio":"Hi! I can help you with networking and choosing a career path.", 
+        "industry":"Product Manager",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"lasya191",
+        "name":"Lasya Suravajhela",
+        "img":"img/lasya1.jpeg", 
+        "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
+        "industry":"Web Developer",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"mjchiang1",
+        "name":"Megan Chiang",
+        "img":"img/megan1.jpg", 
+        "bio":"Hi! I can help you with academic planning.", 
+        "industry":"Data Analyst",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"sxnghp1",
+        "name":"Sunghee Park",
+        "img":"img/sunghee1.jpeg", 
+        "bio":"Hi! I can help you with picking and applying to a major.", 
+        "industry":"Data Scientist",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"mjchiang2",
+        "name":"Megan Chiang",
+        "img":"img/megan2.jpg", 
+        "bio":"Hi! I can help you with academic planning.", 
+        "industry":"Data Analyst",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"dganes2",
+        "name":"Divya Ganesh",
+        "img":"img/divya.jpeg", 
+        "bio":"Hi! I can help you with networking and choosing a career path.", 
+        "industry":"Product Manager",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"sxnghp2",
+        "name":"Sunghee Park",
+        "img":"img/sunghee2.jpeg", 
+        "bio":"Hi! I can help you with picking and applying to a major.", 
+        "industry":"Data Scientist",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"lasya192",
+        "name":"Lasya Suravajhela",
+        "img":"img/lasya2.jpeg", 
+        "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
+        "industry":"Web Developer",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"sxnghp3",
+        "name":"Sunghee Park",
+        "img":"img/sunghee1.jpeg", 
+        "bio":"Hi! I can help you with picking and applying to a major.", 
+        "industry":"Data Scientist",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"mjchiang3",
+        "name":"Megan Chiang",
+        "img":"img/megan3.jpg", 
+        "bio":"Hi! I can help you with academic planning.", 
+        "industry":"Data Analyst",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"lasya193",
+        "name":"Lasya Suravajhela",
+        "img":"img/lasya3.jpeg", 
+        "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
+        "industry":"Web Developer",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"dganes3",
+        "name":"Divya Ganesh",
+        "img":"img/divya.jpeg", 
+        "bio":"Hi! I can help you with networking and choosing a career path.", 
+        "industry":"Product Manager",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"lasya194",
+        "name":"Lasya Suravajhela",
+        "img":"img/lasya1.jpeg", 
+        "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
+        "industry":"Web Developer",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"sxnghp4",
+        "name":"Sunghee Park",
+        "img":"img/sunghee2.jpeg", 
+        "bio":"Hi! I can help you with picking and applying to a major.", 
+        "industry":"Data Scientist",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"dganes4",
+        "name":"Divya Ganesh",
+        "img":"img/divya.jpeg", 
+        "bio":"Hi! I can help you with networking and choosing a career path.", 
+        "industry":"Product Manager",
+        "major":"Informatics",
+        "grad_year":"2025"
+    },
+    {
+        "netID":"mjchiang",
+        "name":"Megan Chiang",
+        "img":"img/megan4.jpg", 
+        "bio":"Hi! I can help you with academic planning.", 
+        "industry":"Data Analyst",
+        "major":"Informatics",
+        "grad_year":"2025"
+    }
+  ]

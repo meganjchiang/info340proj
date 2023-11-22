@@ -234,7 +234,7 @@ textarea {
 .splash {
     width: 100%;
     min-height: 95vh;
-    background-image: url('../img/uw.jpg');
+    /* background-image: url('./img/uw.jpg'); */
     background-size: cover;
     background-position: center;
 }
