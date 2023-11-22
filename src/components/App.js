@@ -86,7 +86,9 @@ function App(props) {
                 {/* <MentorApplicationPage />
                 <Appointment />
                 <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />
-                <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> */}
+                <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> 
+                <UpdateProfile/> */}
+            
 
             </main>
 

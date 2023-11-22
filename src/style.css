@@ -366,3 +366,122 @@ textarea {
     width: 50%;
 
 }
+
+/*media queries */
+
+@media (min-width: 598px) {
+
+    /* appointment form */
+    .appointment-form h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-control,
+    .form-select,
+    textarea {
+        padding: 0.75rem;
+    }
+
+    /* hamburger-menu */
+    .hamburger-menu {
+        display: none;
+    }
+
+    /* profile */
+    .headingProfile {
+        font-size: 2rem;
+    }
+
+    img {
+        width: 50%;
+    }
+
+    .aboutMeAll {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aboutMe {
+        margin-left: 2rem;
+        width: 80%;
+        margin-top: 1rem;
+    }
+
+    /* home page */
+    .page-title {
+        font-size: 5rem;
+    }
+
+}
+
+@media (max-width: 598px) {
+
+    /* make navbar disappear */
+    .navbar a {
+        display: none;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    /* appointment form */
+    .appointment-form h1 {
+        font-size: 2rem;
+    }
+
+    .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    /* mentor page */
+    .mentor-page-description {
+        max-width: 50%;
+    }
+
+    .search-bar input {
+        width: 30%;
+    }
+
+    /* profile page */
+    .extraInfo,
+    .aboutMe {
+        font-size: medium;
+        width: 40%;
+        margin-top: 0;
+    }
+
+    .headingProfile {
+        font-size: 2.5rem;
+    }
+
+    img {
+        width: 90%;
+    }
+
+    .aboutMeAll {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+
+    }
+}
+
+
+@media (min-width: 992px) {
+
+    /* profile */
+    .extraInfo,
+    .aboutMe {
+        font-size: large;
+        width: 40%;
+    }
+
+
+    .aboutMeAll {
+        display: flex;
+        justify-content: space-evenly;
+
+    }
+}
