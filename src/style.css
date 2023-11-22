@@ -235,10 +235,6 @@ footer, .select-options {
     background-color: lightgrey;
 }
 
-.appt-btn {
-    margin: auto;
-}
-
 .appt-btn:hover,
 .filter-btn {
     background-color: #846db0;
