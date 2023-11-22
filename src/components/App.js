@@ -30,7 +30,7 @@ function App() {
             </header>
 
             <main>
-                {/* < Home /> */}
+                < Home />
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
                 <MentorGrid mentors={MENTORS} />
