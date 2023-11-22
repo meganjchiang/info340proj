@@ -74,15 +74,15 @@ function App(props) {
             </header>
 
             <main>
-                {/*< Home /> */}
+                {/* < Home /> */}
                 {/* < LoginPage /> */}
-                <CreateAccountPage />
-                {/* <MentorGrid
+                {/* <CreateAccountPage /> */}
+                <MentorGrid
                     mentors={displayedMentors}
                     industryOptions={uniqueIndustries}
                     majorOptions={uniqueMajors}
                     gradYearOptions={uniqueGradYears}
-                    applyFilterCallback={applyFilter} /> */}
+                    applyFilterCallback={applyFilter} />
                 {/* <MentorApplicationPage /> */}
                 {/* <Appointment /> */}
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}

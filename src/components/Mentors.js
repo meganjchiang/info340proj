@@ -27,7 +27,7 @@ export function MentorCard(props) {
                     <p>Graduation Year: {mentorGradYear}</p>
                     <p>{mentorBio}</p>
                 </Card.Text>
-                <Button variant="dark mt-auto">Book an Appointment</Button>
+                <Button className='appointment-btn mt-auto' variant="dark mt-auto">Book an Appointment</Button>
             </Card.Body>
         </Card>
     );
@@ -87,11 +87,11 @@ export function MentorGrid(props) {
                     professional endeavors. Schedule an appointment to learn more about their experiences.</p>
             </div>
             <div className="filter-search">
-                <form className="search-bar">
-                    {/* <label for="search" Search></label> */}
+                {/* <form className="search-bar">
+                    <label for="search" Search></label>
                     <input type="text" placeholder="Search..." name="search"></input>
                     <button className="search" type="submit"><img src="img/search.png" alt="magnifying glass icon"></img></button>
-                </form>
+                </form> */}
                 <span>
                     <select id="industrySelect" value={selectedIndustry} onChange={handleChangeSelectIndustry}>
                         <option value="">All industries</option>

@@ -1,25 +1,28 @@
 import React, { useState } from 'react'; //import React Component
 
 function LoginForm() {
-    
+
     const handleClick = (event) => {
         console.log("clicked");
     }
-    
+
     return (
-        <div>
-             <form id="login-form" action="login.php" method="POST">
-            <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email address</label>
-                <input type="email" className="form-control" placeholder="name@example.com" name="email" id="email"
-                    required></input>
-            </div>
-            <div className="mb-3">
-                <label htmlFor="password" className="form-label">Password</label>
-                <input type="password" className="form-control" name="password" id="password" required></input>
-            </div>
-            <button className="submit" type="submit" onClick={handleClick}>Sign In</button>
-        </form>
+        <div className='form'>
+            <form id="login-form" action="login.php" method="POST">
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label">Email address</label>
+                    <input type="email" className="form-control" placeholder="name@example.com" name="email" id="email"
+                        required></input>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input type="password" className="form-control" name="password" id="password" required></input>
+                </div>
+
+                <button className="submit btn tbn-primary" type="submit" onClick={handleClick}>Sign In</button>
+     
+            </form>
+           
         </div>
     )
 
