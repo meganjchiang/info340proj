@@ -8,7 +8,8 @@ import { MentorApplicationPage } from './Mentor_Application.js'
 import { Appointment } from './Appointment.js';
 import { ApproveAdmin } from './Approve_Admin.js';
 import { Profile } from './Profile.js';
-import {Home} from './Home.js'
+import { Home } from './Home.js'
+import { NavBar } from './NavigationBar';
 import SAMPLE_MENTORS from '../data/mentorApp.json';
 import SAMPLE_PROFILE from '../data/profileData.json'
 import SAMPLE_MEETING from '../data/upcomingMeetings.json'
@@ -26,16 +27,16 @@ function App(props) {
     // source: problem-c from Problem Set 07
     const uniqueIndustries = [...new Set(MENTORS.reduce((all, current) => {
         return all.concat([current.industry]);
-      }, []))].sort();
+    }, []))].sort();
 
     const uniqueMajors = [...new Set(MENTORS.reduce((all, current) => {
         return all.concat([current.major]);
-      }, []))].sort();
+    }, []))].sort();
 
     const uniqueGradYears = [...new Set(MENTORS.reduce((all, current) => {
         return all.concat([current.grad_year]);
-      }, []))].sort();
-    
+    }, []))].sort();
+
     let displayedMentors = MENTORS;
 
     if (selectedIndustry != '') {
@@ -69,7 +70,7 @@ function App(props) {
         <div>
 
             <header>
-                {/* {nav bar} */}
+                <NavBar />
             </header>
 
             <main>
@@ -86,7 +87,7 @@ function App(props) {
                 {/* <Appointment /> */}
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
                 {/* <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> */}
-           
+
             </main>
 
             <footer>
