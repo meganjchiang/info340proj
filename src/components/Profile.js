@@ -32,11 +32,12 @@ export function Profile(props) {
         
     })
     return (
-        <div>
+        <div className="profile-page">
             <div>
                 <h1 className="headingProfile"> Profile</h1>
             </div>
-            <div className="aboutMeAll">
+            <div className="row">
+            <div className="aboutMeAll col-md-6">
 
 
                 <div className="extraInfo">
@@ -52,20 +53,20 @@ export function Profile(props) {
                     <p>{bio}</p>
 
                 </div>
-
-
             </div>
+           
 
-            <div className="text-center">
-                <button className="submit" type="submit"><a href="update_profile.html" >Update Profile</a></button>
-            </div>
-
-            <h2 className="upcomingMeeting"> Upcoming Meetings </h2>
+            <div className="upcomingMeetings col-md-6">
+            <h2> Upcoming Meetings </h2>
             {/* Upcoming meetings */}
-            <div>
                 {meetingSchedule}
             </div>
-            
+            </div>
+            <div className="text-center">
+                {/* <button className="submit" type="submit"><a href="update_profile.html" >Update Profile</a></button> */}
+                <button className="submit btn tbn-primary" type="submit">Edit Profile</button>
+
+            </div>
         </div>
     )
 }

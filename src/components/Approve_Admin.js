@@ -28,6 +28,7 @@ export function ApproveAdmin(props) {
     return (
         <div>
             <h1 className="headingForMentor"> Mentor Applications </h1>
+            <div className="table-style">
             <Table striped="columns">
                 <thead className="thead-dark">
                     <tr>
@@ -42,6 +43,7 @@ export function ApproveAdmin(props) {
                     {mentorRows}
                 </tbody>
             </Table>
+            </div>
         </div>
     )
 }
