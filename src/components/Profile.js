@@ -37,27 +37,34 @@ export function Profile(props) {
                 <h1 className="headingProfile"> Profile</h1>
             </div>
             <div className="row container">
-                <div className="aboutMeAll col-md-9">
-                    <div className="extraInfo">
+                <div className="aboutMeAll ">
+                    <div className="extraInfo col-md-6">
                         <p className="nameProfile specialTitle">{name}</p>
                         <p>Major: <em>{major}</em></p>
                         <p>Grad Year: <em>{gradYear}</em></p>
                         <p>Interests: <em>{interests}</em></p>
 
-                        <p className="bio specialTitle">About Me!</p>
+
+                    </div>
+                    <div className="bio">
+                        <p className=" specialTitle col-md-9">About Me!</p>
                         <p>{bio}</p>
-                        <div className="text-center">
-                            <button className="submit btn tbn-primary" type="submit">Edit Profile</button>
-                        </div>
+
+
                     </div>
 
-
-                    <div className="row container ">
-                        <div className="card-profile upcomingMeetings">
-                            <p className="specialTitle"> Upcoming Meetings </p>
-                            {/* Upcoming meetings */}
-                            {meetingSchedule}
-                        </div>
+                </div>
+                <div>
+                    <div className="text-center">
+                        <button className="submit btn tbn-primary" type="submit">Edit Profile</button>
+                    </div>
+                </div>
+                
+                <div className="row container ">
+                    <div className="upcomingMeetings col-md-11">
+                        <p className="specialTitle"> Upcoming Meetings </p>
+                        {/* Upcoming meetings */}
+                        {meetingSchedule}
                     </div>
                 </div>
             </div>

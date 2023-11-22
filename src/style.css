@@ -358,27 +358,21 @@ textarea {
 .specialTitle {
     font-size: 1.5rem;
 }
-/* .card-profile {
-   
-  
 
-} */
-
-
-.card-box {
-    display: inline-grid;
-    padding: 0.5rem;
-
+.upcomingMeetings{
+    margin-top: 2rem;
 }
-.nameProfile,
+
 .bio {
-    font-size: 1.5rem;
+   
+    flex-direction: row;
 }
 
 .aboutMeAll {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
+    margin-bottom: 4rem;
 
 }
 
@@ -407,6 +401,9 @@ textarea {
         font-size: 2rem;
     }
 
+    .bio{
+        margin: 0;
+    }
 
     .aboutMeAll {
         display: flex;
@@ -446,6 +443,10 @@ textarea {
         max-width: 50%;
     }
 
+    .bio{
+        margin-left: 2rem;
+    }
+
     /* mentor page */
     /* .mentor-page-description {
         max-width: 50%;
@@ -461,6 +462,7 @@ textarea {
         font-size: medium;
         margin-top: 0;
     }
+    
 
     .headingProfile {
         font-size: 2.5rem;
