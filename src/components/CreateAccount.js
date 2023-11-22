@@ -43,34 +43,34 @@ function CreateAccountForm() {
 
                 <div className="col">
                     <label htmlFor="last-name" className="form-label">Last Name<span className="required"> *</span></label>
-                    <input type="text" className="form-control" onChange={(e) => setLastN(e.target.value)} name="last-name" id="last-name" required></input>
+                    <input type="text" className="form-control" onChange={(e) => setLastN(e.target.value)} value={lastn} id="last-name" required></input>
                 </div>
             </div>
 
             <div className='row'>
                 <div className="col">
                     <label htmlFor="grad-year" className="form-label">Intended Graduation Year<span className="required"> *</span></label>
-                    <input type="text" className="form-control" onChange={(e) => setGradYear(e.target.value)} placeholder="example: 2024" name="grad-year" id="grad-year"
+                    <input type="text" className="form-control" onChange={(e) => setGradYear(e.target.value)} value={gradYear} placeholder="example: 2024" name="grad-year" id="grad-year"
                         required></input>
                 </div>
 
                 <div className="col">
                     <label htmlFor="major" className="form-label">Major/Intended Major<span className="required">
                         *</span></label>
-                    <input type="text" className="form-control" onChange={(e) => setMajor(e.target.value)} name="degree" id="degree" required></input>
+                    <input type="text" className="form-control" onChange={(e) => setMajor(e.target.value)} value={major} name="degree" id="degree" required></input>
                 </div>
             </div>
 
             <div className="row">
                 <div className="col-12">
                     <label htmlFor="Email" className="form-label">Email address<span className="required"> *</span></label>
-                    <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" name="email" id="email"
+                    <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="name@example.com" name="email" id="email"
                         required></input>
                 </div>
             </div>
             <div className="col-7 mb-3">
                 <label htmlFor="password" className="form-label">Password<span className="required"> *</span></label>
-                <input type="password" className="form-control" onChange={(e) => setPassword(e.target.value)} name="password" id="password" required></input>
+                <input type="password" className="form-control" onChange={(e) => setPassword(e.target.value)} value={password} name="password" id="password" required></input>
             </div>
 
             <div className="col-12 text-center">

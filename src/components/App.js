@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; //import React Component
 
+
 // import statements
 import { MentorGrid } from './Mentors.js';
 import { LoginPage } from './LoginPage.js';
@@ -19,7 +20,14 @@ import SAMPLE_PROFILE from '../data/profileData.json';
 import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 
 
-
+// function UserLayout() {
+//     return ( 
+//         <div className="user-layout">
+//         <NavBar />
+//         < Home />
+//         </div>
+//     )
+// }
 
 function App() {
     return (
@@ -30,10 +38,10 @@ function App() {
             </header>
 
             <main>
-                {/* < Home /> */}
+                < Home />
                 {/* < LoginPage /> */}
-                {/* <CreateAccountPage /> */}
-                <MentorGrid mentors={MENTORS} />
+                <CreateAccountPage />
+                {/* <MentorGrid mentors={MENTORS} /> */}
                 {/* <MentorApplicationPage /> */}
                 {/* <Appointment /> */}
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}

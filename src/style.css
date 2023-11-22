@@ -142,7 +142,11 @@ footer, .select-options {
     text-align: center;
 }
 
-.uw-logo,
+.uw-logo {
+    height: 180px;
+    width: 200px;
+}
+
 .mentor-graphic {
     height: 200px;
     width: auto;
@@ -166,6 +170,7 @@ footer, .select-options {
     justify-content: center;
     margin: 4rem;
 }
+
 .homepage h1 {
     margin-top: 20vh;
 }
@@ -370,6 +375,14 @@ textarea {
     flex-direction: column;
     margin-bottom: 4rem;
 
+}
+
+.application-form,
+.appointment-form,
+.become-mentor-section,
+.update_profile,
+.login-form {
+    margin: 2rem;
 }
 
 /*media queries */
