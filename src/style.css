@@ -234,6 +234,10 @@ main .btn {
     background-color: lightgrey;
 }
 
+.appt-btn {
+    margin: auto;
+}
+
 .appt-btn:hover,
 .filter-btn {
     background-color: #846db0;
@@ -436,13 +440,13 @@ textarea {
     }
 
     /* mentor page */
-    .mentor-page-description {
+    /* .mentor-page-description {
         max-width: 50%;
     }
 
     .search-bar input {
         width: 30%;
-    }
+    } */
 
     /* profile page */
     .extraInfo,
