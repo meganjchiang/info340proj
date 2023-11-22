@@ -4,7 +4,8 @@ import logo from './project-draft/img/smile.png';
 import uwLogo from './project-draft/img/uw-logo.png';
 import mentorGraphic from './project-draft/img/mentor_graphic.png';
 
-const HomePage = () => {
+
+const Home = () => {
   return (
     <div className="splash">
       <header>
