@@ -11,6 +11,12 @@ h1 {
     margin-bottom: 5rem;
 }
 
+h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    color: #4B2E83;
+}
+
 p {
     font-family: 'Inter', serif;
     color: black;
@@ -117,6 +123,59 @@ p {
 footer, .select-options {
     display: flex;
     justify-content: center;
+}
+
+/* Home Page */
+.splash {
+    width: 100%;
+    min-height: 95vh;
+    /* background-image: url('uw.jpg'); */
+    background-size: cover;
+    background-position: center;
+}
+
+.description {
+    margin: 8rem;
+}
+
+.page-title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.uw-logo,
+.mentor-graphic {
+    height: 200px;
+    width: auto;
+
+}
+
+.about-us-section img,
+.become-mentor-section img {
+    display: block;
+    margin: auto;
+}
+
+.about-us-section {
+    display: flex;
+    margin: 4rem;
+}
+
+.become-mentor-section,
+.about-us-section{
+    display: flex;
+    justify-content: center;
+    margin: 4rem;
+}
+
+main {
+    margin-top: 20vh;
+    background-size: cover;
+    background-position: center;
+}
+
+main .btn {
+    width: 8rem; 
 }
 
 /* Application form (Mentor + Sign Up) */
