@@ -354,17 +354,13 @@ textarea {
     padding: 0.5rem;
 
 }
-.nameProfile,
-.bio {
+.extraInfo{
     font-size: 1.5rem;
 }
 
 .aboutMeAll {
     display: flex;
     justify-content: space-evenly;
-    flex-direction: column;
-    width: 50%;
-
 }
 
 /*media queries */
@@ -392,9 +388,6 @@ textarea {
         font-size: 2rem;
     }
 
-    img {
-        width: 50%;
-    }
 
     .aboutMeAll {
         display: flex;
@@ -448,7 +441,6 @@ textarea {
     .extraInfo,
     .aboutMe {
         font-size: medium;
-        width: 40%;
         margin-top: 0;
     }
 
@@ -456,9 +448,6 @@ textarea {
         font-size: 2.5rem;
     }
 
-    img {
-        width: 90%;
-    }
 
     .aboutMeAll {
         display: flex;
@@ -475,7 +464,6 @@ textarea {
     .extraInfo,
     .aboutMe {
         font-size: large;
-        width: 40%;
     }
 
 

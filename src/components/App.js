@@ -11,6 +11,7 @@ import { Profile } from './Profile.js';
 import { Home } from './Home.js';
 import { NavBar } from './NavigationBar';
 
+
 import MENTORS from '../data/mentors.json';
 import SAMPLE_MENTORS from '../data/mentorApp.json';
 import SAMPLE_PROFILE from '../data/profileData.json';
@@ -77,17 +78,17 @@ function App(props) {
                 {/* < Home /> */}
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
-                <MentorGrid
+                {/* <MentorGrid
                     mentors={displayedMentors}
                     careerOptions={uniqueCareers}
                     majorOptions={uniqueMajors}
                     gradYearOptions={uniqueGradYears}
-                    applyFilterCallback={applyFilter} />
+                    applyFilterCallback={applyFilter} /> */}
                 {/* <MentorApplicationPage />
                 <Appointment />
-                <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />
+                <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />*/}
                 <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> 
-                <UpdateProfile/> */}
+                {/* <UpdateProfile/>  */}
             
 
             </main>
