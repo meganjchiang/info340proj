@@ -34,9 +34,9 @@ function App() {
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
                 <MentorGrid mentors={MENTORS} />
-                {/* <MentorApplicationPage />
-                <Appointment />
-                <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />*/}
+                {/* <MentorApplicationPage /> */}
+                {/* <Appointment /> */}
+                {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
                 {/* <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>  */}
                 {/* <UpdateProfile/>  */}
             
