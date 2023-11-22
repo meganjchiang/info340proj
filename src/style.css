@@ -168,13 +168,13 @@ footer, .select-options {
     margin: 4rem;
 }
 
-main {
+.home-page {
     margin-top: 20vh;
     background-size: cover;
     background-position: center;
 }
 
-main .btn {
+.home-page .btn {
     width: 8rem; 
 }
 
