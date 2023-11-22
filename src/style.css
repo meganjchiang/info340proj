@@ -30,7 +30,7 @@ p {
     align-items: center;
 }
 
-.logo img{
+.logo img {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -38,7 +38,7 @@ p {
 
 .navbar-profile {
     display: flex;
-    justify-content: flex-end;;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -47,7 +47,6 @@ p {
     height: 40px;
     margin: 1rem;
 }
-
 
 .navbar {
     padding: 1rem;
@@ -115,7 +114,7 @@ p {
 }
 
 /* footer */
-footer {
+footer, .select-options {
     display: flex;
     justify-content: center;
 }
@@ -134,6 +133,15 @@ footer {
     margin: 2rem;
 }
 
+.mentor-cards {
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.mentor-cards {
+    justify-content: center;
+}
+
 .application-form {
     margin: 2rem 16rem;
 }
@@ -148,19 +156,34 @@ footer {
     font-family: 'inter', serif;
 }
 
-.submit {
-    display: flex;
+.submit,
+.appt-btn,
+.appt-btn:hover {
     background-color: #4B2E83;
     color: white;
+}
+
+.submit {
+    display: flex;
     padding: .8rem;
     border-radius: 20px;
     justify-content: center;
     margin: auto;
 }
 
-
 .submit:hover {
     background-color: lightgrey;
+}
+
+.appt-btn:hover,
+.filter-btn {
+    background-color: #846db0;
+    color: white;
+}
+
+.filter-btn:hover {
+    background-color: #b7a7d4;
+    color: white;
 }
 
 .form {
@@ -172,7 +195,8 @@ footer {
 }
 
 .form-control,
-.form-select {
+.form-select,
+.mentor-page-description {
     margin-bottom: 2rem;
 }
 
@@ -210,43 +234,63 @@ textarea {
     width: 100%;
 }
 
-.login-p {
+.login-p, .mentor-page-description {
     text-align: center;
 }
 
 /* mentors page */
+.mentor-title {
+    margin-bottom: 1rem;
+}
+
+.select-options span {
+    padding: 0 1em;
+}
+
 .card-img-top {
-    width: 19.5rem;
-    height: 19.5rem;
+    height: 300px;
     object-fit: cover;
 }
 
-.appointment-btn {
-    display: flex;
-    width: 80%;
-    justify-content: center;
+.mentor-name {
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.5rem;
 }
 
-.card {
-    width: 19.5rem;
+.mentor-info {
+    line-height: 1em;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.mentor-description {
+    padding-top: 1em;
+    padding-bottom: 0;
+    margin-bottom: 0.5rem;
+}
+
+.info-label {
+    font-weight: 900;
+    color:#4B2E83;
 }
 
 /* Admin Approval */
 
-.table-style{
+.table-style {
     margin-left: 8rem;
     margin-right: 8rem;
 }
 
 /* profile */
 
-.profile-page{
+.profile-page {
     margin-left: 8rem;
     margin-right: 8rem;
 
 }
 
-.card-box{
+.card-box {
     display: inline-grid;
     padding: 0.5rem;
 
@@ -263,8 +307,3 @@ textarea {
     width: 50%;
 
 }
-
-
-
-
-
