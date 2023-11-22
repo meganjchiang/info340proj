@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './components/App.js';
-import './style.css'; // comment out when testing Mentors page
+// import './style.css'; // comment out when testing Mentors page
 // import './index.css';
 // import reportWebVitals from './reportWebVitals';
 
