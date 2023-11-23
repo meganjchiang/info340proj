@@ -12,13 +12,13 @@ function CreateAccountForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log("Submit form with:");
-        console.log("First Name:", firstn);
-        console.log("Last Name:", lastn);
-        console.log("Graduation Year:", gradYear);
-        console.log("Major:", major);
-        console.log("Email:", email);
-        console.log("Password:", password);
+        // console.log("Submit form with:");
+        // console.log("First Name:", firstn);
+        // console.log("Last Name:", lastn);
+        // console.log("Graduation Year:", gradYear);
+        // console.log("Major:", major);
+        // console.log("Email:", email);
+        // console.log("Password:", password);
 
         setFirstN("");
         setLastN("");
