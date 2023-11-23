@@ -7,8 +7,7 @@ h1 {
     color: #4B2E83;
     text-align: center;
     font-size: 2rem;
-    margin-top: 4rem;
-    margin-bottom: 5rem;
+    margin: 4rem auto;
 }
 
 h2 {
@@ -31,6 +30,7 @@ p {
     margin: 1rem 2rem;
 
 }
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
@@ -67,6 +67,7 @@ p {
     margin: 1rem 0.5rem;
     padding: 0.75rem 1rem;
     transition: all 0.15s ease-in-out;
+    display: none;
 }
 
 .navbar a:hover {
@@ -121,13 +122,20 @@ p {
 }
 
 /* footer */
-footer, .select-options {
+footer,
+.select-options {
     display: flex;
     justify-content: center;
 }
 
+.select-options {
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
 /* Home Page */
-.home-page{
+.home-page {
     width: 100%;
     min-height: 95vh;
     background-size: cover;
@@ -162,14 +170,17 @@ footer, .select-options {
 .become-mentor-section img {
     display: flex;
     /* margin: auto; */
-    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+    max-width: 100%;
+    /* Ensure the image doesn't exceed the container's width */
     margin: 0 auto;
 
 }
 
-.become-mentor-section{
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
+.become-mentor-section {
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+    /* Center items horizontally */
 }
 
 .become-mentor-section,
@@ -191,7 +202,7 @@ footer, .select-options {
 }
 
 .home-page .btn {
-    width: 8rem; 
+    width: 8rem;
     margin-right: 1rem;
 }
 
@@ -199,7 +210,7 @@ footer, .select-options {
 
 .row {
     display: flex;
-    
+
 }
 
 /* margin 2rem */
@@ -310,7 +321,8 @@ textarea {
     width: 100%;
 }
 
-.login-p, .mentor-page-description {
+.login-p,
+.mentor-page-description {
     text-align: center;
 }
 
@@ -348,7 +360,7 @@ textarea {
 
 .info-label {
     font-weight: 900;
-    color:#4B2E83;
+    color: #4B2E83;
 }
 
 /* Admin Approval */
@@ -365,20 +377,21 @@ textarea {
     margin-right: 8rem;
 
 }
-.specialTitle {
+
+.special-title {
     font-size: 1.5rem;
 }
 
-.upcomingMeetings{
+.upcoming-meetings {
     margin-top: 2rem;
 }
 
 .bio {
-   
+
     flex-direction: row;
 }
 
-.aboutMeAll {
+.about-me-all {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -388,13 +401,12 @@ textarea {
 
 .application-form,
 .appointment-form,
-.update_profile,
-.login-form {
-    margin: 2rem;
+.update_profile {
+    margin: 8rem;
 }
 
-/*media queries */
 
+/*media queries */
 @media (min-width: 598px) {
 
     /* appointment form */
@@ -408,29 +420,29 @@ textarea {
         padding: 0.75rem;
     }
 
+    .navbar a {
+        display: inline;
+    }
+
     /* hamburger-menu */
     .hamburger-menu {
         display: none;
     }
 
     /* profile */
-    .headingProfile {
+    .profile-heading {
         font-size: 2rem;
     }
 
-    .bio{
+    .bio {
         margin: 0;
     }
 
-    .aboutMeAll {
+    .about-me-all {
         display: flex;
         flex-direction: column;
     }
 
-    .aboutMe {
-        margin-left: 2rem;
-        margin-top: 1rem;
-    }
 
     /* home page */
     .page-title {
@@ -438,14 +450,13 @@ textarea {
     }
 
 
+
 }
 
 @media (max-width: 598px) {
 
     /* make navbar disappear */
-    .navbar a {
-        display: none;
-    }
+  
 
 }
 
@@ -461,32 +472,22 @@ textarea {
         max-width: 50%;
     }
 
-    .bio{
+    .bio {
         margin-left: 2rem;
     }
 
-    /* mentor page */
-    /* .mentor-page-description {
-        max-width: 50%;
-    }
-
-    .search-bar input {
-        width: 30%;
-    } */
 
     /* profile page */
-    .extraInfo,
-    .aboutMe {
+    .extra-info {
         font-size: medium;
         margin-top: 0;
     }
-    
 
-    .headingProfile {
+    .profile-heading {
         font-size: 2.5rem;
     }
 
-    .aboutMeAll {
+    .about-me-all {
         display: flex;
         justify-content: space-evenly;
         flex-direction: row;
@@ -496,6 +497,11 @@ textarea {
         margin: 8rem;
     }
 
+    .select-options {
+        flex-direction: row;
+
+    }
+
 
 }
 
@@ -503,14 +509,13 @@ textarea {
 @media (min-width: 992px) {
 
     /* profile */
-    .extraInfo,
-    .aboutMe {
+    .extra-info {
         font-size: large;
     }
 
-    .aboutMeAll {
+    .about-me-all {
         display: flex;
         justify-content: space-evenly;
-
     }
+
 }

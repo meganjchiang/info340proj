@@ -18,6 +18,8 @@ export function UpdateProfile ()  {
       const handleSubmit = (event) => {
         event.preventDefault();
 
+        alert('Profile Updated');
+
         console.log("Submit form with:");
         console.log("Name:", name);
         console.log("Major", major);

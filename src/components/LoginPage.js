@@ -8,11 +8,10 @@ function LoginForm() {
 
     return (
         <div className='form'>
-            <form id="login-form" action="login.php" method="POST">
+            <form className="login-form" action="login.php" method="POST">
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" placeholder="name@example.com" name="email" id="email"
-                        required></input>
+                    <input type="email" className="form-control" placeholder="name@example.com" name="email" id="email" required></input>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>

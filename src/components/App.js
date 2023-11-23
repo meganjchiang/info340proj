@@ -39,14 +39,14 @@ function App() {
 
             <main>
                 < Home />
-                {/* < LoginPage /> */}
+                < LoginPage />
                 <CreateAccountPage />
-                {/* <MentorGrid mentors={MENTORS} /> */}
-                {/* <MentorApplicationPage /> */}
-                {/* <Appointment /> */}
-                {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
-                {/* <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>  */}
-                {/* <UpdateProfile/>  */}
+                <MentorGrid mentors={MENTORS} />
+                <MentorApplicationPage />
+                <Appointment />
+                <ApproveAdmin appliedMentors={SAMPLE_MENTORS} />
+                <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/> 
+                <UpdateProfile/> 
             
 
             </main>

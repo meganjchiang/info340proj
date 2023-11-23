@@ -14,6 +14,7 @@ export function MentorApplicationPage() {
   const [gradYear, setGradYear] = useState("");
   const [degree, setDegree] = useState("");
   const [career, setCareer] = useState("");
+  const [transcript, setTranscript] = useState("");
 
   const handleChange = (event) => {
   const inputValue = event.target.value;
@@ -29,6 +30,7 @@ export function MentorApplicationPage() {
         console.log("Graduation Year:", gradYear);
         console.log("Degree:", degree);
         console.log("Career:", career);
+        console.log("Path to Transcript", transcript)
 
         setFirstName("");
         setLastName("");
@@ -36,6 +38,7 @@ export function MentorApplicationPage() {
         setGradYear("");
         setDegree("");
         setCareer("");
+        setTranscript("");
        
 }
   return (
@@ -52,7 +55,7 @@ export function MentorApplicationPage() {
           <Form.Control type="text" placeholder="Enter your last name" required onChange={(e) => setLastName(e.target.value)} value={lastName}/>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="email">
+        <Form.Group className="mb-3" controlId="email-mentor">
           <Form.Label>Email address <span className="required"> *</span></Form.Label>
           <Form.Control type="email" placeholder="name@example.com" required onChange={(e) => setEmail(e.target.value)} value={email}/>
         </Form.Group>
@@ -80,6 +83,11 @@ export function MentorApplicationPage() {
         <Form.Group className="mb-3" controlId="career">
           <Form.Label>Current career <span className="required"> *</span></Form.Label>
           <Form.Control type="text" required onChange={(e) => setCareer(e.target.value)} value={career}/>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="transcript">
+          <Form.Label>Please upload your transcript <span className="required"> *</span></Form.Label>
+          <Form.Control type="file" required onChange={(e) => setTranscript(e.target.value)} value={transcript}/>
         </Form.Group>
 
         <div className="col-12 text-center">
