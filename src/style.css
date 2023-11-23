@@ -331,8 +331,9 @@ textarea {
     margin-bottom: 1rem;
 }
 
-.select-options span {
-    padding: 0 1em;
+.select-options form select{
+    margin: 1em;
+    /* padding: 0 1em; */
 }
 
 .card-img-top {
@@ -421,7 +422,7 @@ textarea {
     }
 
     .navbar a {
-        display: inline;
+        display: block;
     }
 
     /* hamburger-menu */
@@ -499,7 +500,6 @@ textarea {
 
     .select-options {
         flex-direction: row;
-
     }
 
 
