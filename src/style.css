@@ -431,9 +431,6 @@ textarea {
     }
 
     /* profile */
-    .profile-heading {
-        font-size: 2rem;
-    }
 
     .bio {
         margin: 0;
@@ -482,10 +479,6 @@ textarea {
     .extra-info {
         font-size: medium;
         margin-top: 0;
-    }
-
-    .profile-heading {
-        font-size: 2.5rem;
     }
 
     .about-me-all {
