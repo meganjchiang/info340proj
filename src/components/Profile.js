@@ -34,12 +34,12 @@ export function Profile(props) {
     return (
         <div className="profile-page">
             <div>
-                <h1 className="headingProfile"> Profile</h1>
+                <h1 className="profile-heading"> Profile</h1>
             </div>
             <div className="row container">
-                <div className="aboutMeAll ">
-                    <div className="extraInfo col-md-6">
-                        <p className="nameProfile specialTitle">{name}</p>
+                <div className="about-me-all">
+                    <div className="extra-info col-md-6">
+                        <p className="name-profile special-title">{name}</p>
                         <p>Major: <em>{major}</em></p>
                         <p>Grad Year: <em>{gradYear}</em></p>
                         <p>Interests: <em>{interests}</em></p>
@@ -47,7 +47,7 @@ export function Profile(props) {
 
                     </div>
                     <div className="bio">
-                        <p className=" specialTitle col-md-9">About Me!</p>
+                        <p className="special-title col-md-9">About Me!</p>
                         <p>{bio}</p>
 
 
@@ -61,8 +61,8 @@ export function Profile(props) {
                 </div>
                 
                 <div className="row container ">
-                    <div className="upcomingMeetings col-md-11">
-                        <p className="specialTitle"> Upcoming Meetings </p>
+                    <div className="upcoming-meetings col-md-11">
+                        <p className="special-title"> Upcoming Meetings </p>
                         {/* Upcoming meetings */}
                         {meetingSchedule}
                     </div>

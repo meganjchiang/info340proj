@@ -119,26 +119,21 @@ export function MentorGrid(props) {
                     <input type="text" placeholder="Search..." name="search"></input>
                     <button className="search" type="submit"><img src="img/search.png" alt="magnifying glass icon"></img></button>
                 </form> */}
-                <span>
+                <form>
                     <select id="careerSelect" value={selectedCareer} onChange={handleChangeSelectCareer}>
                         <option value="">All careers</option>
                         {careerOptions}
                     </select>
-                </span>
-
-                <span>
                     <select id="MajorSelect" value={selectedMajor} onChange={handleChangeSelectMajor}>
                         <option value="">All majors</option>
                         {majorOptions}
                     </select>
-                </span>
-
-                <span>
                     <select id="gradYearSelect" value={selectedGradYear} onChange={handleChangeSelectGradYear}>
                         <option value="">All graduation years</option>
                         {gradYearOptions}
                     </select>
-                </span>
+                </form>
+
             </div>
 
             <div className="row container mentor-cards">

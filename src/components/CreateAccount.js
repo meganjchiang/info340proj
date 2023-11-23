@@ -12,13 +12,13 @@ function CreateAccountForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log("Submit form with:");
-        console.log("First Name:", firstn);
-        console.log("Last Name:", lastn);
-        console.log("Graduation Year:", gradYear);
-        console.log("Major:", major);
-        console.log("Email:", email);
-        console.log("Password:", password);
+        // console.log("Submit form with:");
+        // console.log("First Name:", firstn);
+        // console.log("Last Name:", lastn);
+        // console.log("Graduation Year:", gradYear);
+        // console.log("Major:", major);
+        // console.log("Email:", email);
+        // console.log("Password:", password);
 
         setFirstN("");
         setLastN("");
@@ -55,22 +55,22 @@ function CreateAccountForm() {
                 </div>
 
                 <div className="col">
-                    <label htmlFor="major" className="form-label">Major/Intended Major<span className="required">
+                    <label htmlFor="major-new" className="form-label">Major/Intended Major<span className="required">
                         *</span></label>
-                    <input type="text" className="form-control" onChange={(e) => setMajor(e.target.value)} value={major} name="degree" id="degree" required></input>
+                    <input type="text" className="form-control" onChange={(e) => setMajor(e.target.value)} value={major} name="major-new" id="major-new" required></input>
                 </div>
             </div>
 
             <div className="row">
                 <div className="col-12">
-                    <label htmlFor="Email" className="form-label">Email address<span className="required"> *</span></label>
-                    <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="name@example.com" name="email" id="email"
+                    <label htmlFor="email-new" className="form-label">Email address<span className="required"> *</span></label>
+                    <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="name@example.com" name="email-new" id="email-new"
                         required></input>
                 </div>
             </div>
             <div className="col-7 mb-3">
-                <label htmlFor="password" className="form-label">Password<span className="required"> *</span></label>
-                <input type="password" className="form-control" onChange={(e) => setPassword(e.target.value)} value={password} name="password" id="password" required></input>
+                <label htmlFor="password-new" className="form-label">Password<span className="required"> *</span></label>
+                <input type="password" className="form-control" onChange={(e) => setPassword(e.target.value)} value={password} name="password-new" id="password-new" required></input>
             </div>
 
             <div className="col-12 text-center">

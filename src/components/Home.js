@@ -32,7 +32,7 @@ export function Home() {
 
         <hr />
 
-        <div className="become-mentor-section">
+        <div className="container become-mentor-section">
           <div className="row">
             <div className="col-md-6 mb-4 mb-md-0">
               <h2 className="home-section-title">Become a mentor</h2>
@@ -49,6 +49,8 @@ export function Home() {
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
   );

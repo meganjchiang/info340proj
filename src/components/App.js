@@ -41,7 +41,7 @@ function App() {
                 {/* < Home /> */}
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
-                {/* <MentorGrid mentors={MENTORS} /> */}
+                <MentorGrid mentors={MENTORS} />
                 {/* <MentorApplicationPage /> */}
                 {/* <Appointment /> */}
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
