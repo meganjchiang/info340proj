@@ -38,9 +38,9 @@ function App() {
             </header>
 
             <main>
-                < Home />
+                {/* < Home /> */}
                 {/* < LoginPage /> */}
-                <CreateAccountPage />
+                {/* <CreateAccountPage /> */}
                 {/* <MentorGrid mentors={MENTORS} /> */}
                 {/* <MentorApplicationPage /> */}
                 {/* <Appointment /> */}
