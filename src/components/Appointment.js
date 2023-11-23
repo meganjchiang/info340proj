@@ -7,6 +7,9 @@ export function Appointment() {
     const [reason, setReason] = useState("");
     const [notes, setNotes] = useState("");
 
+    const handleChange = (event) => {
+        const inputValue = event.target.value;
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -45,7 +48,7 @@ export function Appointment() {
 
           <Form.Group className="col-6 mb-3" controlId="time">
             <Form.Label>Select Time<span className="required"> *</span></Form.Label>
-            <Form.Select className="form-select" required onChange={handleChange} value={firstn}>
+            <Form.Select className="form-select" required onChange={handleChange} >
               <option disabled>Select Time</option>
               <option value="time1">10:00 AM</option>
               <option value="time2">2:00 PM</option>
@@ -56,12 +59,12 @@ export function Appointment() {
 
         <Form.Group className="mb-3" controlId="reason">
           <Form.Label>What do you want to discuss in the appointment?<span className="required"> *</span></Form.Label>
-          <Form.Control as="textarea" rows={4} required onChange={(e) => setReason(e.target.value)} value={firstn}/>
+          <Form.Control as="textarea" rows={4} required onChange={(e) => setReason(e.target.value)} value={reason}/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="notes">
           <Form.Label>Add any notes for your mentor</Form.Label>
-          <Form.Control as="textarea" rows={4} onChange={(e) => setNotes(e.target.value)} value={firstn}/>
+          <Form.Control as="textarea" rows={4} onChange={(e) => setNotes(e.target.value)} value={notes}/>
         </Form.Group>
 
         <div className="col-12 text-center">

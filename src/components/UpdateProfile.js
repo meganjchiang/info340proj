@@ -6,7 +6,6 @@ export function UpdateProfile ()  {
         console.log("clicked");
     }
     
-      const [typedVal, setTypedVal] = useState("");
       const [name, setName] = useState("");
       const [major, setMajor] = useState("");
       const [extracurriculars, setExtracurriculars] = useState("");
@@ -14,7 +13,6 @@ export function UpdateProfile ()  {
     
       const handleChange = (event) => {
         const inputValue = event.target.value;
-        setTypedVal(inputValue);
       }
     
       const handleSubmit = (event) => {
@@ -43,14 +41,14 @@ export function UpdateProfile ()  {
               <label htmlFor="name" className="form-label">
                 Name
               </label>
-              <input type="text" className="form-control" id="name" name="name" onChange={(e) => setName(e.target.value)} value={firstn}/>
+              <input type="text" className="form-control" id="name" name="name" onChange={(e) => setName(e.target.value)} value={name}/>
             </div>
   
             <div className="col-6 mb-3">
               <label htmlFor="year" className="form-label">
                 Year
               </label>
-              <select className="form-select" id="year" name="year" onChange={handleChange} value={firstn}>
+              <select className="form-select" id="year" name="year" onChange={handleChange} >
                 <option value="freshman">Freshman</option>
                 <option value="sophomore">Sophomore</option>
                 <option value="junior">Junior</option>
@@ -62,21 +60,21 @@ export function UpdateProfile ()  {
               <label htmlFor="major" className="form-label">
                 Major
               </label>
-              <input type="text" className="form-control" id="major" name="major" onChange={(e) => setMajor(e.target.value)} value={firstn}/>
+              <input type="text" className="form-control" id="major" name="major" onChange={(e) => setMajor(e.target.value)} value={major}/>
             </div>
   
             <div className="col-12 mb-3">
               <label htmlFor="extracurriculars" className="form-label">
                 Extracurriculars
               </label>
-              <textarea className="form-control" id="extracurriculars" name="extracurriculars" rows="4" onChange={(e) => setExtracurriculars(e.target.value)} value={firstn}/>
+              <textarea className="form-control" id="extracurriculars" name="extracurriculars" rows="4" onChange={(e) => setExtracurriculars(e.target.value)} value={extracurriculars}/>
             </div>
   
             <div className="col-12 mb-3">
               <label htmlFor="aboutMeSummary" className="form-label">
                 About Me Summary
               </label>
-              <textarea className="form-control" id="aboutMeSummary" name="aboutMeSummary" rows="6" onChange={(e) => setAboutMeSummary(e.target.value)} value={firstn}/>
+              <textarea className="form-control" id="aboutMeSummary" name="aboutMeSummary" rows="6" onChange={(e) => setAboutMeSummary(e.target.value)} value={aboutMeSummary}/>
             </div>
   
             <div className="col-12 text-center">
