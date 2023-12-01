@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; //import React Component
+import { NavLink, Routes } from 'react-router-dom'
 
 export function NavBar() {
     return (
@@ -7,9 +8,9 @@ export function NavBar() {
                 <a href="home.html" className="logo"><img src="img/smile.png" alt="husky to husky logo"></img></a>
                 <div className="navbar-profile">
                     <nav className="navbar">
-                        <a href="mentor_application.html">Apply</a>
-                        <a href="index.html">Mentors</a>
-                        <a href="login.html">Login</a>
+                        <NavLink to="/mentorApplication">Apply</NavLink>
+                        <NavLink to="/mentors">Mentors</NavLink>
+                        <NavLink to="/login">Login</NavLink>
                     </nav>
 
                     <div className="hamburger-menu">

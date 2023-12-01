@@ -12,6 +12,7 @@ import { Profile } from './Profile.js';
 import { Home } from './Home.js';
 import { NavBar } from './NavigationBar';
 import { UpdateProfile } from "./UpdateProfile.js"
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 
 
 import MENTORS from '../data/mentors.json';
@@ -32,12 +33,15 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 function App() {
     return (
         <div>
-
-            <header>
-                <NavBar />
-            </header>
+            <NavBar />
 
             <main>
+                <Routes>
+                    <Route path="/mentorApplication" element={<MentorApplicationPage />} />
+                    <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
+                    <Route path="/login" element={< LoginPage />} />
+                </Routes>
+
                 {/* < Home /> */}
                 {/* < LoginPage /> */}
                 {/* <CreateAccountPage /> */}
@@ -47,7 +51,7 @@ function App() {
                 {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
                 {/* <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>  */}
                 {/* <UpdateProfile/>  */}
-            
+
 
             </main>
 
