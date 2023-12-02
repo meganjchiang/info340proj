@@ -44,6 +44,7 @@ function App() {
                     <Route path="/profile" element={<Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING} />} />
                     <Route path="/book-appointment" element={<Appointment />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
+                    <Route path="/create-account" element={<CreateAccountPage />} />
                 </Routes>
 
                 {/* < Home /> */}

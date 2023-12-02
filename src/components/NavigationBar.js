@@ -18,9 +18,9 @@ export function NavBar() {
                         <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                         <div className="dropdown-menu">
                             <ul>
-                                <li><a href="mentor_application.html">Apply</a></li>
-                                <li><a href="index.html">Mentors</a></li>
-                                <li><a href="login.html">Login</a></li>
+                                <li><NavLink to="/mentor-application">Apply</NavLink></li>
+                                <li><NavLink to="/mentors">Mentors</NavLink></li>
+                                <li><NavLink to="/login">Login</NavLink></li>
 
                             </ul>
                         </div>
