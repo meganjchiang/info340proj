@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // // import { logo } from './project-draft/img/smile.png';
 // // import { uwLogo } from './project-draft/img/uw-logo.png';
@@ -11,8 +12,8 @@ export function Home() {
       <main className='home-page'>
         <h1 className="page-title">HUSKY2HUSKY</h1>
         <div className="text-center">
-          <a href="login.html" className="btn btn-dark mt-auto">Login</a>
-          <a href="student_application.html" className="btn btn-light mt-auto">Sign Up</a>
+          <Link to="/login" className="btn btn-dark mt-auto">Login</Link>
+          <Link to="/create-account" className="btn btn-light mt-auto">Sign Up</Link>
         </div>
       </main>
 
@@ -41,7 +42,7 @@ export function Home() {
               <p>
                 Join our mentorship program to make a meaningful impact on students' journeys and contribute to the vibrant spirit of collaboration at the University of Washington!
               </p>
-              <a href="mentor_application.html" className="btn btn-outline-dark mt-auto" id="apply-now">Apply Now</a>
+              <Link to="/mentor-application" className="btn btn-outline-dark mt-auto" id="apply-now">Apply Now</Link>
             </div>
 
             <div className="mentor-img col-md-6 mt-4 mt-md-0">
