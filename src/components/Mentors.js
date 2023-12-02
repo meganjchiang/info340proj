@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function MentorCard(props) {
     const mentorData = props.mentorData;
@@ -23,7 +24,7 @@ export function MentorCard(props) {
                         </div>
                         <p className="mentor-description">{mentorBio}</p>
                     </div>
-                    <button className="btn appt-btn mt-auto" type="button">Book an appointment</button>
+                    <Link className="btn appt-btn mt-auto" to="/book-appointment/">Book an appointment</Link>
                 </div>
             </div>
         </div>

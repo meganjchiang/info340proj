@@ -8,7 +8,7 @@ export function NavBar() {
                 <a href="home.html" className="logo"><img src="img/smile.png" alt="husky to husky logo"></img></a>
                 <div className="navbar-profile">
                     <nav className="navbar">
-                        <NavLink to="/mentorApplication">Apply</NavLink>
+                        <NavLink to="/mentor-application">Apply</NavLink>
                         <NavLink to="/mentors">Mentors</NavLink>
                         <NavLink to="/login">Login</NavLink>
                     </nav>
@@ -29,9 +29,12 @@ export function NavBar() {
                         <img src="img/profile-user.png" className="profile" alt="profile icon"></img>
                         <div className="dropdown-menu">
                             <ul>
-                                <li><a href="profile.html">Profile</a></li>
+                                <NavLink to="/profile">Profile</NavLink>
+                                <NavLink to="/book-appointment">Make an Appointment</NavLink>
+                                <NavLink to="/mentor-approval">Admin</NavLink>
+                                {/* <li><a href="profile.html">Profile</a></li>
                                 <li><a href="appointment.html">Make an Appointment</a></li>
-                                <li><a href="mentor_approval.html">Admin</a></li>
+                                <li><a href="mentor_approval.html">Admin</a></li> */}
                             </ul>
                         </div>
                     </div>
