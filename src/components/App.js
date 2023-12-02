@@ -37,6 +37,7 @@ function App() {
 
             <main>
                 <Routes>
+                    <Route path="/home" element={<Home />} />
                     <Route path="/mentor-application" element={<MentorApplicationPage />} />
                     <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
                     <Route path="/login" element={< LoginPage />} />

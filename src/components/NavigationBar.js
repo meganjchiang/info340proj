@@ -5,7 +5,8 @@ export function NavBar() {
     return (
         <header className='header'>
             <div className='navbar-container'>
-                <a href="home.html" className="logo"><img src="img/smile.png" alt="husky to husky logo"></img></a>
+                <NavLink to="/home" className="logo"><img src="img/smile.png" alt="husky to husky logo"></img></NavLink>
+                {/* <a href="home.html" className="logo"><img src="img/smile.png" alt="husky to husky logo"></img></a> */}
                 <div className="navbar-profile">
                     <nav className="navbar">
                         <NavLink to="/mentor-application">Apply</NavLink>
