@@ -1,7 +1,8 @@
 [
     {
         "netID":"dganes1",
-        "name":"Divya Ganesh",
+        "first_name": "Divya",
+        "last_name": "Ganesh",
         "img":"img/divya.jpeg", 
         "bio":"Hi! I can help you with networking and choosing a career path.", 
         "career":"Product Manager",
@@ -10,7 +11,8 @@
     },
     {
         "netID":"lasya191",
-        "name":"Lasya Suravajhela",
+        "first_name": "Lasya",
+        "last_name": "Suravajhela",
         "img":"img/lasya1.jpeg", 
         "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
         "career":"Web Developer",
@@ -19,7 +21,8 @@
     },
     {
         "netID":"mjchiang1",
-        "name":"Megan Chiang",
+        "first_name": "Megan",
+        "last_name": "Chiang",
         "img":"img/megan1.jpg", 
         "bio":"Hi! I can help you with academic planning.", 
         "career":"Data Analyst",
@@ -28,7 +31,8 @@
     },
     {
         "netID":"sxnghp1",
-        "name":"Sunghee Park",
+        "first_name": "Sunghee",
+        "last_name": "Park",
         "img":"img/sunghee1.jpeg", 
         "bio":"Hi! I can help you with picking and applying to a major.", 
         "career":"Data Scientist",
@@ -37,7 +41,8 @@
     },
     {
         "netID":"mjchiang2",
-        "name":"Megan Chiang",
+        "first_name": "Megan",
+        "last_name": "Chiang",
         "img":"img/megan2.JPG", 
         "bio":"Hi! I can help you with academic planning.", 
         "career":"Web Developer",
@@ -46,7 +51,8 @@
     },
     {
         "netID":"dganes2",
-        "name":"Divya Ganesh",
+        "first_name": "Divya",
+        "last_name": "Ganesh",
         "img":"img/divya.jpeg", 
         "bio":"Hi! I can help you with networking and choosing a career path.", 
         "career":"UX Researcher",
@@ -55,7 +61,8 @@
     },
     {
         "netID":"sxnghp2",
-        "name":"Sunghee Park",
+        "first_name": "Sunghee",
+        "last_name": "Park",
         "img":"img/sunghee2.jpeg", 
         "bio":"Hi! I can help you with picking and applying to a major.", 
         "career":"Software Engineer",
@@ -64,7 +71,8 @@
     },
     {
         "netID":"lasya192",
-        "name":"Lasya Suravajhela",
+        "first_name": "Lasya",
+        "last_name": "Suravajhela",
         "img":"img/lasya2.jpeg", 
         "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
         "career":"UX Designer",
@@ -73,7 +81,8 @@
     },
     {
         "netID":"sxnghp3",
-        "name":"Sunghee Park",
+        "first_name": "Sunghee",
+        "last_name": "Park",
         "img":"img/sunghee1.jpeg", 
         "bio":"Hi! I can help you with picking and applying to a major.", 
         "career":"Professor",
@@ -82,7 +91,8 @@
     },
     {
         "netID":"mjchiang3",
-        "name":"Megan Chiang",
+        "first_name": "Megan",
+        "last_name": "Chiang",
         "img":"img/megan3.JPG", 
         "bio":"Hi! I can help you with academic planning.", 
         "career":"Program Manager",
@@ -91,7 +101,8 @@
     },
     {
         "netID":"lasya193",
-        "name":"Lasya Suravajhela",
+        "first_name": "Lasya",
+        "last_name": "Suravajhela",
         "img":"img/lasya3.jpeg", 
         "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
         "career":"Doctor",
@@ -100,7 +111,8 @@
     },
     {
         "netID":"dganes3",
-        "name":"Divya Ganesh",
+        "first_name": "Divya",
+        "last_name": "Ganesh",
         "img":"img/divya.jpeg", 
         "bio":"Hi! I can help you with networking and choosing a career path.", 
         "career":"Lawyer",
@@ -109,7 +121,8 @@
     },
     {
         "netID":"lasya194",
-        "name":"Lasya Suravajhela",
+        "first_name": "Lasya",
+        "last_name": "Suravajhela",
         "img":"img/lasya1.jpeg", 
         "bio":"Hi! I can help you with work-life balance and making the most out of college.", 
         "career":"Accountant",
@@ -118,7 +131,8 @@
     },
     {
         "netID":"sxnghp4",
-        "name":"Sunghee Park",
+        "first_name": "Sunghee",
+        "last_name": "Park",
         "img":"img/sunghee2.jpeg", 
         "bio":"Hi! I can help you with picking and applying to a major.", 
         "career":"Statistician",
@@ -127,7 +141,8 @@
     },
     {
         "netID":"dganes4",
-        "name":"Divya Ganesh",
+        "first_name": "Divya",
+        "last_name": "Ganesh",
         "img":"img/divya.jpeg", 
         "bio":"Hi! I can help you with networking and choosing a career path.", 
         "career":"UX Designer",
@@ -136,7 +151,8 @@
     },
     {
         "netID":"mjchiang",
-        "name":"Megan Chiang",
+        "first_name": "Megan",
+        "last_name": "Chiang",
         "img":"img/megan4.JPG", 
         "bio":"Hi! I can help you with academic planning.", 
         "career":"Data Scientist",

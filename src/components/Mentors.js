@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
 export function MentorCard(props) {
     const mentorData = props.mentorData;
-    const mentorName = mentorData.name;
+    const mentorFirstName = mentorData.first_name;
+    const mentorLastName = mentorData.last_name;
     const mentorBio = mentorData.bio;
     const mentorImg = mentorData.img;
     const mentorCareer = mentorData.career;
@@ -13,10 +15,10 @@ export function MentorCard(props) {
     return (
         <div className="col-sm-12 col-md-6 col-lg-3 mb-4">
             <div className="card h-100">
-                <img src={mentorImg} className="card-img-top" alt={mentorName}></img>
+                <img src={mentorImg} className="card-img-top" alt={mentorFirstName + ' ' + mentorLastName}></img>
                 <div className="card-body d-flex flex-column">
                     <div className="card-text">
-                        <p className="mentor-name">{mentorName}</p>
+                        <p className="mentor-name">{mentorFirstName + ' ' + mentorLastName}</p>
                         <div className="container mentor-info">
                             <p><span className="info-label">Career:</span> {mentorCareer}</p>
                             <p><span className="info-label">Major:</span> {mentorMajor}</p>
@@ -105,6 +107,9 @@ export function MentorGrid(props) {
         return card;
     });
 
+    // search
+
+
     return (
         <div>
             <div className="mentor-heading">
@@ -115,11 +120,12 @@ export function MentorGrid(props) {
             </div>
 
             <div className="container select-options">
-                {/* <form className="search-bar">
+                <form className="search-bar"> 
                     <label for="search" Search></label>
-                    <input type="text" placeholder="Search..." name="search"></input>
-                    <button className="search" type="submit"><img src="img/search.png" alt="magnifying glass icon"></img></button>
-                </form> */}
+                    <input type="text" placeholder="Search for a mentor" name="search"></input>
+                    {/* <button className="btn search" type="submit"><img src="img/search.png" alt="magnifying glass icon"></img></button> */}
+                    <Button className="btn mt-auto" type="submit">Search</Button> 
+                </form>
                 <form>
                     <select id="careerSelect" value={selectedCareer} onChange={handleChangeSelectCareer}>
                         <option value="">All careers</option>
