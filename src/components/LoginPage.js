@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 
 function LoginForm() {
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+    }
+
     const handleClick = (event) => {
         console.log("clicked");
     }
 
     return (
         <div className='form'>
-            <form className="login-form" action="login.php" method="POST">
+            {/*  action="login.php" method="POST" */}
+            <form className="login-form" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" placeholder="name@example.com" name="email" id="email" required></input>

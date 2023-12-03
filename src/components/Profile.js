@@ -1,5 +1,6 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
 
 export function Profile(props) {
     const dataProfile = props.profileData;
@@ -56,7 +57,8 @@ export function Profile(props) {
                 </div>
                 <div>
                     <div className="text-center">
-                        <button className="submit btn tbn-primary" type="submit">Edit Profile</button>
+                        {/* <button className="submit btn tbn-primary" type="submit">Edit Profile</button> */}
+                        <Link to="/update-profile" className="submit btn tbn-primary">Edit Profile</Link>
                     </div>
                 </div>
                 

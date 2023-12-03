@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; //import React Component
+import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue} from 'firebase/database';
 
 function CreateAccountForm() {
 
@@ -20,6 +21,13 @@ function CreateAccountForm() {
         // console.log("Email:", email);
         // console.log("Password:", password);
 
+        // add data to database
+        const db = getDatabase();
+        const studentRef = ref(db, "allStudent");
+        // firebaseSet(studentRef, {"email": email, "password":password});
+        firebasePush(studentRef, {"firstn": firstn, "lastn": lastn, "gradYear": gradYear, "major": major, "email": email, "password":password});
+
+        // reset
         setFirstN("");
         setLastN("");
         setGradYear("");

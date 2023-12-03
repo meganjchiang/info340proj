@@ -15,6 +15,8 @@ import { UpdateProfile } from "./UpdateProfile.js"
 import { Routes, Route, Link, Navigate } from 'react-router-dom'
 
 
+
+
 import MENTORS from '../data/mentors.json';
 import SAMPLE_MENTORS from '../data/mentorApp.json';
 import SAMPLE_PROFILE from '../data/profileData.json';
@@ -45,6 +47,7 @@ function App() {
                     <Route path="/book-appointment" element={<Appointment />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
+                    <Route path="/update-profile" element={<UpdateProfile />} />
                 </Routes>
 
                 {/* < Home /> */}
