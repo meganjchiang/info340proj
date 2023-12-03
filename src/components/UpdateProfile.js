@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, set as firebaseSet, onValue } from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, onValue, update } from 'firebase/database';
 
 
 export function UpdateProfile() {
@@ -42,24 +42,26 @@ export function UpdateProfile() {
     setInterest(interest);
     setAboutMeSummary(aboutMeSummary);
 
+    // set up database listeners
+    useEffect(() => {
+      
+      const db = getDatabase();
+      const majorRef = ref(db, "allStudent");
+      firebaseSet(majorRef, { "firstName": firstName, "lastName": lastName, "gradYear": gradYear, "major": major, "interest": interest, "aboutMe": aboutMeSummary, "email": email, "password": password });
+
+      onValue(majorRef, function (snapshot) {
+        const data = snapshot.val();
+        console.log("database changed");
+
+        // update the state
+        update([data]);
+      })
+
+    }, [])
+
   }
 
-  // set up database listeners
-  useEffect(() => {
 
-    const db = getDatabase();
-    const majorRef = ref(db, "allStudent");
-    firebaseSet(majorRef, { "firstName": firstName, "lastName": lastName, "gradYear": gradYear, "major": major, "interest": interest, "aboutMe": aboutMeSummary, "email": email, "password": password });
-
-    onValue(majorRef, function (snapshot) {
-      const data = snapshot.val();
-      console.log("database changed");
-
-      // update the state
-      setMajor([data]);
-    })
-
-  }, [])
 
   return (
     <div className="update_profile" onSubmit={handleSubmit}>
