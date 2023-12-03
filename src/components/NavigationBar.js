@@ -31,7 +31,7 @@ export function NavBar() {
                         <div className="dropdown-menu">
                             <ul>
                                 <NavLink to="/profile">Profile</NavLink>
-                                <NavLink to="/book-appointment">Make an Appointment</NavLink>
+                                {/* <NavLink to="/book-appointment">Make an Appointment</NavLink> */}
                                 <NavLink to="/mentor-approval">Admin</NavLink>
                                 {/* <li><a href="profile.html">Profile</a></li>
                                 <li><a href="appointment.html">Make an Appointment</a></li>

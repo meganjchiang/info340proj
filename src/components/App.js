@@ -48,6 +48,7 @@ function App() {
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
                     <Route path="/update-profile" element={<UpdateProfile />} />
+                    <Route path="*" element={<Navigate to="/home" />}  />
                 </Routes>
 
                 {/* < Home /> */}
