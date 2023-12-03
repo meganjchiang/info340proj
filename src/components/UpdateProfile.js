@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, set as firebaseSet, onValue} from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, onValue } from 'firebase/database';
 
 
 export function UpdateProfile() {
@@ -9,12 +9,11 @@ export function UpdateProfile() {
   }
 
   // firstN lastN
-  // const [firstn, setFirstN] = useState("");
-  // const [lastn, setLastN] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [gradYear, setGradYear] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [major, setMajor] = useState("");
   const [interest, setInterest] = useState("");
   const [aboutMeSummary, setAboutMeSummary] = useState("");
@@ -28,16 +27,20 @@ export function UpdateProfile() {
 
     alert('Profile Updated');
 
-    console.log("Submit form with:");
-    console.log("Name:", name);
-    console.log("Major:", major);
-    console.log("Interest:", interest);
-    console.log("About Me:", aboutMeSummary);
+    // console.log("Submit form with:");
+    // console.log("Name:", name);
+    // console.log("Major:", major);
+    // console.log("Interest:", interest);
+    // console.log("About Me:", aboutMeSummary);
 
-    // setName("");
-    // setMajor("");
-    // setExtracurriculars("");
-    // setAboutMeSummary("");
+    setFirstName(firstName);
+    setLastName(lastName);
+    setGradYear(gradYear);
+    setEmail(email);
+    setPassword(password);
+    setMajor(major);
+    setInterest(interest);
+    setAboutMeSummary(aboutMeSummary);
 
   }
 
@@ -46,9 +49,9 @@ export function UpdateProfile() {
 
     const db = getDatabase();
     const majorRef = ref(db, "allStudent");
-    firebaseSet(majorRef, {"firstn": name, "gradYear": gradYear, "major": major, "interest": interest, "aboutMe": aboutMeSummary, "email": email, "password":password});
+    firebaseSet(majorRef, { "firstName": firstName, "lastName": lastName, "gradYear": gradYear, "major": major, "interest": interest, "aboutMe": aboutMeSummary, "email": email, "password": password });
 
-    onValue(majorRef, function(snapshot) {
+    onValue(majorRef, function (snapshot) {
       const data = snapshot.val();
       console.log("database changed");
 
@@ -64,23 +67,19 @@ export function UpdateProfile() {
 
       <form>
         <div className="row">
-          <div className="col-12 mb-3">
-            <label htmlFor="name" className="form-label">
-              Name
-            </label>
-            <input type="text" className="form-control" id="name" name="name" onChange={(e) => setName(e.target.value)} value={name} />
+          <div className="col">
+            <label htmlFor="firstName" className="form-label">First Name</label>
+            <input type="text" className="form-control" id="first-name" name="firstName" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
           </div>
-
+          <div className="col">
+            <label htmlFor="lastName" className="form-label">Last Name</label>
+            <input type="text" className="form-control" id="last-name" name="lastName" onChange={(e) => setLastName(e.target.value)} value={lastName} />
+          </div>
+        </div>
+        <div className="row">
           <div className="col-6 mb-3">
-            <label htmlFor="year" className="form-label">
-              Year
-            </label>
-            <select className="form-select" id="year" name="year" onChange={handleChange} >
-              <option value="freshman">Freshman</option>
-              <option value="sophomore">Sophomore</option>
-              <option value="junior">Junior</option>
-              <option value="senior">Senior</option>
-            </select>
+            <label htmlFor="grad-year" className="form-label">Intended Graduation Year</label>
+            <input type="text" className="form-control" onChange={(e) => setGradYear(e.target.value)} value={gradYear} name="grad-year" id="grad-year"></input>
           </div>
 
           <div className="col-6 mb-3">
