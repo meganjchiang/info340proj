@@ -6,29 +6,27 @@ export function MentorCard(props) {
     const mentorData = props.mentorData;
     const mentorFirstName = mentorData.first_name;
     const mentorLastName = mentorData.last_name;
-    const mentorBio = mentorData.bio;
     const mentorImg = mentorData.img;
     const mentorCareer = mentorData.career;
     const mentorMajor = mentorData.major;
     const mentorGradYear = mentorData.grad_year;
+    const mentorNetID = mentorData.netID;
 
     return (
         <div className="col-sm-12 col-md-6 col-lg-3 mb-4">
-            <div className="card h-100">
+            <Link className="card h-100 text-decoration-none" to={"/mentors/" + mentorNetID}>
                 <img src={mentorImg} className="card-img-top" alt={mentorFirstName + ' ' + mentorLastName}></img>
                 <div className="card-body d-flex flex-column">
                     <div className="card-text">
                         <p className="mentor-name">{mentorFirstName + ' ' + mentorLastName}</p>
-                        <div className="container mentor-info">
+                        <div className="mentor-info">
                             <p><span className="info-label">Career:</span> {mentorCareer}</p>
                             <p><span className="info-label">Major:</span> {mentorMajor}</p>
                             <p><span className="info-label">Graduation Year:</span> {mentorGradYear}</p>
                         </div>
-                        {/* <p className="mentor-description">{mentorBio}</p> */}
                     </div>
-                    <Link className="btn appt-btn mt-auto" to="/book-appointment/">Meet {mentorFirstName}!</Link>
                 </div>
-            </div>
+            </Link>
         </div>
     );
 }
@@ -44,25 +42,9 @@ export function MentorGrid(props) {
     const handleChangeSearch = (event) => {
         const inputValue = event.target.value;
         setTypedValue(inputValue);
-
-        // CHECK IF THIS IS CORRECT/ALLOWED -> otherwise should change back to all mentors after the user click the Search button again
-        // if (inputValue === '') {
-        //     // setDisplayedMentors(mentors);
-        //     applyFilters();
-        // }
     }
 
     const handleClickSearch = () => {
-        // if (typedValue === '' && displayedMentors.length === 0) {
-        //     applyFilters();
-        // } else {
-        //     const matchedMentors = displayedMentors.filter((mentor) => {
-        //         const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
-        //         const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
-        //         return nameMatch;
-        //     });
-        //     setDisplayedMentors(matchedMentors);
-        // }
         const matchedMentors = displayedMentors.filter((mentor) => {
             const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
             const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
@@ -105,6 +87,16 @@ export function MentorGrid(props) {
         }
 
         setDisplayedMentors(filteredMentors);
+    }
+
+    const resetMentors = () => {
+        // source for clearing input field: https://www.youtube.com/watch?v=v_m16oewrH0
+        document.querySelector('input').value = '';
+        setTypedValue('');
+        setSelectedCareer('');
+        setSelectedMajor('');
+        setSelectedGradYear('');
+        setDisplayedMentors(mentors);
     }
 
     const handleChangeSelectCareer = (event) => {
@@ -152,6 +144,11 @@ export function MentorGrid(props) {
         return card;
     });
 
+    let showingResultsString = "Showing " + displayedMentors.length + " result";
+    if (displayedMentors.length !== 1) {
+        showingResultsString += "s";
+    }
+
     return (
         <div>
             <div className="mentor-heading">
@@ -161,32 +158,35 @@ export function MentorGrid(props) {
                     professional endeavors. Schedule an appointment to learn more about their experiences.</p>
             </div>
 
-            <div className="container select-options">
-                <form className="search-bar">
-                    <label htmlFor="search"></label>
-                    <input type="text" placeholder="Search for a mentor" name="search" onChange={handleChangeSearch}></input>
+            <div className="row mentor-content">
+                <div className="col-lg col-lg-2 select-options">
+                    <form className="row search-bar">
+                        <label htmlFor="search"></label>
+                        <input className="col" id="searchInput" type="text" placeholder="Search for a mentor" name="search" onChange={handleChangeSearch}></input>
                     <Button className="search-btn" onClick={handleClickSearch}>Search</Button>
-                </form>
-                <form>
-                    <select id="careerSelect" value={selectedCareer} onChange={handleChangeSelectCareer}>
-                        <option value="">All careers</option>
-                        {careerOptions}
-                    </select>
-                    <select id="MajorSelect" value={selectedMajor} onChange={handleChangeSelectMajor}>
-                        <option value="">All majors</option>
-                        {majorOptions}
-                    </select>
-                    <select id="gradYearSelect" value={selectedGradYear} onChange={handleChangeSelectGradYear}>
-                        <option value="">All graduation years</option>
-                        {gradYearOptions}
-                    </select>
-                    <Button className="filter-btn" onClick={() => applyFilters(mentors)}>Apply Filters</Button>
-                </form>
+                    </form>
+                    <form className="row filters">
+                        <select className="col" id="careerSelect" value={selectedCareer} onChange={handleChangeSelectCareer}>
+                            <option value="">All careers</option>
+                            {careerOptions}
+                        </select>
+                        <select className="col" id="MajorSelect" value={selectedMajor} onChange={handleChangeSelectMajor}>
+                            <option value="">All majors</option>
+                            {majorOptions}
+                        </select>
+                        <select className="col" id="gradYearSelect" value={selectedGradYear} onChange={handleChangeSelectGradYear}>
+                            <option value="">All graduation years</option>
+                            {gradYearOptions}
+                        </select>
+                        <Button className="filter-btn" onClick={() => applyFilters(mentors)}>Apply Filters</Button>
+                    </form>
+                    <Button className="row reset-btn" onClick={resetMentors}>Reset</Button>
+                </div>
 
-            </div>
-
-            <div className="row container mentor-cards">
-                {cardArray}
+                <div className="row col-lg col-xl-10 container mentor-cards">
+                    <p className='showing-results'>{showingResultsString}</p>
+                    {cardArray}
+                </div>
             </div>
         </div>
     );

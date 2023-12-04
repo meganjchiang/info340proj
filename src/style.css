@@ -122,16 +122,9 @@ p {
 }
 
 /* footer */
-footer,
-.select-options {
+footer {
     display: flex;
     justify-content: center;
-}
-
-.select-options {
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
 }
 
 /* Home Page */
@@ -216,7 +209,8 @@ footer,
 /* margin 2rem */
 .application-form,
 .appointment-form,
-.login-form {
+.login-form,
+.mentor-preview {
     margin: 2rem;
 }
 
@@ -236,8 +230,9 @@ footer,
 
 .submit,
 .btn-primary,
+.more-info-btn,
 .appt-btn,
-.appt-btn:hover {
+.reset-btn {
     background-color: #4B2E83;
     color: white;
     border-color: #4B2E83;
@@ -264,8 +259,7 @@ footer,
 }
 
 .form-control,
-.form-select,
-.mentor-page-description {
+.form-select {
     margin-bottom: 2rem;
 }
 
@@ -310,33 +304,66 @@ textarea {
 
 /* mentors page */
 .btn-primary:hover,
+.more-info-btn:hover,
 .appt-btn:hover,
 .search-btn,
 .filter-btn {
     background-color: #846db0;
+    color: white;
     border-color: #846db0;
 }
 
 .search-btn:hover,
 .filter-btn:hover {
     background-color: #b7a7d4;
+    color: white;
     border-color: #b7a7d4;
 }
 
-.search-btn {
-    margin-left: 0.5rem;
+.more-info-btn {
+     margin-bottom: 0.25rem;
 }
 
 .mentor-title {
     margin-bottom: 1rem;
 }
 
-.select-options form select{
-    margin: 1em;
-    /* padding: 0 1em; */
+.mentor-page-description {
+    margin: 0rem 1.5rem;
+}
+
+.mentor-content {
+    margin: 0rem 1.5rem 1rem 1.5rem;
+    justify-content: flex-start;
+}
+
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.search-bar input {
+    margin-bottom: 0.5rem;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.filters select {
+    margin-bottom: 0.5rem;
 }
 
 .mentor-cards {
+    display: flex;
     margin: auto;
     margin-top: 2rem;
     justify-content: center;
@@ -355,14 +382,13 @@ textarea {
 
 .mentor-info {
     line-height: 1em;
-    text-align: left;
-    padding-left: 1em;
+    text-align: center;
 }
 
 .mentor-description {
     padding-top: 1em;
-    padding-bottom: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .info-label {
@@ -370,8 +396,64 @@ textarea {
     color: #4B2E83;
 }
 
-/* Admin Approval */
+.showing-results {
+    text-align: right;
+    padding-right: 1.5rem;
+    font-size: 1.25rem;
+}
 
+.select-options {
+    margin-top: 3.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.reset-btn {
+    display: flex;
+    margin-top: 2rem;
+}
+
+/* mentor preview page */
+.mentor-preview-name {
+    margin: 1rem 2rem 0;
+}
+
+.mentor-preview img {
+    display: flex;
+    width: 350px; 
+    height: auto;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+}
+
+.mentor-preview-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 1rem;
+    /* align-content: center;
+    align-items: center;  */
+    text-align: center;
+}
+
+.back-to-mentors-btn {
+    margin: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    color: #7156a5;
+}
+
+.back-to-mentors-btn:hover {
+    color: #4B2E83;
+}
+
+
+/* Admin Approval */
 .table-style {
     margin-left: 8rem;
     margin-right: 8rem;
@@ -406,16 +488,20 @@ textarea {
 
 }
 
-.application-form,
+/* .application-form,
 .appointment-form,
 .update_profile {
     margin: 8rem;
-}
-
+} */
 
 /*media queries */
-@media (min-width: 598px) {
+@media (min-width: 560px) {
+    .select-options {
+        flex-direction: column;
+    }
+}
 
+@media (min-width: 598px) {
     /* appointment form */
     .appointment-form h1 {
         font-size: 1.5rem;
@@ -437,7 +523,6 @@ textarea {
     }
 
     /* profile */
-
     .bio {
         margin: 0;
     }
@@ -447,25 +532,23 @@ textarea {
         flex-direction: column;
     }
 
-
     /* home page */
     .page-title {
         font-size: 5rem;
     }
 
-
-
+    /* mentor preview */
+    .mentor-preview-info {
+        margin-top: 0;
+        text-align: left;
+    }
 }
 
 @media (max-width: 598px) {
-
     /* make navbar disappear */
-  
-
 }
 
 @media (min-width: 768px) {
-
     /* appointment form */
     .appointment-form h1 {
         font-size: 2rem;
@@ -497,15 +580,93 @@ textarea {
         margin: 8rem;
     }
 
-    .select-options {
-        flex-direction: row;
+    /* mentors */
+    .mentor-info {
+        line-height: 1.5em;
     }
 
+    .select-options {
+        /* margin-top: 4rem; */
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: center;
+        /* background-color: black; */
+    }
 
+    .select-options select {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .filter-btn {
+        width: 75%;
+    }
+
+    .reset-btn {
+        align-self: center;
+    }
+
+    .mentor-content {
+        display: flex;
+    }
+
+    .search-bar {
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .filters {
+        margin-top: 3rem;
+    }
+    
+    .search-bar input,
+    .filters select {
+        margin-bottom: 0.5rem;
+    }
+
+    /* mentor preview */
+    .mentor-preview {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 2rem 4rem;
+    }
+
+    .mentor-preview img {
+        justify-content: end;
+        display: block;
+        margin: auto;
+        margin-right: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mentor-preview-info {
+        margin-left: 2rem;
+    }
+
+    .mentor-preview .appt-btn {
+        width: 100%;
+    }
 }
 
 
 @media (min-width: 992px) {
+    /* hover over mentor cards
+    source: https://www.youtube.com/watch?v=KAHjf1Xj0SU */
+    .card {
+        transition: all 0.3s;
+    }
+    
+    .card:hover {
+        transform: scale(1.05);
+    }
 
     /* profile */
     .extra-info {
@@ -517,4 +678,38 @@ textarea {
         justify-content: space-evenly;
     }
 
+    /* mentors */
+    .filters {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .filter-btn {
+        width: 100%;
+    }
+
+    .search-bar {
+        display: flex;
+    }
+
+    .search-bar input {
+        margin-top: 1.45rem;
+    }
+
+    /* mentor preview */
+    .mentor-preview .appt-btn {
+        width: 50%;
+    }
+
+    .mentor-preview img {
+        margin-right: 2rem;
+    }
 }
+
+/* greater than  tablet less than laptop -> make search and button on same line and filters on same line*/

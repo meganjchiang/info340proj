@@ -3,6 +3,7 @@ import React, { useState } from 'react'; //import React Component
 
 // import statements
 import { MentorGrid } from './Mentors.js';
+import { MentorPreview } from './MentorPreview.js';
 import { LoginPage } from './LoginPage.js';
 import { CreateAccountPage } from './CreateAccount.js';
 import { MentorApplicationPage } from './MentorApplication.js'
@@ -36,15 +37,20 @@ function App() {
     return (
         <div>
             <NavBar />
-
             <main>
                 <Routes>
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/home" element={<Home />}/>
                     <Route path="/mentor-application" element={<MentorApplicationPage />} />
                     <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
+                    <Route path="/mentors/:mentorNetID" element={<MentorPreview />}/> 
+                    <Route path="/mentors/:mentorNetID/book-appointment" element={<Appointment />} />
+                    {/* <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
+                        <Route path=":mentorNetID" element={<MentorPreview />}>
+                            <Route path="book-appointment" element={<Appointment />} />
+                        </Route> 
+                    </Route> */}
                     <Route path="/login" element={< LoginPage />} />
                     <Route path="/profile" element={<Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING} />} />
-                    <Route path="/book-appointment" element={<Appointment />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
                     <Route path="/update-profile" element={<UpdateProfile />} />
