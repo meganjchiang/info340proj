@@ -436,8 +436,6 @@ textarea {
     flex-wrap: wrap;
     flex-direction: column;
     margin-top: 1rem;
-    /* align-content: center;
-    align-items: center;  */
     text-align: center;
 }
 
@@ -586,13 +584,11 @@ textarea {
     }
 
     .select-options {
-        /* margin-top: 4rem; */
         display: flex;
         flex-wrap: wrap;
         align-content: center;
         justify-content: flex-start;
         align-items: center;
-        /* background-color: black; */
     }
 
     .select-options select {
@@ -711,5 +707,3 @@ textarea {
         margin-right: 2rem;
     }
 }
-
-/* greater than  tablet less than laptop -> make search and button on same line and filters on same line*/
