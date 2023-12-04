@@ -220,15 +220,6 @@ footer,
     margin: 2rem;
 }
 
-.mentor-cards {
-    margin: auto;
-    margin-top: 2rem;
-}
-
-.mentor-cards {
-    justify-content: center;
-}
-
 .application-form {
     margin: 2rem 16rem;
 }
@@ -244,10 +235,12 @@ footer,
 }
 
 .submit,
+.btn-primary,
 .appt-btn,
 .appt-btn:hover {
     background-color: #4B2E83;
     color: white;
+    border-color: #4B2E83;
 }
 
 .submit {
@@ -260,17 +253,6 @@ footer,
 
 .submit:hover {
     background-color: lightgrey;
-}
-
-.appt-btn:hover,
-.filter-btn {
-    background-color: #846db0;
-    color: white;
-}
-
-.filter-btn:hover {
-    background-color: #b7a7d4;
-    color: white;
 }
 
 .form {
@@ -327,6 +309,24 @@ textarea {
 }
 
 /* mentors page */
+.btn-primary:hover,
+.appt-btn:hover,
+.search-btn,
+.filter-btn {
+    background-color: #846db0;
+    border-color: #846db0;
+}
+
+.search-btn:hover,
+.filter-btn:hover {
+    background-color: #b7a7d4;
+    border-color: #b7a7d4;
+}
+
+.search-btn {
+    margin-left: 0.5rem;
+}
+
 .mentor-title {
     margin-bottom: 1rem;
 }
@@ -334,6 +334,12 @@ textarea {
 .select-options form select{
     margin: 1em;
     /* padding: 0 1em; */
+}
+
+.mentor-cards {
+    margin: auto;
+    margin-top: 2rem;
+    justify-content: center;
 }
 
 .card-img-top {

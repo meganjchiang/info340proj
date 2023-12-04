@@ -24,9 +24,9 @@ export function MentorCard(props) {
                             <p><span className="info-label">Major:</span> {mentorMajor}</p>
                             <p><span className="info-label">Graduation Year:</span> {mentorGradYear}</p>
                         </div>
-                        <p className="mentor-description">{mentorBio}</p>
+                        {/* <p className="mentor-description">{mentorBio}</p> */}
                     </div>
-                    <Link className="btn appt-btn mt-auto" to="/book-appointment/">Book an appointment</Link>
+                    <Link className="btn appt-btn mt-auto" to="/book-appointment/">Meet {mentorFirstName}!</Link>
                 </div>
             </div>
         </div>
@@ -38,42 +38,87 @@ export function MentorGrid(props) {
     const [selectedCareer, setSelectedCareer] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
     const [selectedGradYear, setSelectedGradYear] = useState('');
+    const [displayedMentors, setDisplayedMentors] = useState(mentors);
+    const [typedValue, setTypedValue] = useState('');
 
-    let displayedMentors = mentors;
+    const handleChangeSearch = (event) => {
+        const inputValue = event.target.value;
+        setTypedValue(inputValue);
 
-    if (selectedCareer !== '') {
-        displayedMentors = mentors.filter((mentor) => {
-            const careers = mentor.career === selectedCareer;
-            return careers;
-        });
+        // CHECK IF THIS IS CORRECT/ALLOWED -> otherwise should change back to all mentors after the user click the Search button again
+        // if (inputValue === '') {
+        //     // setDisplayedMentors(mentors);
+        //     applyFilters();
+        // }
     }
 
-    if (selectedMajor !== '') {
-        displayedMentors = displayedMentors.filter((mentor) => {
-            const majors = mentor.major === selectedMajor;
-            return majors;
+    const handleClickSearch = () => {
+        // if (typedValue === '' && displayedMentors.length === 0) {
+        //     applyFilters();
+        // } else {
+        //     const matchedMentors = displayedMentors.filter((mentor) => {
+        //         const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
+        //         const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
+        //         return nameMatch;
+        //     });
+        //     setDisplayedMentors(matchedMentors);
+        // }
+        const matchedMentors = displayedMentors.filter((mentor) => {
+            const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
+            const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
+            return nameMatch;
         });
+
+        applyFilters(matchedMentors);
     }
 
-    if (selectedGradYear !== '') {
-        displayedMentors = displayedMentors.filter((mentor) => {
-            const gradYear = mentor.grad_year === selectedGradYear;
-            return gradYear;
-        });
+    const applyFilters = (mentors) => {
+        let filteredMentors = mentors;
+
+        if (typedValue !== '') {
+            filteredMentors = filteredMentors.filter((mentor) => {
+                const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
+                const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
+                return nameMatch;
+            });
+        }
+
+        if (selectedCareer !== '') {
+            filteredMentors = filteredMentors.filter((mentor) => {
+                const careers = mentor.career === selectedCareer;
+                return careers;
+            });
+        }
+
+        if (selectedMajor !== '') {
+            filteredMentors = filteredMentors.filter((mentor) => {
+                const majors = mentor.major === selectedMajor;
+                return majors;
+            });
+        }
+
+        if (selectedGradYear !== '') {
+            filteredMentors = filteredMentors.filter((mentor) => {
+                const gradYear = mentor.grad_year === selectedGradYear;
+                return gradYear;
+            });
+        }
+
+        setDisplayedMentors(filteredMentors);
     }
 
     const handleChangeSelectCareer = (event) => {
-        let newCareer = event.target.value;
+        const newCareer = event.target.value;
         setSelectedCareer(newCareer);
     }
 
     const handleChangeSelectMajor = (event) => {
-        let newMajor = event.target.value;
+        const newMajor = event.target.value;
         setSelectedMajor(newMajor);
     }
 
     const handleChangeSelectGradYear = (event) => {
-        let newGradYear = event.target.value;
+        const newGradYear = event.target.value;
         setSelectedGradYear(newGradYear);
     }
 
@@ -107,9 +152,6 @@ export function MentorGrid(props) {
         return card;
     });
 
-    // search
-
-
     return (
         <div>
             <div className="mentor-heading">
@@ -120,11 +162,10 @@ export function MentorGrid(props) {
             </div>
 
             <div className="container select-options">
-                <form className="search-bar"> 
-                    <label for="search" Search></label>
-                    <input type="text" placeholder="Search for a mentor" name="search"></input>
-                    {/* <button className="btn search" type="submit"><img src="img/search.png" alt="magnifying glass icon"></img></button> */}
-                    <Button className="btn mt-auto" type="submit">Search</Button> 
+                <form className="search-bar">
+                    <label htmlFor="search"></label>
+                    <input type="text" placeholder="Search for a mentor" name="search" onChange={handleChangeSearch}></input>
+                    <Button className="search-btn" onClick={handleClickSearch}>Search</Button>
                 </form>
                 <form>
                     <select id="careerSelect" value={selectedCareer} onChange={handleChangeSelectCareer}>
@@ -139,6 +180,7 @@ export function MentorGrid(props) {
                         <option value="">All graduation years</option>
                         {gradYearOptions}
                     </select>
+                    <Button className="filter-btn" onClick={() => applyFilters(mentors)}>Apply Filters</Button>
                 </form>
 
             </div>
