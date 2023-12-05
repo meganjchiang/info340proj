@@ -13,19 +13,18 @@ function CreateAccountForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // console.log("Submit form with:");
-        // console.log("First Name:", firstn);
-        // console.log("Last Name:", lastn);
-        // console.log("Graduation Year:", gradYear);
-        // console.log("Major:", major);
-        // console.log("Email:", email);
-        // console.log("Password:", password);
-
         // add data to database
         const db = getDatabase();
         const studentRef = ref(db, "allStudent");
         // firebaseSet(studentRef, {"email": email, "password":password});
-        firebasePush(studentRef, {"firstn": firstn, "lastn": lastn, "gradYear": gradYear, "major": major, "email": email, "password":password});
+        firebasePush(studentRef, {"firstn": firstn, "lastn": lastn, "gradYear": gradYear, "major": major, "email": email, "password":password})
+        .then( () => {
+            // for now, but it should redirect to... home page?
+            alert('Account Created!');
+        })
+        .catch((error) => {
+            alert(error)
+        })
 
         // reset
         setFirstN("");
