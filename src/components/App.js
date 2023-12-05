@@ -41,14 +41,14 @@ function App() {
                 <Routes>
                     <Route path="/home" element={<Home />}/>
                     <Route path="/mentor-application" element={<MentorApplicationPage />} />
-                    <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
+                    {/* <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
                     <Route path="/mentors/:mentorNetID" element={<MentorPreview />}/> 
-                    <Route path="/mentors/:mentorNetID/book-appointment" element={<Appointment />} />
-                    {/* <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
-                        <Route path=":mentorNetID" element={<MentorPreview />}>
+                    <Route path="/mentors/:mentorNetID/book-appointment" element={<Appointment />} /> */}
+                    <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
+                        <Route path="/mentors/:mentorNetID" element={<MentorPreview mentors={MENTORS} />}>
                             <Route path="book-appointment" element={<Appointment />} />
                         </Route> 
-                    </Route> */}
+                    </Route>
                     <Route path="/login" element={< LoginPage />} />
                     <Route path="/profile" element={<Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING} />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
