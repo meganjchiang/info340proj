@@ -42,24 +42,24 @@ export function UpdateProfile() {
     setInterest(interest);
     setAboutMeSummary(aboutMeSummary);
 
-    // set up database listeners
-    useEffect(() => {
-      
-      const db = getDatabase();
-      const majorRef = ref(db, "allStudent");
-      firebaseSet(majorRef, { "firstName": firstName, "lastName": lastName, "gradYear": gradYear, "major": major, "interest": interest, "aboutMe": aboutMeSummary, "email": email, "password": password });
-
-      onValue(majorRef, function (snapshot) {
-        const data = snapshot.val();
-        console.log("database changed");
-
-        // update the state
-        update([data]);
-      })
-
-    }, [])
-
   }
+
+      // // set up database listeners
+      // useEffect(() => {
+      
+      //   const db = getDatabase();
+      //   const majorRef = ref(db, "allStudent");
+      //   firebaseSet(majorRef, { "firstName": firstName, "lastName": lastName, "gradYear": gradYear, "major": major, "interest": interest, "aboutMe": aboutMeSummary, "email": email, "password": password });
+  
+      //   onValue(majorRef, function (snapshot) {
+      //     const data = snapshot.val();
+      //     console.log("database changed");
+  
+      //     // update the state
+      //     update([data]);
+      //   })
+  
+      // }, [])
 
 
 
@@ -67,7 +67,7 @@ export function UpdateProfile() {
     <div className="update_profile" onSubmit={handleSubmit}>
       <h1>Update Profile</h1>
 
-      <form>
+      <form className="form">
         <div className="row">
           <div className="col">
             <label htmlFor="firstName" className="form-label">First Name</label>
@@ -106,7 +106,7 @@ export function UpdateProfile() {
           </div>
 
           <div className="col-12 text-center">
-            <button className="submit" type="submit" onClick={handleClick} >
+            <button className="submit btn tbn-primary" type="submit" onClick={handleClick} >
               Save Changes
             </button>
           </div>

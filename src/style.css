@@ -235,7 +235,8 @@ footer {
 .reset-btn {
     background-color: #4B2E83;
     color: white;
-    border-color: #4B2E83;
+    /* border-color: #4B2E83; */
+    border-color: white;
 }
 
 .submit {
@@ -486,11 +487,7 @@ textarea {
 
 }
 
-/* .application-form,
-.appointment-form,
-.update_profile {
-    margin: 8rem;
-} */
+
 
 /*media queries */
 @media (min-width: 560px) {
