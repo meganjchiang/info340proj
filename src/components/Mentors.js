@@ -139,14 +139,19 @@ export function MentorGrid(props) {
         return <option key={gradYear} value={gradYear}>{gradYear}</option>
     }).reverse();
 
-    const cardArray = displayedMentors.map((mentor) => {
+    let cardArray = displayedMentors.map((mentor) => {
         const card = <MentorCard key={mentor.netID} mentorData={mentor} />
         return card;
     });
 
     let showingResultsString = "Showing " + displayedMentors.length + " result";
-    if (displayedMentors.length !== 1) {
+    if (displayedMentors.length > 1) {
         showingResultsString += "s";
+    }
+    
+    if (displayedMentors.length === 0) {
+        showingResultsString = "";
+        cardArray = "No mentors found";
     }
 
     return (
