@@ -45,7 +45,7 @@ export function MentorGrid(props) {
     }
 
     const handleClickSearch = () => {
-        const matchedMentors = displayedMentors.filter((mentor) => {
+        const matchedMentors = mentors.filter((mentor) => {
             const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
             const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
             return nameMatch;
