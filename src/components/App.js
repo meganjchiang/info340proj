@@ -42,7 +42,7 @@ function App() {
                     <Route path="/home" element={<Home />}/>
                     <Route path="/mentor-application" element={<MentorApplicationPage />} />
                     <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
-                    <Route path="/mentors/:mentorNetID" elements={<MentorPreview />}/> 
+                    <Route path="/mentors/:mentorNetID" element={<MentorPreview />}/> 
                     <Route path="/mentors/:mentorNetID/book-appointment" element={<Appointment />} />
                     {/* <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
                         <Route path="/mentors/:mentorNetID" element={<MentorPreview mentors={MENTORS} />}>
