@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; //import React Component
+import React, { useEffect, useState } from 'react'; //import React Component
 
 
 // import statements
@@ -13,8 +13,8 @@ import { Profile } from './Profile.js';
 import { Home } from './Home.js';
 import { NavBar } from './NavigationBar';
 import { UpdateProfile } from "./UpdateProfile.js"
-import { Routes, Route, Link, Navigate } from 'react-router-dom'
-
+import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom'
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 
 
@@ -22,6 +22,8 @@ import MENTORS from '../data/mentors.json';
 import SAMPLE_MENTORS from '../data/mentorApp.json';
 import SAMPLE_PROFILE from '../data/profileData.json';
 import SAMPLE_MEETING from '../data/upcomingMeetings.json';
+
+
 
 
 // function UserLayout() {
@@ -34,15 +36,32 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 // }
 
 function App() {
+    const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState()
+    useEffect(() => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, function(firebaseUser) {
+            console.log("login status changed"); 
+            console.log(firebaseUser);
+            setCurrentUser(firebaseUser);
+            if(firebaseUser) {
+                navigate('/mentors');
+            }
+        })
+        
+    }, []) 
+    
+    
+
     return (
         <div>
             <NavBar />
             <main>
                 <Routes>
-                    <Route path="/home" element={<Home />}/>
+                    <Route path="/home" element={<Home />} />
                     <Route path="/mentor-application" element={<MentorApplicationPage />} />
                     <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
-                    <Route path="/mentors/:mentorNetID" element={<MentorPreview />}/> 
+                    <Route path="/mentors/:mentorNetID" element={<MentorPreview />} />
                     <Route path="/mentors/:mentorNetID/book-appointment" element={<Appointment />} />
                     {/* <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
                         <Route path="/mentors/:mentorNetID" element={<MentorPreview mentors={MENTORS} />}>
@@ -54,7 +73,7 @@ function App() {
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
                     <Route path="/update-profile" element={<UpdateProfile />} />
-                    <Route path="*" element={<Navigate to="/home" />}  />
+                    <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>
 
                 {/* < Home /> */}
