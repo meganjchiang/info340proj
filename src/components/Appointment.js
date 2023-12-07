@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import _ from 'lodash';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-export function Appointment() {
+import mentors from '../data/mentors.json';
+
+export function Appointment(props) {
+    const params = useParams();
+    const mentorNetID = params.mentorNetID;
+    const mentorFirstName = params.first_name;
+  
+    // source: problem-a from Problem Set 8
+    let mentor =  _.find(mentors, {netID: mentorNetID}); 
+    // if(!mentor) {
+    //     return <h2>No mentor specified</h2> //if unspecified
+    // }
     
     const [reason, setReason] = useState("");
     const [notes, setNotes] = useState("");
@@ -28,9 +41,9 @@ export function Appointment() {
 
   return (
     <div className="appointment-form" onSubmit={handleSubmit}>
-      <h1>Schedule an Appointment</h1>
+      <h1>Schedule an Appointment with {mentor.first_name}</h1>
       <Form>
-        <Form.Group className="mb-3" controlId="mentor">
+        {/* <Form.Group className="mb-3" controlId="mentor">
           <Form.Label>Select a Mentor<span className="required">*</span></Form.Label>
           <Form.Select className="form-select" required onChange={handleChange} >
             <option disabled>Select a Mentor</option>
@@ -38,7 +51,7 @@ export function Appointment() {
             <option value="mentor2">Mentor 2</option>
             <option value="mentor3">Mentor 3</option>
           </Form.Select>
-        </Form.Group>
+        </Form.Group> */}
 
         <div className="row">
           <Form.Group className="col-6 mb-3" controlId="date">

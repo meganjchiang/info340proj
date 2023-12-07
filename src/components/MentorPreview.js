@@ -27,7 +27,7 @@ export function MentorPreview(props) {
                     <p><span className="info-label">Major:</span> {mentor.major}</p>
                     <p><span className="info-label">Graduation Year:</span> {mentor.grad_year}</p>
                     <p className="mentor-description">{mentor.bio}</p>
-                    <Link className="btn appt-btn" to={"./book-appointment"} onClick={() => console.log("book-appointment/" + mentorNetID)}>Book an appointment</Link>
+                    <Link className="btn appt-btn" to={"./book-appointment"}>Book an appointment</Link>
                 </div>
             </div>
         </div>
