@@ -108,18 +108,24 @@ p {
 }
 
 .navbar-brand.admin-nav {
-    border-top-left-radius:  0;
+    border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
  
-.navbar-brand.admin-nav:hover {
+.navbar-brand.admin-nav:hover,
+.navbar-brand.login-nav:hover {
     border-top-left-radius:  0;
     border-top-right-radius: 0;
 }
 
-.navbar-brand.profile-nav:hover {
+.navbar-brand.profile-nav:hover, 
+.navbar-brand.apply-nav:hover {
     border-bottom-left-radius:  0;
     border-bottom-right-radius: 0;
+}
+
+.navbar-brand.mentors-nav:hover {
+    border-radius: 0;
 }
 
 .dropdown-menu a {

@@ -16,12 +16,11 @@ export function NavBar() {
 
                     <div className="hamburger-menu">
                         <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
-                        <div className="dropdown-menu">
+                        <div className="dropdown-menu navbar">
                             <ul>
-                                <li><NavLink to="/mentor-application">Apply</NavLink></li>
-                                <li><NavLink to="/mentors">Mentors</NavLink></li>
-                                <li><NavLink to="/login">Login</NavLink></li>
-
+                                <NavLink className="navbar-brand apply-nav" to="/mentor-application">Apply</NavLink>
+                                <NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink>
+                                <NavLink className="navbar-brand login-nav" to="/login">Login</NavLink>
                             </ul>
                         </div>
                     </div>
