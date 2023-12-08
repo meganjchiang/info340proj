@@ -43,19 +43,13 @@ export function NavBar() {
                         <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                         <div className="dropdown-menu navbar">
                             <ul>
-                                <li><NavLink to="/mentor-application">Apply</NavLink></li>
-                                <li><NavLink to="/mentors">Mentors</NavLink></li>
-                               {/* if(isLoggedIn === true) {
-                                    <li><NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink></li>
-                                } else {
-                                    <li><NavLink to="/login" >Login</NavLink></li>
-                                }
-                                 */}
+                                <li><NavLink className="navbar-brand apply-nav" to="/mentor-application">Apply</NavLink></li>
+                                <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
                                 
                                 {isLoggedIn ? (
-                                    <li><NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink></li>
+                                    <li><NavLink className="navbar-brand login-nav" to="/" onClick={handleSignOut}>Sign Out</NavLink></li>
                                 ): (
-                                    <li><NavLink to="/login" >Login</NavLink></li>
+                                    <li><NavLink className="navbar-brand login-nav" to="/login" >Login</NavLink></li>
                                 )}
 
 
