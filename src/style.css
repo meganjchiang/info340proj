@@ -79,17 +79,21 @@ p {
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 10%;
     background-color: white;
-    border: 0px solid #ccc;
+    border-radius: 20px;
     padding: 0;
     display: none;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-container,
 .hamburger-menu {
     position: relative;
-    display: inline-block;
+    /* display: inline-block; */
+    display: flex;
+    align-items: center;
 }
 
 .dropdown-menu ul {
@@ -98,11 +102,34 @@ p {
     margin: 0;
 }
 
-.dropdown-menu li {
-    padding: 0 .5rem;
+.dropdown-menu.navbar a {
+    border-radius: 20px;
+    color: black;
+}
+
+.navbar-brand.admin-nav {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+ 
+.navbar-brand.admin-nav:hover,
+.navbar-brand.login-nav:hover {
+    border-top-left-radius:  0;
+    border-top-right-radius: 0;
+}
+
+.navbar-brand.profile-nav:hover, 
+.navbar-brand.apply-nav:hover {
+    border-bottom-left-radius:  0;
+    border-bottom-right-radius: 0;
+}
+
+.navbar-brand.mentors-nav:hover {
+    border-radius: 0;
 }
 
 .dropdown-menu a {
+    /* font-family: inherit; */
     text-decoration: none;
     font-size: 90%;
     color: black;
