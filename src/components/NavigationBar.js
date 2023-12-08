@@ -1,7 +1,28 @@
-import React, { useState } from 'react'; //import React Component
-import { NavLink, Routes } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'; //import React Component
+import { NavLink, Routes, Navigate, useNavigate } from 'react-router-dom'
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
 export function NavBar() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            setIsLoggedIn(user !== null);
+        })
+    }, []);
+
+    const handleSignOut = (event) => {
+        event.preventDefault();
+        console.log("Signing Out");
+        signOut(getAuth());
+        
+       
+    }
+
+
+ 
+
     return (
         <header className='header'>
             <div className='navbar-container'>
@@ -11,7 +32,11 @@ export function NavBar() {
                     <nav className="navbar">
                         <NavLink to="/mentor-application">Apply</NavLink>
                         <NavLink to="/mentors">Mentors</NavLink>
-                        <NavLink to="/login">Login</NavLink>
+                        {isLoggedIn ? (
+                                    <NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink>
+                                ): (
+                                    <NavLink to="/login">Login</NavLink>
+                                )}
                     </nav>
 
                     <div className="hamburger-menu">
@@ -20,7 +45,23 @@ export function NavBar() {
                             <ul>
                                 <li><NavLink to="/mentor-application">Apply</NavLink></li>
                                 <li><NavLink to="/mentors">Mentors</NavLink></li>
-                                <li><NavLink to="/login">Login</NavLink></li>
+                               {/* if(isLoggedIn === true) {
+                                    <li><NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink></li>
+                                } else {
+                                    <li><NavLink to="/login" >Login</NavLink></li>
+                                }
+                                 */}
+                                
+                                {isLoggedIn ? (
+                                    <li><NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink></li>
+                                ): (
+                                    <li><NavLink to="/login" >Login</NavLink></li>
+                                )}
+
+
+
+
+
 
                             </ul>
                         </div>
