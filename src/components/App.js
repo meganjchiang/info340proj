@@ -38,6 +38,7 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 function App() {
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState()
+
     useEffect(() => {
         const auth = getAuth();
         onAuthStateChanged(auth, function(firebaseUser) {
@@ -52,8 +53,21 @@ function App() {
         })
         
     }, []) 
-  
-    
+
+    let userData = {};
+    if (currentUser && currentUser.email) {
+        userData = {
+            uid: currentUser.uid,
+            email: currentUser.email,
+            aboutMe: "",
+            firstName: "",
+            lastName: "",
+            gradYear: "",
+            major: "",
+            gradYear: ""
+        };
+    } 
+        
 
     return (
         <div>
@@ -71,7 +85,7 @@ function App() {
                         </Route> 
                     </Route> */}
                     <Route path="/login" element={< LoginPage />} />
-                    <Route path="/profile" element={<Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING} />} />
+                    <Route path="/profile" element={<Profile profileData={userData} meetingData={SAMPLE_MEETING} />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
                     <Route path="/update-profile" element={<UpdateProfile />} />

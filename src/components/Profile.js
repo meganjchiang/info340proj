@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 export function Profile(props) {
     const dataProfile = props.profileData;
-    const name = dataProfile[0].name;
-    const bio = dataProfile[0].bio;
-    const interests = dataProfile[0].interests;
-    const major = dataProfile[0].major;
-    const gradYear = dataProfile[0].grad_year;
+    const firstName = dataProfile.firstName;
+    const lastName = dataProfile.lastName;
+    const aboutMe = dataProfile.aboutMe;
+    const interests = dataProfile.interests;
+    const major = dataProfile.major;
+    const gradYear = dataProfile.grad_year;
 
 
     const meetingData = props.meetingData;
@@ -40,7 +41,7 @@ export function Profile(props) {
             <div className="row container">
                 <div className="about-me-all">
                     <div className="extra-info col-md-6">
-                        <p className="name-profile special-title">{name}</p>
+                        <p className="name-profile special-title">{firstName}</p>
                         <p>Major: <em>{major}</em></p>
                         <p>Grad Year: <em>{gradYear}</em></p>
                         <p>Interests: <em>{interests}</em></p>
@@ -49,7 +50,7 @@ export function Profile(props) {
                     </div>
                     <div className="bio">
                         <p className="special-title col-md-9">About Me!</p>
-                        <p>{bio}</p>
+                        <p>{aboutMe}</p>
 
 
                     </div>
