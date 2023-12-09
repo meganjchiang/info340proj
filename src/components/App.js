@@ -42,20 +42,22 @@ function App() {
         const auth = getAuth();
         onAuthStateChanged(auth, function(firebaseUser) {
             console.log("login status changed"); 
-            console.log(firebaseUser);
+            // console.log(firebaseUser);
             setCurrentUser(firebaseUser);
             if(firebaseUser) {
                 navigate('/mentors');
+            } else {
+                navigate('/home');
             }
         })
         
     }, []) 
-    
+  
     
 
     return (
         <div>
-            <NavBar />
+            <NavBar currentUser={currentUser}/>
             <main>
                 <Routes>
                     <Route path="/home" element={<Home />} />
