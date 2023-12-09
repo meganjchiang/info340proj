@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'; //import React Component
 import { MentorGrid } from './Mentors.js';
 import { MentorPreview } from './MentorPreview.js';
 import { LoginPage } from './LoginPage.js';
+import { ChooseRole } from './ChooseRole.js';
 import { CreateAccountPage } from './CreateAccount.js';
 import { MentorApplicationPage } from './MentorApplication.js'
 import { Appointment } from './Appointment.js';
@@ -46,6 +47,11 @@ function App() {
             // console.log(firebaseUser);
             setCurrentUser(firebaseUser);
             if(firebaseUser) {
+                // another if statement to check if this their first time
+                // if yes, lead to /chooseRole 
+                  // if student --> create account
+                  // if mentor --> mentor application
+                // if no, lead to /mentors
                 navigate('/mentors');
             } else {
                 navigate('/home');
@@ -72,6 +78,7 @@ function App() {
     return (
         <div>
             <NavBar currentUser={currentUser}/>
+        
             <main>
                 <Routes>
                     <Route path="/home" element={<Home />} />
@@ -85,6 +92,7 @@ function App() {
                         </Route> 
                     </Route> */}
                     <Route path="/login" element={< LoginPage />} />
+                    <Route path="/choose-role" element={< ChooseRole />} />
                     <Route path="/profile" element={<Profile profileData={userData} meetingData={SAMPLE_MEETING} />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />

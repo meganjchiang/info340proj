@@ -152,6 +152,7 @@ p {
 footer {
     display: flex;
     justify-content: center;
+    margin: 2rem;
 }
 
 /* Home Page */
@@ -520,6 +521,23 @@ textarea {
 
 }
 
+/* Choose Role */
+
+.role-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.btn.role {
+    padding: 3rem;
+    margin: 2rem;
+}
+
+.next {
+    display: flex;
+    justify-content: center;
+}
 
 
 /*media queries */

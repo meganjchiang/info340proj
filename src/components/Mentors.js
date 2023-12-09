@@ -116,15 +116,15 @@ export function MentorGrid(props) {
     }
 
     // source: problem-c from Problem Set 07
-    const uniqueCareers = [...new Set(mentors.reduce((all, current) => {
+    const uniqueCareers = [...new Set(displayedMentors.reduce((all, current) => {
         return all.concat([current.career]);
     }, []))].sort();
 
-    const uniqueMajors = [...new Set(mentors.reduce((all, current) => {
+    const uniqueMajors = [...new Set(displayedMentors.reduce((all, current) => {
         return all.concat([current.major]);
     }, []))].sort();
 
-    const uniqueGradYears = [...new Set(mentors.reduce((all, current) => {
+    const uniqueGradYears = [...new Set(displayedMentors.reduce((all, current) => {
         return all.concat([current.grad_year]);
     }, []))].sort();
 

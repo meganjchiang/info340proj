@@ -28,6 +28,7 @@ export function NavBar(props) {
                     <nav className="navbar">
                         <NavLink to="/mentor-application">Apply</NavLink>
                         <NavLink to="/mentors">Mentors</NavLink>
+                        <NavLink to="/choose-role">Role</NavLink>
                         {isLoggedIn ? (
                                     <NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink>
                                 ): (
