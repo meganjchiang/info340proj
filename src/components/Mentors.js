@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from 'react-router-dom';
 
 export function MentorCard(props) {
@@ -33,9 +34,9 @@ export function MentorCard(props) {
 
 export function MentorGrid(props) {
     const mentors = props.mentors;
-    const [selectedCareer, setSelectedCareer] = useState('');
-    const [selectedMajor, setSelectedMajor] = useState('');
-    const [selectedGradYear, setSelectedGradYear] = useState('');
+    const [selectedCareer, setSelectedCareer] = useState('All Careers');
+    const [selectedMajor, setSelectedMajor] = useState('All Majors');
+    const [selectedGradYear, setSelectedGradYear] = useState('All Graduation Years');
     const [displayedMentors, setDisplayedMentors] = useState(mentors);
     const [typedValue, setTypedValue] = useState('');
 
@@ -65,21 +66,21 @@ export function MentorGrid(props) {
             });
         }
 
-        if (selectedCareer !== '') {
+        if (selectedCareer !== 'All Careers') {
             filteredMentors = filteredMentors.filter((mentor) => {
                 const careers = mentor.career === selectedCareer;
                 return careers;
             });
         }
 
-        if (selectedMajor !== '') {
+        if (selectedMajor !== 'All Majors') {
             filteredMentors = filteredMentors.filter((mentor) => {
                 const majors = mentor.major === selectedMajor;
                 return majors;
             });
         }
 
-        if (selectedGradYear !== '') {
+        if (selectedGradYear !== 'All Graduation Years') {
             filteredMentors = filteredMentors.filter((mentor) => {
                 const gradYear = mentor.grad_year === selectedGradYear;
                 return gradYear;
@@ -93,24 +94,24 @@ export function MentorGrid(props) {
         // source for clearing input field: https://www.youtube.com/watch?v=v_m16oewrH0
         document.querySelector('input').value = '';
         setTypedValue('');
-        setSelectedCareer('');
-        setSelectedMajor('');
-        setSelectedGradYear('');
+        setSelectedCareer('All Careers');
+        setSelectedMajor('All Majors');
+        setSelectedGradYear('All Graduation Years');
         setDisplayedMentors(mentors);
     }
 
     const handleChangeSelectCareer = (event) => {
-        const newCareer = event.target.value;
+        const newCareer = event.currentTarget.name;
         setSelectedCareer(newCareer);
     }
 
     const handleChangeSelectMajor = (event) => {
-        const newMajor = event.target.value;
+        const newMajor = event.currentTarget.name;
         setSelectedMajor(newMajor);
     }
 
     const handleChangeSelectGradYear = (event) => {
-        const newGradYear = event.target.value;
+        const newGradYear = event.currentTarget.name;
         setSelectedGradYear(newGradYear);
     }
 
@@ -128,16 +129,28 @@ export function MentorGrid(props) {
     }, []))].sort();
 
     const careerOptions = uniqueCareers.map((career) => {
-        return <option key={career} value={career}>{career}</option>
-    });
+        return (
+            <Dropdown.Item key={career} name={career} onClick={handleChangeSelectCareer}>
+                {career}
+            </Dropdown.Item>
+        )
+    })
 
     const majorOptions = uniqueMajors.map((major) => {
-        return <option key={major} value={major}>{major}</option>
-    });
+        return (
+            <Dropdown.Item key={major} name={major} onClick={handleChangeSelectMajor}>
+                {major}
+            </Dropdown.Item>
+        )
+    })
 
     const gradYearOptions = uniqueGradYears.map((gradYear) => {
-        return <option key={gradYear} value={gradYear}>{gradYear}</option>
-    }).reverse();
+        return (
+            <Dropdown.Item key={gradYear} name={gradYear} onClick={handleChangeSelectGradYear}>
+                {gradYear}
+            </Dropdown.Item>
+        )
+    }).reverse()
 
     let cardArray = displayedMentors.map((mentor) => {
         const card = <MentorCard key={mentor.netID} mentorData={mentor} />
@@ -171,19 +184,37 @@ export function MentorGrid(props) {
                     <Button className="search-btn" onClick={handleClickSearch}>Search</Button>
                     </form>
                     <form className="row filters">
-                        <select className="col" id="careerSelect" value={selectedCareer} onChange={handleChangeSelectCareer}>
-                            <option value="">All careers</option>
-                            {careerOptions}
-                        </select>
-                        <select className="col" id="MajorSelect" value={selectedMajor} onChange={handleChangeSelectMajor}>
-                            <option value="">All majors</option>
-                            {majorOptions}
-                        </select>
-                        <select className="col" id="gradYearSelect" value={selectedGradYear} onChange={handleChangeSelectGradYear}>
-                            <option value="">All graduation years</option>
-                            {gradYearOptions}
-                        </select>
-                        <Button className="filter-btn" onClick={() => applyFilters(mentors)}>Apply Filters</Button>
+                        <Dropdown>
+                            <Dropdown.Toggle>
+                                <Dropdown.Item>{selectedCareer}</Dropdown.Item>
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                            <Dropdown.Item key='All Careers' name='All Careers' onClick={handleChangeSelectCareer}>All Careers</Dropdown.Item>
+                                {careerOptions}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown>
+                            <Dropdown.Toggle>
+                                <Dropdown.Item>{selectedMajor}</Dropdown.Item>
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                            <Dropdown.Item key='All Majors' name='All Majors' onClick={handleChangeSelectMajor}>All Majors</Dropdown.Item>
+                                {majorOptions}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown>
+                            <Dropdown.Toggle>
+                                <Dropdown.Item>{selectedGradYear}</Dropdown.Item>
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                            <Dropdown.Item key='All Graduation Years' name='All Graduation Years' onClick={handleChangeSelectGradYear}>All Graduation Years</Dropdown.Item>
+                                {gradYearOptions}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Button className="apply-filter-btn" onClick={() => applyFilters(mentors)}>Apply Filters</Button>
                     </form>
                     <Button className="row reset-btn" onClick={resetMentors}>Reset</Button>
                 </div>

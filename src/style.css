@@ -335,14 +335,19 @@ textarea {
 .more-info-btn:hover,
 .appt-btn:hover,
 .search-btn,
-.filter-btn {
+.apply-filter-btn {
     background-color: #846db0;
     color: white;
     border-color: #846db0;
 }
 
+.dropdown button {
+    background-color: black;
+    color: white;
+}
+
 .search-btn:hover,
-.filter-btn:hover {
+.apply-filter-btn:hover {
     background-color: #b7a7d4;
     color: white;
     border-color: #b7a7d4;
@@ -620,7 +625,7 @@ textarea {
         margin-right: 1rem;
     }
 
-    .filter-btn {
+    .apply-filter-btn {
         width: 75%;
     }
 
@@ -710,7 +715,7 @@ textarea {
         margin-bottom: 0.5rem;
     }
 
-    .filter-btn {
+    .apply-filter-btn {
         width: 100%;
     }
 
