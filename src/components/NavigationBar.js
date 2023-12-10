@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'; //import React Component
 import { NavLink, Routes, Navigate, useNavigate } from 'react-router-dom'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
-import { Container } from 'react-bootstrap';
 
-export function NavBar(props) {
+
+export function NavBar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -31,6 +31,7 @@ export function NavBar(props) {
                     <nav className="navbar">
                         <NavLink to="/mentor-application">Apply</NavLink>
                         <NavLink to="/mentors">Mentors</NavLink>
+                        {/* https://legacy.reactjs.org/docs/conditional-rendering.html - referenced this website */}
                         {isLoggedIn ? (
                             <>
                                 <div className="hamburger-menu">
