@@ -38,6 +38,7 @@ export function NavBar() {
                         {/* <NavLink to="/choose-role">Role</NavLink> */}
                         {/* <NavLink to="/mentor-application">Apply</NavLink> */}
                         <NavLink to="/mentors">Mentors</NavLink>
+                        <NavLink to="/mentor-application">Apply</NavLink>
                         {/* https://legacy.reactjs.org/docs/conditional-rendering.html - referenced this website */}
                         {isAdmin ? (
                             <>
@@ -45,7 +46,7 @@ export function NavBar() {
                                     <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                                     <div className="dropdown-menu navbar">
                                         <ul>
-                                            
+                                        
                                             <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
                                         
                                         </ul>
