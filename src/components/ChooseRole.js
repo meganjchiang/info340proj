@@ -20,14 +20,34 @@ export function ChooseRole() {
         const db = getDatabase();
         const userRef = ref(db, "users/" + user.uid);
 
-        onValue(userRef, (snapshot) => {
-            const userData = snapshot.val();
-            console.log(userData);
-            userData.role = role;
-            firebaseSet(userRef, userData);
-        });
+        const userDataUpdate = {
 
-        navigate('/create-account');
+            displayName: user.displayName,
+            email: user.email,
+            role: role,
+            uid: user.uid
+
+        };
+
+        if (role !== "") {
+            userDataUpdate.role = role;
+        }
+
+        // Use set with the updated data directly
+        firebaseSet(userRef, userDataUpdate)
+            .then(() => {
+                if (role === "") {
+                    alert("Please choose a role before proceeding");
+                } else {
+                    navigate('/create-account', { state: { role: role } });
+                }
+            })
+            .catch((error) => {
+                console.error("Error updating user data:", error);
+            });
+
+
+
     }
 
     const handleClick = () => {
@@ -52,7 +72,7 @@ export function ChooseRole() {
                 <div className="btn-link">
                     <button type="submit" class="btn btn-link">Next &raquo;</button>
                 </div>
-                
+
             </form>
         </div >
 
