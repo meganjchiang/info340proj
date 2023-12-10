@@ -38,16 +38,16 @@ export function NavBar() {
                         {/* <NavLink to="/choose-role">Role</NavLink> */}
                         {/* <NavLink to="/mentor-application">Apply</NavLink> */}
                         <NavLink to="/mentors">Mentors</NavLink>
-                        
+
                         {/* https://legacy.reactjs.org/docs/conditional-rendering.html - referenced this website */}
                         {isAdmin ? (
                             <>
-                            <NavLink to="/mentor-approval">Approve Mentors</NavLink>
+                                <NavLink to="/mentor-approval">Approve Mentors</NavLink>
                                 <div className="hamburger-menu">
                                     <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                                     <div className="dropdown-menu navbar">
                                         <ul>
-                                        
+
                                             <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
                                         </ul>
                                     </div>
@@ -56,9 +56,9 @@ export function NavBar() {
                                     <img src="img/profile-user.png" className="profile" alt="profile icon"></img>
                                     <div className="dropdown-menu navbar">
                                         <ul>
-                                        
 
-                                            
+
+
                                             <NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink>
                                         </ul>
                                     </div>
@@ -66,10 +66,10 @@ export function NavBar() {
                             </>
                         ) : (
                             <>
-                            
+
                                 {isLoggedIn ? (
                                     <>
-                                    <NavLink to="/mentor-application">Apply</NavLink>
+                                        <NavLink to="/mentor-application">Apply</NavLink>
                                         <div className="hamburger-menu">
                                             <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                                             <div className="dropdown-menu navbar">
@@ -110,11 +110,7 @@ export function NavBar() {
                             </>
                         )}
 
-                        </nav>       
-
-
-
-
+                    </nav>
                 </div>
             </div>
         </header>

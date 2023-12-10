@@ -61,7 +61,9 @@ function App() {
                                     navigate('/mentors');
                                 } else if (userData.role === "mentor") {
                                     navigate('/profile');
-                                } 
+                                } else if (userData.role === "admin") {
+                                    navigate('/mentor-approval')
+                                }
                             }
                         } else {
                             navigate('/mentors');
