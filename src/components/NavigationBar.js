@@ -66,9 +66,10 @@ export function NavBar() {
                             </>
                         ) : (
                             <>
-                            <NavLink to="/mentor-application">Apply</NavLink>
+                            
                                 {isLoggedIn ? (
                                     <>
+                                    <NavLink to="/mentor-application">Apply</NavLink>
                                         <div className="hamburger-menu">
                                             <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                                             <div className="dropdown-menu navbar">
