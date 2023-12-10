@@ -70,10 +70,10 @@ function App() {
                                     navigate('/profile');
                                 } 
                             }
+                        } else {
+                            navigate('/mentors');
                         }
-                        // } else {
-                        //     // The user data doesn't exist, handle this case accordingly
-                        // }
+                        
                     })
                     .catch((error) => {
                         // Handle errors while fetching data
