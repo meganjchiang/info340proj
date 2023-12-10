@@ -38,7 +38,7 @@ export function NavBar() {
                         {/* <NavLink to="/choose-role">Role</NavLink> */}
                         {/* <NavLink to="/mentor-application">Apply</NavLink> */}
                         <NavLink to="/mentors">Mentors</NavLink>
-                        <NavLink to="/mentor-application">Apply</NavLink>
+                        
                         {/* https://legacy.reactjs.org/docs/conditional-rendering.html - referenced this website */}
                         {isAdmin ? (
                             <>
@@ -48,7 +48,6 @@ export function NavBar() {
                                         <ul>
                                         
                                             <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
-                                        
                                         </ul>
                                     </div>
                                 </div>
@@ -66,6 +65,7 @@ export function NavBar() {
                             </>
                         ) : (
                             <>
+                            <NavLink to="/mentor-application">Apply</NavLink>
                                 {isLoggedIn ? (
                                     <>
                                         <div className="hamburger-menu">
