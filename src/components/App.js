@@ -30,14 +30,7 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 
 
 
-// function UserLayout() {
-//     return ( 
-//         <div className="user-layout">
-//         <NavBar />
-//         < Home />
-//         </div>
-//     )
-// }
+
 
 function App() {
     const navigate = useNavigate();
