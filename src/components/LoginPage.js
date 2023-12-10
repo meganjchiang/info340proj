@@ -82,7 +82,7 @@ export function LoginPage() {
         <h1>Login/Sign Up</h1>
         <StyledFirebaseAuth firebaseAuth={getAuth()} uiConfig={firebaseUIConfig} />
       </div>
-      <p className='login-p'>Don't have an account? Sign up as a <Link to="/create-account">student</Link> or apply to be a <Link to="/mentors">mentor</Link></p>
+      <p className='login-p'>Don't have an account? Enter your email to start!</p>
     </div>
   )
 
