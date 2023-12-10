@@ -13,7 +13,7 @@ export function Home() {
         <h1 className="page-title">HUSKY2HUSKY</h1>
         <div className="text-center">
           <Link to="/mentors" className="btn btn-dark mt-auto">Mentors</Link>
-          <Link to="/login" className="btn btn-light mt-auto">Login</Link>
+          <Link to="/login" className="btn btn-light mt-auto">Sign Up</Link>
         </div>
       </main>
 
