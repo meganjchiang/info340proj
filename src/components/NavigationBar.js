@@ -41,6 +41,8 @@ export function NavBar() {
                                         <ul>
                                             <li><NavLink className="navbar-brand apply-nav" to="/mentor-application">Apply</NavLink></li>
                                             <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
+                                            <li><NavLink className="navbar-brand mentors-nav" to="/update-mentor-profile">Update Profile</NavLink></li>
+
                                         </ul>
                                     </div>
                                 </div>

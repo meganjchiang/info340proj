@@ -14,6 +14,7 @@ import { Profile } from './Profile.js';
 import { Home } from './Home.js';
 import { NavBar } from './NavigationBar';
 import { UpdateProfile } from "./UpdateProfile.js"
+import { UpdateMentorProfile } from './UpdateMentorProfile.js';
 import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { firebase, getDatabase, get, ref, set as firebaseSet, push as firebasePush, onValue } from 'firebase/database';
@@ -130,6 +131,7 @@ function App() {
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
                     <Route path="/update-profile" element={<UpdateProfile />} />
+                    <Route path="update-mentor-profile" element={<UpdateMentorProfile />} />
                     <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>
 
