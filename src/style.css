@@ -111,16 +111,16 @@ p {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
- 
+
 .navbar-brand.admin-nav:hover,
 .navbar-brand.login-nav:hover {
-    border-top-left-radius:  0;
+    border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.navbar-brand.profile-nav:hover, 
+.navbar-brand.profile-nav:hover,
 .navbar-brand.apply-nav:hover {
-    border-bottom-left-radius:  0;
+    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
@@ -356,7 +356,7 @@ textarea {
 }
 
 .more-info-btn {
-     margin-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .mentor-title {
@@ -459,7 +459,7 @@ textarea {
 
 .mentor-preview img {
     display: flex;
-    width: 350px; 
+    width: 350px;
     height: auto;
     align-items: center;
     align-content: center;
@@ -532,9 +532,40 @@ textarea {
 .btn.role {
     padding: 3rem;
     margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-color: #4B2E83;
+
 }
 
-.next {
+.btn.role:hover {
+    border-color: #4B2E83;
+
+
+}
+
+.btn-check:checked+.btn {
+    background-color: #4B2E83;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-check:checked+.btn img,
+.btn-check:checked+.btn p {
+    filter: invert(1);
+
+}
+
+.btn.role img {
+    width: 100px;
+    margin: 1rem;
+}
+
+.btn.role p {
+    font-weight: bolder;
+}
+
+.btn-link {
+    color: #4B2E83;
     display: flex;
     justify-content: center;
 }
@@ -548,6 +579,7 @@ textarea {
 }
 
 @media (min-width: 598px) {
+
     /* appointment form */
     .appointment-form h1 {
         font-size: 1.5rem;
@@ -595,6 +627,7 @@ textarea {
 }
 
 @media (min-width: 768px) {
+
     /* appointment form */
     .appointment-form h1 {
         font-size: 2rem;
@@ -663,11 +696,11 @@ textarea {
         flex-direction: row;
         align-items: center;
     }
-    
+
     .filters {
         margin-top: 3rem;
     }
-    
+
     .search-bar input,
     .filters select {
         margin-bottom: 0.5rem;
@@ -702,12 +735,13 @@ textarea {
 
 
 @media (min-width: 992px) {
+
     /* hover over mentor cards
     source: https://www.youtube.com/watch?v=KAHjf1Xj0SU */
     .card {
         transition: all 0.3s;
     }
-    
+
     .card:hover {
         transform: scale(1.05);
     }

@@ -29,6 +29,7 @@ export function NavBar() {
                 <NavLink to="/home" className="logo"><img src="img/smile.png" alt="husky to husky logo"></img></NavLink>
                 <div className="navbar-profile">
                     <nav className="navbar">
+                        <NavLink to="/choose-role">Role</NavLink>
                         <NavLink to="/mentor-application">Apply</NavLink>
                         <NavLink to="/mentors">Mentors</NavLink>
                         {/* https://legacy.reactjs.org/docs/conditional-rendering.html - referenced this website */}

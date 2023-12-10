@@ -22,10 +22,7 @@ function CreateAccountForm() {
             // for now, but it should redirect to... home page?
             alert('Account Created!');
         })
-        .catch((error) => {
-            alert(error)
-        })
-
+       
         // reset
         setFirstN("");
         setLastN("");
