@@ -1,5 +1,7 @@
-import React from 'react';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 import { useParams, Link } from 'react-router-dom';
+
+import React, { useState, useEffect } from 'react'; //import React Component
 import _ from 'lodash';
 
 import mentors from '../data/mentors.json';
@@ -7,6 +9,15 @@ import mentors from '../data/mentors.json';
 export function MentorPreview(props) {
     const params = useParams();
     const mentorNetID = params.mentorNetID;
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            setIsLoggedIn(user !== null);
+        });
+    }, []);
+
   
     // source: problem-a from Problem Set 8
     let mentor =  _.find(mentors, {netID: mentorNetID}); 
@@ -27,7 +38,16 @@ export function MentorPreview(props) {
                     <p><span className="info-label">Major:</span> {mentor.major}</p>
                     <p><span className="info-label">Graduation Year:</span> {mentor.grad_year}</p>
                     <p className="mentor-description">{mentor.bio}</p>
-                    <Link className="btn appt-btn" to={"./book-appointment"}>Book an appointment</Link>
+                    {isLoggedIn ? (
+                        <Link className="btn appt-btn" to={"./book-appointment"}>Book an appointment</Link>
+                    ): (
+                        <>
+                        
+                        <Link className="btn appt-btn" to={"/login"}>Login</Link>
+                       
+                        </>
+                    )}
+                    
                 </div>
             </div>
         </div>
