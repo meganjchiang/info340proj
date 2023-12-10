@@ -42,7 +42,7 @@ export function Home() {
               <p>
                 Join our mentorship program to make a meaningful impact on students' journeys and contribute to the vibrant spirit of collaboration at the University of Washington!
               </p>
-              <Link to="/mentor-application" className="btn btn-outline-dark mt-auto" id="apply-now">Apply Now</Link>
+              <Link to="/login" className="btn btn-outline-dark mt-auto" id="apply-now">Apply Now</Link>
             </div>
 
             <div className="mentor-img col-md-6 mt-4 mt-md-0">

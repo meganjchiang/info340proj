@@ -47,7 +47,6 @@ export function NavBar() {
                                     <img src="img/hamburger.png" alt="hamburger menu icon" className="hamburger"></img>
                                     <div className="dropdown-menu navbar">
                                         <ul>
-
                                             <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
                                         </ul>
                                     </div>
