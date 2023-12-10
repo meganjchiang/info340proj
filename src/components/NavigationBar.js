@@ -27,6 +27,7 @@ export function NavBar() {
         event.preventDefault();
         console.log("Signing Out");
         signOut(getAuth());
+        setIsAdmin(false);
     }
 
     return (
@@ -55,9 +56,6 @@ export function NavBar() {
                                     <img src="img/profile-user.png" className="profile" alt="profile icon"></img>
                                     <div className="dropdown-menu navbar">
                                         <ul>
-
-
-
                                             <NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink>
                                         </ul>
                                     </div>
