@@ -1,24 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
-import mentors from '../data/mentors.json';
 
 export function Appointment(props) {
-    const params = useParams();
-    const mentorNetID = params.mentorNetID;
-    const mentorFirstName = params.first_name;
+  const params = useParams();
+  const mentorNetID = params.mentorNetID;
+  const userKey = params.firebasekey;
+  
+  const [mentor, setMentor] = useState(null);
+  const [reason, setReason] = useState("");
+  const [notes, setNotes] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+    //const mentorFirstName = params.first_name;
   
     // source: problem-a from Problem Set 8
-    let mentor =  _.find(mentors, {netID: mentorNetID}); 
+    //let mentor =  _.find(mentors, {: mentorNetID}); 
     // if(!mentor) {
     //     return <h2>No mentor specified</h2> //if unspecified
     // }
     
-    const [reason, setReason] = useState("");
-    const [notes, setNotes] = useState("");
+    useEffect(() => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+          setIsLoggedIn(user !== null);
+      });
+
+      const db = getDatabase();
+      const mentorRef = ref(db, 'allMentors/' + userKey);
+      
+      onValue(mentorRef, function(snapshot) {
+          const mentorObj = snapshot.val();
+          setMentor(mentorObj);
+      })
+  }, []);
 
     const handleChange = (event) => {
         const inputValue = event.target.value;
@@ -41,7 +60,7 @@ export function Appointment(props) {
 
   return (
     <div className="appointment-form" onSubmit={handleSubmit}>
-      <h1>Schedule an Appointment with {mentor.first_name}</h1>
+      <h1>Schedule an Appointment with {userKey.firstname}</h1>
       <Form>
         {/* <Form.Group className="mb-3" controlId="mentor">
           <Form.Label>Select a Mentor<span className="required">*</span></Form.Label>

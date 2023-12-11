@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import { getDatabase, ref, onValue, update as firebaseUpdate } from 'firebase/database';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import { getAuth, GoogleAuthProvider, EmailAuthProvider, onAuthStateChanged } from 'firebase/auth'
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+
 
 const timeOptions = [];
 for (let hour = 8; hour <= 21; hour++) {
@@ -8,7 +14,9 @@ for (let hour = 8; hour <= 21; hour++) {
   const nextHourString = (hour + 1) > 12 ? (hour + 1) - 12 : (hour + 1);
 
   const timeLabel = `${hourString}:00 ${amPm} - ${nextHourString}:00 ${amPm}`;
-  const value = `${hourString}:00`;
+  const value = `${hour}:00`;
+
+  console.log("value time", value);
 
   timeOptions.push({
     value,
@@ -23,7 +31,7 @@ export function UpdateMentorProfile() {
     gradYear: '',
     major: '',
     career: '',
-    aboutMeSummary: '',
+    bio: '',
     availability: {
       monday: [],
       tuesday: [],
@@ -32,6 +40,39 @@ export function UpdateMentorProfile() {
       friday: [],
     },
   });
+
+
+
+  const [user] = useAuthState(getAuth());
+  const userKey = user ? user.uid : null;
+
+  useEffect(() => {
+    if (userKey) {
+      const db = getDatabase();
+      const mentorRef = ref(db, 'allMentors/' + userKey);
+
+      onValue(mentorRef, (snapshot) => {
+        const mentorObj = snapshot.val();
+        if (mentorObj) {
+          setUserData({
+            firstName: mentorObj.firstName || '',
+            lastName: mentorObj.lastName || '',
+            gradYear: mentorObj.gradYear || '',
+            major: mentorObj.major || '',
+            career: mentorObj.career || '',
+            bio: mentorObj.bio || '',
+            availability: mentorObj.availability || {
+              monday: [],
+              tuesday: [],
+              wednesday: [],
+              thursday: [],
+              friday: [],
+            },
+          });
+        }
+      });
+    }
+  }, [userKey]);
 
   const handleAvailabilityChange = (day, selectedOptions) => {
     const selectedTimes = selectedOptions.map((option) => option.value);
@@ -54,17 +95,38 @@ export function UpdateMentorProfile() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('User data:', userData);
+
+    if (user) {
+      const mentorId = user.uid;
+      const db = getDatabase();
+      const mentorRef = ref(db, `allMentors/${mentorId}`);
+
+      firebaseUpdate(mentorRef, {
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        gradYear: userData.gradYear,
+        major: userData.major,
+        career: userData.career,
+        bio: userData.bio,
+        availability: userData.availability,
+      });
+
+      console.log('User data:', userData);
+    }
   };
 
+
+
   return (
-    <div className="update_profile" onSubmit={handleSubmit}>
+    <div className="update-mentor-profile" onSubmit={handleSubmit}>
       <h1>Update Mentor Profile</h1>
 
       <form className="form">
         <div className="row">
           <div className="col">
-            <label htmlFor="firstName" className="form-label">First Name</label>
+            <label htmlFor="firstName" className="form-label">
+              First Name
+            </label>
             <input
               type="text"
               className="form-control"
@@ -75,7 +137,9 @@ export function UpdateMentorProfile() {
             />
           </div>
           <div className="col">
-            <label htmlFor="lastName" className="form-label">Last Name</label>
+            <label htmlFor="lastName" className="form-label">
+              Last Name
+            </label>
             <input
               type="text"
               className="form-control"
@@ -89,7 +153,9 @@ export function UpdateMentorProfile() {
 
         <div className="row">
           <div className="col-6 mb-3">
-            <label htmlFor="grad-year" className="form-label">Graduation Year</label>
+            <label htmlFor="grad-year" className="form-label">
+              Graduation Year
+            </label>
             <input
               type="text"
               className="form-control"
@@ -101,7 +167,9 @@ export function UpdateMentorProfile() {
           </div>
 
           <div className="col-6 mb-3">
-            <label htmlFor="major" className="form-label">Major</label>
+            <label htmlFor="major" className="form-label">
+              Major
+            </label>
             <input
               type="text"
               className="form-control"
@@ -115,7 +183,9 @@ export function UpdateMentorProfile() {
 
         <div className="row">
           <div className="col-6 mb-3">
-            <label htmlFor="career" className="form-label">Career</label>
+            <label htmlFor="career" className="form-label">
+              Career
+            </label>
             <input
               type="text"
               className="form-control"
@@ -129,14 +199,16 @@ export function UpdateMentorProfile() {
 
         <div className="row">
           <div className="col-12 mb-3">
-            <label htmlFor="aboutMeSummary" className="form-label">About Me Summary</label>
+            <label htmlFor="bio" className="form-label">
+              Bio
+            </label>
             <textarea
               className="form-control"
-              id="aboutMeSummary"
-              name="aboutMeSummary"
+              id="bio"
+              name="bio"
               rows="6"
               onChange={handleChange}
-              value={userData.aboutMeSummary}
+              value={userData.bio}
             />
           </div>
         </div>
@@ -144,70 +216,90 @@ export function UpdateMentorProfile() {
         {/* Availability */}
         <div className="row">
           <div className="col">
-            <label htmlFor="mondayAvailability" className="form-label">Monday Availability</label>
+            <label htmlFor="mondayAvailability" className="form-label">
+              Monday Availability
+            </label>
             <Select
               isMulti
               options={timeOptions}
-              value={userData.availability.monday.map((time) => ({
-                value: time,
-                label: time,
-              }))}
+              value={
+                (userData.availability?.monday || []).map((time) => ({
+                  value: time,
+                  label: time,
+                }))
+              }
               onChange={(selectedOptions) =>
                 handleAvailabilityChange('monday', selectedOptions)
               }
             />
           </div>
           <div className="col">
-            <label htmlFor="tuesdayAvailability" className="form-label">Tuesday Availability</label>
+            <label htmlFor="tuesdayAvailability" className="form-label">
+              Tuesday Availability
+            </label>
             <Select
               isMulti
               options={timeOptions}
-              value={userData.availability.tuesday.map((time) => ({
-                value: time,
-                label: time,
-              }))}
+              value={
+                (userData.availability?.tuesday || []).map((time) => ({
+                  value: time,
+                  label: time,
+                }))
+              }
               onChange={(selectedOptions) =>
                 handleAvailabilityChange('tuesday', selectedOptions)
               }
             />
           </div>
           <div className="col">
-            <label htmlFor="wednesdayAvailability" className="form-label">Wednesday Availability</label>
+            <label htmlFor="wednesdayAvailability" className="form-label">
+              Wednesday Availability
+            </label>
             <Select
               isMulti
               options={timeOptions}
-              value={userData.availability.wednesday.map((time) => ({
-                value: time,
-                label: time,
-              }))}
+              value={
+                (userData.availability?.wednesday || []).map((time) => ({
+                  value: time,
+                  label: time,
+                }))
+              }
               onChange={(selectedOptions) =>
                 handleAvailabilityChange('wednesday', selectedOptions)
               }
             />
           </div>
           <div className="col">
-            <label htmlFor="thursdayAvailability" className="form-label">Thursday Availability</label>
+            <label htmlFor="thursdayAvailability" className="form-label">
+              Thursday Availability
+            </label>
             <Select
               isMulti
               options={timeOptions}
-              value={userData.availability.thursday.map((time) => ({
-                value: time,
-                label: time,
-              }))}
+              value={
+                (userData.availability?.thursday || []).map((time) => ({
+                  value: time,
+                  label: time,
+                }))
+              }
               onChange={(selectedOptions) =>
                 handleAvailabilityChange('thursday', selectedOptions)
               }
             />
           </div>
           <div className="col">
-            <label htmlFor="fridayAvailability" className="form-label">Friday Availability</label>
+            <label htmlFor="fridayAvailability" className="form-label">
+              Friday Availability
+            </label>
             <Select
               isMulti
               options={timeOptions}
-              value={userData.availability.friday.map((time) => ({
-                value: time,
-                label: time,
-              }))}
+              value={
+                (userData.availability?.friday || []).map((time) => ({
+                  value: time,
+                  label: time,
+                }))
+              }
               onChange={(selectedOptions) =>
                 handleAvailabilityChange('friday', selectedOptions)
               }
