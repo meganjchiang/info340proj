@@ -35,45 +35,44 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 function App() {
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState();
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         const auth = getAuth();
         onAuthStateChanged(auth, function (firebaseUser) {
             console.log("login status changed");
-            // console.log(firebaseUser);
             setCurrentUser(firebaseUser);
             if (firebaseUser) {
-
                 const db = getDatabase();
                 const userRef = ref(db, 'users/' + firebaseUser.uid);
-                get(userRef)
-                    .then((snapshot) => {
-                        if (snapshot.exists()) {
-                            const userData = snapshot.val();
 
-                            // Check if the "role" field is an empty string
-                            if (userData.role === "") {
-                                // User is logging in for the first time, redirect to /choose-role
-                                navigate('/choose-role');
-                            } else {
-                                // User has a role, redirect accordingly
-                                if (userData.role === "student") {
-                                    navigate('/mentors');
-                                } else if (userData.role === "mentor") {
-                                    navigate('/profile');
-                                } else if (userData.role === "admin") {
-                                    navigate('/mentor-approval')
-                                }
-                            }
+                onValue(userRef, (snapshot) => {
+                    const fetchedData = snapshot.val();
+                    setUserData(fetchedData);
+
+                    if (fetchedData != null) {
+                        // Check if the "role" field is an empty string
+                        if (fetchedData.role === "") {
+                            // User is logging in for the first time, redirect to /choose-role
+                            navigate('/choose-role');
                         } else {
-                            navigate('/mentors');
+                            // User has a role, redirect accordingly
+                            if (fetchedData.role === "student") {
+                                navigate('/mentors');
+                            } else if (fetchedData.role === "mentor") {
+                                navigate('/profile');
+                            } else if (fetchedData.role === "admin") {
+                                navigate('/mentor-approval')
+                            }
                         }
                         
-                    })
-                    .catch((error) => {
-                        // Handle errors while fetching data
-                        console.error("Error fetching user data:", error);
-                    });
+                    } else {
+                        navigate('/mentors');
+                    }
+                })
+
+
+
 
             } else {
                 navigate('/home');
@@ -82,25 +81,7 @@ function App() {
 
     }, [])
 
-    let userData = {}
-
-    if (currentUser) {
-
-        userData = {
-            displayName: currentUser.displayName,
-            firstName: currentUser.displayName.split(' ')[0],
-            lastName: currentUser.displayName.split(' ')[1],
-            aboutMe: "",
-            interests: "",
-            major: "",
-            gradYear: "",
-            email: currentUser.email,
-            uid: currentUser.uid,
-            role: ""
-        }
-
-
-    }
+   
 
 
 
@@ -111,7 +92,7 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/mentor-application" element={<MentorApplicationPage currentUser={currentUser}/>} />
+                    <Route path="/mentor-application" element={<MentorApplicationPage currentUser={currentUser} />} />
                     <Route path="/mentors" element={<MentorGrid />} />
                     <Route path="/mentors/:firebasekey" element={<MentorPreview />} />
                     {/* <Route path="/mentors/:firebasekey/book-appointment" element={<Appointment />} /> */}

@@ -6,10 +6,10 @@ export function Profile(props) {
     const dataProfile = props.profileData;
     const firstName = dataProfile.firstName;
     const lastName = dataProfile.lastName;
-    const aboutMe = dataProfile.aboutMe;
+    const aboutMe = dataProfile.bio;
     const interests = dataProfile.interests;
     const major = dataProfile.major;
-    const gradYear = dataProfile.grad_year;
+    const gradYear = dataProfile.gradYear;
 
 
     const meetingData = props.meetingData;
