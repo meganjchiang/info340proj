@@ -1,31 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, set as firebaseSet, onValue, update } from 'firebase/database';
-
+import { getDatabase, ref, set as firebaseSet, onValue, update, set } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
 export function UpdateProfile() {
 
-  const handleClick = (event) => {
-    console.log("clicked");
-  }
+  
+  const [loading, setLoading] = useState(true);
+
 
   // firstN lastN
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gradYear, setGradYear] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [major, setMajor] = useState("");
-  const [interest, setInterest] = useState("");
+  const [interests, setInterests] = useState("");
   const [aboutMeSummary, setAboutMeSummary] = useState("");
 
-  const handleChange = (event) => {
-    const inputValue = event.target.value;
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const db = getDatabase();
+  const userRef = ref(db, "users/" + user.uid);
+
+  // useEffect(() => {
+
+  //   onValue(userRef, (snapshot) => {
+
+  //     const fetchedData = snapshot.val();
+  //     console.log(fetchedData)
+  //     setFirstName(fetchedData.firstName);
+  //     setLastName(fetchedData.lastName);
+  //     setGradYear(fetchedData.gradYear);
+  //     setMajor(fetchedData.major);
+  //     setInterests(fetchedData.interests);
+  //     setAboutMeSummary(fetchedData.bio);
+  //     setLoading(false);
+
+  //   })
+
+
+  // })
+
+  const handleClick = (event) => {
+    console.log("clicked");
   }
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    alert('Profile Updated');
 
     // console.log("Submit form with:");
     // console.log("Name:", name);
@@ -36,30 +58,39 @@ export function UpdateProfile() {
     setFirstName(firstName);
     setLastName(lastName);
     setGradYear(gradYear);
-    setEmail(email);
-    setPassword(password);
     setMajor(major);
-    setInterest(interest);
+    setInterests(interests);
     setAboutMeSummary(aboutMeSummary);
+
+    const userData = {
+      displayName: user.displayName,
+      email: user.email,
+      uid: user.uid,
+      role: "student",
+      firstName: firstName,
+      lastName: lastName,
+      gradYear: gradYear,
+      major: major,
+      bio: aboutMeSummary,
+      interests: interests
+    }
+
+    firebaseSet(userRef, userData)
+      .then(() => {
+        alert('Profile Updated');
+      })
+      .catch((error) => {
+        console.error("Error updating user data:", error);
+      });
+
+
 
   }
 
-      // // set up database listeners
-      // useEffect(() => {
-      
-      //   const db = getDatabase();
-      //   const majorRef = ref(db, "allStudent");
-      //   firebaseSet(majorRef, { "firstName": firstName, "lastName": lastName, "gradYear": gradYear, "major": major, "interest": interest, "aboutMe": aboutMeSummary, "email": email, "password": password });
-  
-      //   onValue(majorRef, function (snapshot) {
-      //     const data = snapshot.val();
-      //     console.log("database changed");
-  
-      //     // update the state
-      //     update([data]);
-      //   })
-  
-      // }, [])
+  if (!loading) {
+    return <p>Loading...</p>; // You can replace this with a loading spinner or any other loading indicator
+  }
+
 
 
 
@@ -95,7 +126,7 @@ export function UpdateProfile() {
             <label htmlFor="interests" className="form-label">
               Interests
             </label>
-            <textarea className="form-control" id="interest" name="interest" rows="4" onChange={(e) => setInterest(e.target.value)} value={interest} />
+            <textarea className="form-control" id="interests" name="interests" rows="4" onChange={(e) => setInterests(e.target.value)} value={interests} />
           </div>
 
           <div className="col-12 mb-3">

@@ -5,16 +5,17 @@ import { getAuth } from 'firebase/auth';
 
 function CreateAccountForm() {
 
+    const navigate = useNavigate();
+
     const [firstn, setFirstN] = useState("");
     const [lastn, setLastN] = useState("");
     const [gradYear, setGradYear] = useState("");
     const [major, setMajor] = useState("");
     const [bio, setBio] = useState("");
+    const [interests, setInterests] = useState("");
 
     const auth = getAuth();
     const user = auth.currentUser;
-    const navigate = useNavigate();
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -32,12 +33,13 @@ function CreateAccountForm() {
             lastName: lastn,
             gradYear: gradYear,
             major: major,
-            bio: bio
+            bio: bio,
+            interests: interests
         };
 
-        console.log("second", userData);
+        console.log(userData);
 
-        // Use set with the updated data directly
+        // Use set with the updated data
         firebaseSet(userRef, userData)
             .then(() => {
                 navigate('/mentors');
@@ -53,7 +55,7 @@ function CreateAccountForm() {
 
     return (
         <form className='application-form' onSubmit={handleSubmit}>
-            <div className="container">
+            {/* <div className="container"> */}
                 <div className='row'>
                     <div className="col">
                         <label htmlFor="first-name" className="form-label">First Name <span className="required"> *</span></label>
@@ -64,7 +66,7 @@ function CreateAccountForm() {
                         <label htmlFor="last-name" className="form-label">Last Name<span className="required"> *</span></label>
                         <input type="text" className="form-control" onChange={(e) => setLastN(e.target.value)} value={lastn} id="last-name" required></input>
                     </div>
-                </div>
+                {/* </div> */}
 
                 <div className='row'>
                     <div className="col">
@@ -78,13 +80,20 @@ function CreateAccountForm() {
                             *</span></label>
                         <input type="text" className="form-control" onChange={(e) => setMajor(e.target.value)} value={major} name="major-new" id="major-new" required></input>
                     </div>
+                </div>
 
-                    <div className="col">
-                        <label htmlFor="bio" className="form-label">Bio<span className="required">
+                    <div className="col-12 mb-3">
+                        <label htmlFor="interests" className="form-label">Interests<span className="required">
+                            *</span></label>
+                        <input type="text" className="form-control" onChange={(e) => setInterests(e.target.value)} value={interests} name="interests" id="interests" required></input>
+                    </div>
+
+                    <div className="col-12 mb-3">
+                        <label htmlFor="bio" className="form-label">About Me Summary<span className="required">
                             *</span></label>
                         <input type="text" className="form-control" onChange={(e) => setBio(e.target.value)} value={bio} name="bio" id="bio" required></input>
                     </div>
-                </div>
+          
 
                 <div className="col-12 text-center">
                     <button className="submit btn tbn-primary" type="submit" onClick={handleClick}>Submit</button>
