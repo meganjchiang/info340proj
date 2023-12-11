@@ -45,7 +45,7 @@ export function MentorApplicationPage(props) {
     const db = getDatabase();
     const mentorRef = ref(db, "mentorApplicants");
     // firebaseSet(studentRef, {"email": email, "password":password});
-    firebasePush(mentorRef, {"first": firstName, "lastn": lastName, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript":transcript});
+    firebasePush(mentorRef, {"first": firstName, "last": lastName, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript":transcript, "photo":photo});
 
     setFirstName("");
     setLastName("");
@@ -55,7 +55,7 @@ export function MentorApplicationPage(props) {
     setCareer("");
     setPhoto("");
     setTranscript("");
-    
+
 console.log('photo');
   }
   return (
