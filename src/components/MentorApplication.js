@@ -28,13 +28,14 @@ export function MentorApplicationPage(props) {
   const [transcript, setTranscript] = useState("");
 
   const handleClick = (event) => {
-    // const storage = getStorage();
-    // const imageRef = storageRef(storage, "mentorImages/" + props.currentUser.uid / +"img")
-    // uploadBytes(imageRef, photo);
+    
   }
 
   const handleChange = (event) => {
     const inputValue = event.target.value;
+    const storage = getStorage();
+    const imageRef = storageRef(storage, "mentorImages/" + props.currentUser.uid / +"img")
+    uploadBytes(imageRef, photo);
   }
 
   // const handleImage = (event) => {

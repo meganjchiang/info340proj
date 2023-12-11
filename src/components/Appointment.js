@@ -11,7 +11,7 @@ export function Appointment(props) {
   const params = useParams();
   const userKey = params.firebasekey;
   
-  const [mentor, setMentor] = useState(null);
+  const [mentor, setMentor] = useState("");
   const [reason, setReason] = useState("");
   const [notes, setNotes] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
