@@ -21,7 +21,7 @@ export function MentorApplicationPage(props) {
   const [degree, setDegree] = useState("");
   const [career, setCareer] = useState("");
   const [bio, setBio] = useState("");
-  const {zoomLink, setZoomLink} = useState("");
+  const [zoomLink, setZoomLink] = useState("");
   const [photo, setPhoto] = useState("");
   const [transcript, setTranscript] = useState("");
 
