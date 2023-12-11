@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import { getDatabase, ref, onValue, push as firebasePush } from 'firebase/database';
+import { getDatabase, ref, onValue, set as firebaseSet, push as firebasePush } from 'firebase/database';
 
 export function ApproveAdmin(props) {
     const [mentorStateArray, setMentorStateArray] = useState([]);
@@ -27,12 +27,14 @@ export function ApproveAdmin(props) {
     
     const handleApprove = (userKey) => {
         const db = getDatabase();
-        const mentorRef = ref(db, "mentorApplicants/"+userKey);
-
+        const mentorRef = ref(db, 'mentorApplicants/'+userKey);
+        console.log(mentorRef);
         onValue(mentorRef, function(snapshot){
             const mentorObj = snapshot.val();
+            
             const allMentorsRef = ref(db, "allMentors")
-            firebasePush(allMentorsRef, mentorObj);
+            firebasePush(allMentorsRef, mentorObj )
+        
         })
         console.log(userKey);
     }
@@ -45,7 +47,7 @@ export function ApproveAdmin(props) {
             <td>{mentor.first}</td>
             <td>{mentor.lastn}</td>
             <td>
-            <Button variant="success" onClick={handleApprove(mentor.firebasekey)}>Approve</Button>{' '}
+            <Button variant="success" onClick={()=> handleApprove(mentor.firebasekey)}>Approve</Button>{' '}
             <Button variant="danger">Decline</Button>{' '}
             </td>
             <td>
