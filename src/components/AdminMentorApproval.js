@@ -35,8 +35,7 @@ export function ApproveAdmin(props) {
     const handleApprove = (userKey) => {
         const db = getDatabase();
         const mentorRef = ref(db, 'mentorApplicants/' + userKey);
-        console.log(mentorRef);
-        onValue(mentorRef, function (snapshot) {
+        onValue(mentorRef, function(snapshot) {
             const mentorObj = snapshot.val();
             const allMentorsRef = ref(db, "allMentors")
             firebasePush(allMentorsRef, mentorObj)

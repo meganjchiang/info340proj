@@ -9,14 +9,12 @@ import { upload } from '@testing-library/user-event/dist/upload';
 export function MentorApplicationPage(props) {
   
   const handleClick = (event) => {
-    console.log("clicked");
     const storage = getStorage();
     const imageRef = storageRef(storage, "mentorImages/"+props.currentUser.uid/+"img")
     uploadBytes(imageRef, photo);
   }
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [netID, setNetID] = useState("");
   const [email, setEmail] = useState("");
   const [gradYear, setGradYear] = useState("");
   const [degree, setDegree] = useState("");
@@ -39,11 +37,10 @@ export function MentorApplicationPage(props) {
     const db = getDatabase();
     const mentorRef = ref(db, "mentorApplicants");
     // firebaseSet(studentRef, {"email": email, "password":password});
-    firebasePush(mentorRef, {"first": firstName, "lastn": lastName, "netID": netID, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript":transcript, "photo":photo, "bio": bio, "zoomLink": zoomLink});
+    firebasePush(mentorRef, {"first": firstName, "lastn": lastName, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript":transcript, "photo":photo, "bio": bio, "zoomLink": zoomLink});
 
     setFirstName("");
     setLastName("");
-    setNetID("");
     setEmail("");
     setGradYear("");
     setDegree("");
@@ -53,7 +50,6 @@ export function MentorApplicationPage(props) {
     setBio("")
     setZoomLink("")
 
-console.log('photo');
   }
   return (
     <div className="application-form" onSubmit={handleSubmit}>
@@ -67,11 +63,6 @@ console.log('photo');
         <Form.Group className="mb-3" controlId="lastName">
           <Form.Label>Last Name <span className="required"> *</span></Form.Label>
           <Form.Control type="text" placeholder="Enter your last name" required onChange={(e) => setLastName(e.target.value)} value={lastName} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="netID">
-          <Form.Label>UW NetID <span className="required"> *</span></Form.Label>
-          <Form.Control type="text" placeholder="Enter your UW NetID" required onChange={(e) => setNetID(e.target.value)} value={netID} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email-mentor">

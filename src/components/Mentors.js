@@ -12,11 +12,11 @@ function MentorCard(props) {
     const mentorCareer = mentorData.career;
     const mentorMajor = mentorData.degree;
     const mentorGradYear = mentorData.gradYear;
-    const mentorNetID = mentorData.netID;
+    const mentorFirebaseKey = mentorData.firebasekey;
 
     return (
         <div className="col-sm-12 col-md-6 col-lg-3 mb-4">
-            <Link className="card h-100 text-decoration-none" to={"/mentors/" + mentorNetID}>
+            <Link className="card h-100 text-decoration-none" to={"/mentors/" + mentorFirebaseKey}>
                 <img src={mentorImg} className="card-img-top" alt={mentorFirstName + ' ' + mentorLastName}></img>
                 <div className="card-body d-flex flex-column">
                     <div className="card-text">
@@ -59,17 +59,12 @@ export function MentorGrid() {
     const [selectedGradYear, setSelectedGradYear] = useState('All Graduation Years');
     const [typedValue, setTypedValue] = useState('');
 
-    console.log('all', mentors);
-    console.log('displayed', displayedMentors);
-
     const handleChangeSearch = (event) => {
         const inputValue = event.target.value;
         setTypedValue(inputValue);
     }
 
     const handleClickSearch = () => {
-        console.log(typedValue);
-        
         const matchedMentors = mentors.filter((mentor) => {
             const mentorFullName = mentor.first + ' ' + mentor.lastn;
             const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
@@ -177,7 +172,7 @@ export function MentorGrid() {
     }).reverse()
 
     let cardArray = displayedMentors.map((mentor) => {
-        const card = <MentorCard key={mentor.email} mentorData={mentor} />
+        const card = <MentorCard key={mentor.firebasekey} mentorData={mentor} />
         return card;
     });
 
