@@ -20,6 +20,8 @@ export function MentorApplicationPage(props) {
   const [gradYear, setGradYear] = useState("");
   const [degree, setDegree] = useState("");
   const [career, setCareer] = useState("");
+  const [bio, setBio] = useState("");
+  const {zoomLink, setZoomLink} = useState("");
   const [photo, setPhoto] = useState("");
   const [transcript, setTranscript] = useState("");
 
@@ -55,6 +57,8 @@ export function MentorApplicationPage(props) {
     setCareer("");
     setPhoto("");
     setTranscript("");
+    setBio("")
+    setZoomLink("")
 
 console.log('photo');
   }
@@ -93,13 +97,23 @@ console.log('photo');
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="degree">
-          <Form.Label>Degree obtained and Discipline <span className="required"> *</span></Form.Label>
+          <Form.Label>Major <span className="required"> *</span></Form.Label>
           <Form.Control type="text" required onChange={(e) => setDegree(e.target.value)} value={degree} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="career">
           <Form.Label>Current career <span className="required"> *</span></Form.Label>
           <Form.Control type="text" required onChange={(e) => setCareer(e.target.value)} value={career} />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="career">
+          <Form.Label>Personal Zoom Link<span className="required"> *</span></Form.Label>
+          <Form.Control type="text" required onChange={(e) => setZoomLink(e.target.value)} value={zoomLink} />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="career">
+          <Form.Label>Bio<span className="required"> *</span></Form.Label>
+          <Form.Control type="text" required onChange={(e) => setBio(e.target.value)} value={bio} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="transcript">
