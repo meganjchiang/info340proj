@@ -106,12 +106,12 @@ console.log('photo');
           <Form.Control type="text" required onChange={(e) => setCareer(e.target.value)} value={career} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="career">
+        <Form.Group className="mb-3" controlId="zoomLink">
           <Form.Label>Personal Zoom Link<span className="required"> *</span></Form.Label>
           <Form.Control type="text" required onChange={(e) => setZoomLink(e.target.value)} value={zoomLink} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="career">
+        <Form.Group className="mb-3" controlId="bio">
           <Form.Label>Bio<span className="required"> *</span></Form.Label>
           <Form.Control type="text" required onChange={(e) => setBio(e.target.value)} value={bio} />
         </Form.Group>
