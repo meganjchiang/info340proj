@@ -28,9 +28,9 @@ export function MentorApplicationPage(props) {
   const [transcript, setTranscript] = useState("");
 
   const handleClick = (event) => {
-    const storage = getStorage();
-    const imageRef = storageRef(storage, "mentorImages/" + props.currentUser.uid / +"img")
-    uploadBytes(imageRef, photo);
+    // const storage = getStorage();
+    // const imageRef = storageRef(storage, "mentorImages/" + props.currentUser.uid / +"img")
+    // uploadBytes(imageRef, photo);
   }
 
   const handleChange = (event) => {
@@ -44,7 +44,7 @@ export function MentorApplicationPage(props) {
     event.preventDefault();
 
     const db = getDatabase();
-    const mentorRef = ref(db, "mentorApplicants/" + user.uid);
+    const mentorRef = ref(db, "mentorApplicants");
 
     mentorData = {
       displayName: user.displayName,
@@ -65,26 +65,26 @@ export function MentorApplicationPage(props) {
   console.log(mentorData);
 
   // Use set with the updated data
-  firebaseSet(mentorRef, mentorData)
-      .then(() => {
-          navigate('/mentor-profile');
-      })
-      .catch((error) => {
-          console.error("Error updating user data:", error);
-      });
+  // firebaseSet(mentorRef, mentorData)
+  //     .then(() => {
+  //         navigate('/mentor-profile');
+  //     })
+  //     .catch((error) => {
+  //         console.error("Error updating user data:", error);
+  //     });
     // firebaseSet(studentRef, {"email": email, "password":password});
-    // firebasePush(mentorRef, { "first": firstName, "lastn": lastName, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript": transcript, "photo": photo, "bio": bio, "zoomLink": zoomLink });
+    firebasePush(mentorRef, { "firstName": firstName, "lastName": lastName, "email": email, "gradYear": gradYear, "major": major, "career": career, "transcript": transcript, "photo": photo, "bio": bio, "zoomLink": zoomLink, "uid": user.uid });
 
-    // setFirstName("");
-    // setLastName("");
-    // setEmail("");
-    // setGradYear("");
-    // setDegree("");
-    // setCareer("");
-    // setPhoto("");
-    // setTranscript("");
-    // setBio("")
-    // setZoomLink("")
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setGradYear("");
+    setMajor("");
+    setCareer("");
+    setPhoto("");
+    setTranscript("");
+    setBio("")
+    setZoomLink("")
 
   }
   return (
@@ -121,7 +121,7 @@ export function MentorApplicationPage(props) {
           <Form.Control type="text" placeholder="Example: 2015" required onChange={(e) => setGradYear(e.target.value)} value={gradYear} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="degree">
+        <Form.Group className="mb-3" controlId="major">
           <Form.Label>Major <span className="required"> *</span></Form.Label>
           <Form.Control type="text" required onChange={(e) => setMajor(e.target.value)} value={major} />
         </Form.Group>

@@ -9,21 +9,13 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 
 export function Appointment(props) {
   const params = useParams();
-  const mentorNetID = params.mentorNetID;
   const userKey = params.firebasekey;
   
   const [mentor, setMentor] = useState(null);
   const [reason, setReason] = useState("");
   const [notes, setNotes] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-    //const mentorFirstName = params.first_name;
-  
-    // source: problem-a from Problem Set 8
-    //let mentor =  _.find(mentors, {: mentorNetID}); 
-    // if(!mentor) {
-    //     return <h2>No mentor specified</h2> //if unspecified
-    // }
-    
+
     useEffect(() => {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
@@ -60,7 +52,7 @@ export function Appointment(props) {
 
   return (
     <div className="appointment-form" onSubmit={handleSubmit}>
-      <h1>Schedule an Appointment with {userKey.firstname}</h1>
+      <h1>Schedule an Appointment with {mentor.firstName}</h1>
       <Form>
         {/* <Form.Group className="mb-3" controlId="mentor">
           <Form.Label>Select a Mentor<span className="required">*</span></Form.Label>

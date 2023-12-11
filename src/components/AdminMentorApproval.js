@@ -57,8 +57,8 @@ export function ApproveAdmin(props) {
         return (
             <tr key={mentor.firebasekey}>
                 <th scope="row">{index + 1}</th>
-                <td>{mentor.first}</td>
-                <td>{mentor.lastn}</td>
+                <td>{mentor.firstName}</td>
+                <td>{mentor.lastName}</td>
                 <td>
                     <Button variant="success" onClick={() => handleApprove(mentor.firebasekey)}>Approve</Button>{' '}
                     <Button variant="danger" onClick={() => handleDecline(mentor.firebasekey)}>Decline</Button>{' '}

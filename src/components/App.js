@@ -110,12 +110,7 @@ function App() {
                     <Route path="/mentor-application" element={<MentorApplicationPage />} />
                     <Route path="/mentors" element={<MentorGrid />} />
                     <Route path="/mentors/:firebasekey" element={<MentorPreview />} />
-                    {<Route path="/mentors/:firebasekey/book-appointment" element={<Appointment />} />}
-                    {<Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
-                        <Route path="/mentors/:mentorNetID" element={<MentorPreview mentors={MENTORS} />}>
-                            <Route path="book-appointment" element={<Appointment />} />
-                        </Route>
-                    </Route>}
+                    <Route path="/mentors/:firebasekey/book-appointment" element={<Appointment />} />
                     <Route path="/login" element={< LoginPage />} />
                     <Route path="/choose-role" element={< ChooseRole />} />
                     <Route path="/profile" element={<Profile profileData={userData} meetingData={SAMPLE_MEETING} />} />

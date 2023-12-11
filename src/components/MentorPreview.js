@@ -28,14 +28,14 @@ export function MentorPreview() {
     return (
         <div>
             <Link className="btn back-to-mentors-btn btn-link text-decoration-none" to="/mentors">&larr; Back to mentors</Link>
-            <h1 className="mentor-preview-name">{mentor.first} {mentor.lastn}</h1>
+            <h1 className="mentor-preview-name">{mentor.firstName} {mentor.lastName}</h1>
             <div className="row mentor-preview">
                 <div className="col">
-                    <img src={"/" + mentor.photo} alt={mentor.first + ' ' + mentor.lastn}></img>
+                    <img src={"/" + mentor.photo} alt={mentor.firstName + ' ' + mentor.lastName}></img>
                 </div>
                 <div className="col mentor-preview-info">
                     <p><span className="info-label">Career:</span> {mentor.career}</p>
-                    <p><span className="info-label">Major:</span> {mentor.degree}</p>
+                    <p><span className="info-label">Major:</span> {mentor.major}</p>
                     <p><span className="info-label">Graduation Year:</span> {mentor.gradYear}</p>
                     <p className="mentor-description">{mentor.bio}</p>
                     {isLoggedIn ? (

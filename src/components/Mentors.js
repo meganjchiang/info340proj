@@ -6,11 +6,11 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 
 function MentorCard(props) {
     const mentorData = props.mentorData;
-    const mentorFirstName = mentorData.first;
-    const mentorLastName = mentorData.lastn;
+    const mentorFirstName = mentorData.firstName;
+    const mentorLastName = mentorData.lastName;
     const mentorImg = mentorData.photo;
     const mentorCareer = mentorData.career;
-    const mentorMajor = mentorData.degree;
+    const mentorMajor = mentorData.major;
     const mentorGradYear = mentorData.gradYear;
     const mentorFirebaseKey = mentorData.firebasekey;
 
