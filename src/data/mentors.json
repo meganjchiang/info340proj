@@ -1,6 +1,6 @@
 [
     {
-        "netID":"dganes1",
+        "netID":"dganes",
         "first_name": "Divya",
         "last_name": "Ganesh",
         "img":"img/divya.jpeg", 
@@ -10,7 +10,7 @@
         "grad_year":"2025"
     },
     {
-        "netID":"lasya191",
+        "netID":"lasya19",
         "first_name": "Lasya",
         "last_name": "Suravajhela",
         "img":"img/lasya1.jpeg", 
@@ -30,7 +30,7 @@
         "grad_year":"2022"
     },
     {
-        "netID":"sxnghp1",
+        "netID":"sxnghp",
         "first_name": "Sunghee",
         "last_name": "Park",
         "img":"img/sunghee1.jpeg", 

@@ -14,7 +14,7 @@ export function ApproveAdmin(props) {
         if (allMentorRef === null) {
             setIsEmpty(true);
         }
-        onValue(allMentorRef, function (snapshot) {
+        onValue(allMentorRef, function(snapshot) {
             const allMentorsObj = snapshot.val();
             if (allMentorsObj) {
                 const keyArray = Object.keys(allMentorsObj);

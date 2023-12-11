@@ -16,6 +16,7 @@ export function MentorApplicationPage(props) {
   }
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [netID, setNetID] = useState("");
   const [email, setEmail] = useState("");
   const [gradYear, setGradYear] = useState("");
   const [degree, setDegree] = useState("");
@@ -34,23 +35,15 @@ export function MentorApplicationPage(props) {
   // }
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submit form with");
-
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("Graduation Year:", gradYear);
-    console.log("Degree:", degree);
-    console.log("Career:", career);
-    console.log("Path to Transcript", transcript);
 
     const db = getDatabase();
     const mentorRef = ref(db, "mentorApplicants");
     // firebaseSet(studentRef, {"email": email, "password":password});
-    firebasePush(mentorRef, {"first": firstName, "lastn": lastName, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript":transcript, "photo":photo});
+    firebasePush(mentorRef, {"first": firstName, "lastn": lastName, "netID": netID, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript":transcript, "photo":photo, "bio": bio, "zoomLink": zoomLink});
 
     setFirstName("");
     setLastName("");
+    setNetID("");
     setEmail("");
     setGradYear("");
     setDegree("");
@@ -74,6 +67,11 @@ console.log('photo');
         <Form.Group className="mb-3" controlId="lastName">
           <Form.Label>Last Name <span className="required"> *</span></Form.Label>
           <Form.Control type="text" placeholder="Enter your last name" required onChange={(e) => setLastName(e.target.value)} value={lastName} />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="netID">
+          <Form.Label>UW NetID <span className="required"> *</span></Form.Label>
+          <Form.Control type="text" placeholder="Enter your UW NetID" required onChange={(e) => setNetID(e.target.value)} value={netID} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email-mentor">

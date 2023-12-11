@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from 'react-router-dom';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
-export function MentorCard(props) {
+function MentorCard(props) {
     const mentorData = props.mentorData;
-    const mentorFirstName = mentorData.first_name;
-    const mentorLastName = mentorData.last_name;
-    const mentorImg = mentorData.img;
+    const mentorFirstName = mentorData.first;
+    const mentorLastName = mentorData.lastn;
+    const mentorImg = mentorData.photo;
     const mentorCareer = mentorData.career;
-    const mentorMajor = mentorData.major;
-    const mentorGradYear = mentorData.grad_year;
+    const mentorMajor = mentorData.degree;
+    const mentorGradYear = mentorData.gradYear;
     const mentorNetID = mentorData.netID;
 
     return (
@@ -32,13 +33,34 @@ export function MentorCard(props) {
     );
 }
 
-export function MentorGrid(props) {
-    const mentors = props.mentors;
+export function MentorGrid() {
+    const [mentors, setMentors] = useState([]);
+    const [displayedMentors, setDisplayedMentors] = useState([]);
+
+    useEffect(() => {
+        const db = getDatabase();
+        const allMentorRef = ref(db, "allMentors");
+
+        onValue(allMentorRef, function(snapshot) {
+            const allMentorsObj = snapshot.val();
+            const keyArray = Object.keys(allMentorsObj);
+            const allMentorsArray = keyArray.map((keyString) => {
+                const mentorObj = allMentorsObj[keyString];
+                mentorObj.firebasekey = keyString;
+                return mentorObj
+            })
+            setMentors(allMentorsArray);
+            setDisplayedMentors(allMentorsArray);
+        })
+    }, [])
+
     const [selectedCareer, setSelectedCareer] = useState('All Careers');
     const [selectedMajor, setSelectedMajor] = useState('All Majors');
     const [selectedGradYear, setSelectedGradYear] = useState('All Graduation Years');
-    const [displayedMentors, setDisplayedMentors] = useState(mentors);
     const [typedValue, setTypedValue] = useState('');
+
+    console.log('all', mentors);
+    console.log('displayed', displayedMentors);
 
     const handleChangeSearch = (event) => {
         const inputValue = event.target.value;
@@ -46,8 +68,10 @@ export function MentorGrid(props) {
     }
 
     const handleClickSearch = () => {
+        console.log(typedValue);
+        
         const matchedMentors = mentors.filter((mentor) => {
-            const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
+            const mentorFullName = mentor.first + ' ' + mentor.lastn;
             const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
             return nameMatch;
         });
@@ -60,7 +84,7 @@ export function MentorGrid(props) {
 
         if (typedValue !== '') {
             filteredMentors = filteredMentors.filter((mentor) => {
-                const mentorFullName = mentor.first_name + ' ' + mentor.last_name;
+                const mentorFullName = mentor.first + ' ' + mentor.lastn;
                 const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
                 return nameMatch;
             });
@@ -75,14 +99,14 @@ export function MentorGrid(props) {
 
         if (selectedMajor !== 'All Majors') {
             filteredMentors = filteredMentors.filter((mentor) => {
-                const majors = mentor.major === selectedMajor;
+                const majors = mentor.degree === selectedMajor;
                 return majors;
             });
         }
 
         if (selectedGradYear !== 'All Graduation Years') {
             filteredMentors = filteredMentors.filter((mentor) => {
-                const gradYear = mentor.grad_year === selectedGradYear;
+                const gradYear = mentor.gradYear === selectedGradYear;
                 return gradYear;
             });
         }
@@ -121,11 +145,11 @@ export function MentorGrid(props) {
     }, []))].sort();
 
     const uniqueMajors = [...new Set(displayedMentors.reduce((all, current) => {
-        return all.concat([current.major]);
+        return all.concat([current.degree]);
     }, []))].sort();
 
     const uniqueGradYears = [...new Set(displayedMentors.reduce((all, current) => {
-        return all.concat([current.grad_year]);
+        return all.concat([current.gradYear]);
     }, []))].sort();
 
     const careerOptions = uniqueCareers.map((career) => {
@@ -153,7 +177,7 @@ export function MentorGrid(props) {
     }).reverse()
 
     let cardArray = displayedMentors.map((mentor) => {
-        const card = <MentorCard key={mentor.netID} mentorData={mentor} />
+        const card = <MentorCard key={mentor.email} mentorData={mentor} />
         return card;
     });
 
