@@ -94,7 +94,7 @@ export function MentorGrid() {
 
         if (selectedMajor !== 'All Majors') {
             filteredMentors = filteredMentors.filter((mentor) => {
-                const majors = mentor.degree === selectedMajor;
+                const majors = mentor.major === selectedMajor;
                 return majors;
             });
         }
@@ -140,7 +140,7 @@ export function MentorGrid() {
     }, []))].sort();
 
     const uniqueMajors = [...new Set(displayedMentors.reduce((all, current) => {
-        return all.concat([current.degree]);
+        return all.concat([current.major]);
     }, []))].sort();
 
     const uniqueGradYears = [...new Set(displayedMentors.reduce((all, current) => {
