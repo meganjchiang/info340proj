@@ -9,6 +9,7 @@ function CreateAccountForm() {
     const [lastn, setLastN] = useState("");
     const [gradYear, setGradYear] = useState("");
     const [major, setMajor] = useState("");
+    const [bio, setBio] = useState("");
 
     const auth = getAuth();
     const user = auth.currentUser;
@@ -30,7 +31,8 @@ function CreateAccountForm() {
             firstName: firstn,
             lastName: lastn,
             gradYear: gradYear,
-            major: major
+            major: major,
+            bio: bio
         };
 
         console.log("second", userData);
@@ -75,6 +77,12 @@ function CreateAccountForm() {
                         <label htmlFor="major-new" className="form-label">Major/Intended Major<span className="required">
                             *</span></label>
                         <input type="text" className="form-control" onChange={(e) => setMajor(e.target.value)} value={major} name="major-new" id="major-new" required></input>
+                    </div>
+
+                    <div className="col">
+                        <label htmlFor="bio" className="form-label">Bio<span className="required">
+                            *</span></label>
+                        <input type="text" className="form-control" onChange={(e) => setBio(e.target.value)} value={bio} name="bio" id="bio" required></input>
                     </div>
                 </div>
 
