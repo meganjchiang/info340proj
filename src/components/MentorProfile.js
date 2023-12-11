@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 export function MentorProfile(props) {
   const dataProfile = props.profileData;
-  const firstName = dataProfile.firstName;
+  console.log(props);
+  const firstName = dataProfile.firstn;
   const lastName = dataProfile.lastName;
   const bio = dataProfile.bio;
   const career = dataProfile.career;

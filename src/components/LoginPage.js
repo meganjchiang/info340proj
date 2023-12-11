@@ -33,8 +33,6 @@ export function LoginPage() {
             role: "",
           });
 
-     
-
           return '/choose-role';
         }
 

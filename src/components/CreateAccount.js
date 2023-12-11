@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'; //import React Component
-import { useNavigate, useLocation } from 'react-router-dom'
+import React, { useState } from 'react'; //import React Component
+import { useNavigate } from 'react-router-dom'
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue, get } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 

@@ -2,6 +2,7 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 
+
 export function Profile(props) {
     const dataProfile = props.profileData;
     const name = dataProfile.displayName

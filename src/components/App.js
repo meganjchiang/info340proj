@@ -22,7 +22,7 @@ import { firebase, getDatabase, get, ref, set as firebaseSet, push as firebasePu
 
 
 
-
+import mentorData from './MentorApplication.js';
 import MENTORS from '../data/mentors.json';
 import SAMPLE_MENTORS from '../data/mentorApp.json';
 import SAMPLE_PROFILE from '../data/profileData.json';
@@ -37,6 +37,7 @@ function App() {
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState();
     const [userData, setUserData] = useState(null);
+    const [mentorData, setMentorData] = useState(null);
 
     useEffect(() => {
         const auth = getAuth();
@@ -46,34 +47,47 @@ function App() {
             if (firebaseUser) {
                 const db = getDatabase();
                 const userRef = ref(db, 'users/' + firebaseUser.uid);
+                const mentorRef = ref(db, 'allMentors/' + firebaseUser.uid);
 
-                onValue(userRef, (snapshot) => {
-                    const fetchedData = snapshot.val();
-                    setUserData(fetchedData);
+                if (userRef) {
+                    onValue(userRef, (snapshot) => {
+                        const fetchedData = snapshot.val();
+                        setUserData(fetchedData);
 
-                    if (fetchedData != null) {
-                        // Check if the "role" field is an empty string
-                        if (fetchedData.role === "") {
-                            // User is logging in for the first time, redirect to /choose-role
-                            navigate('/choose-role');
+                        if (fetchedData != null) {
+                            // Check if the "role" field is an empty string
+                            if (fetchedData.role === "") {
+                                // User is logging in for the first time, redirect to /choose-role
+                                navigate('/choose-role');
+                            } else {
+                                // User has a role, redirect accordingly
+                                if (fetchedData.role === "student") {
+                                    navigate('/mentors');
+                                } else if (fetchedData.role === "admin") {
+                                    navigate('/mentor-approval')
+                                }
+                            }
+
                         } else {
-                            // User has a role, redirect accordingly
-                            if (fetchedData.role === "student") {
-                                navigate('/mentors');
-                            } else if (fetchedData.role === "mentor") {
-                                navigate('/mentor-profile');
-                            } else if (fetchedData.role === "admin") {
-                                navigate('/mentor-approval')
+                            navigate('/mentors');
+                        }
+                    })
+                } else if (mentorRef) {
+                    onValue(mentorRef, (snapshot) => {
+                        const fetchedData = snapshot.val();
+                        setMentorData(fetchedData);
+
+                        if (fetchedData != null) {
+                            // Check if the "role" field is an empty string
+                            if (fetchedData.role === "") {
+                                // User is logging in for the first time, redirect to /choose-role
+                                navigate('/choose-role');
+                            } else {
+                                navigate('/mentor-profile')
                             }
                         }
-                        
-                    } else {
-                        navigate('/mentors');
-                    }
-                })
-
-
-
+                    })
+                }
 
             } else {
                 navigate('/home');
@@ -82,7 +96,7 @@ function App() {
 
     }, [])
 
-   
+
 
 
 
@@ -93,22 +107,22 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/mentor-application" element={<MentorApplicationPage currentUser={currentUser} />} />
+                    <Route path="/mentor-application" element={<MentorApplicationPage />} />
                     <Route path="/mentors" element={<MentorGrid />} />
                     <Route path="/mentors/:firebasekey" element={<MentorPreview />} />
-                    { <Route path="/mentors/:firebasekey/book-appointment" element={<Appointment />} /> }
-                    { <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
+                    {<Route path="/mentors/:firebasekey/book-appointment" element={<Appointment />} />}
+                    {<Route path="/mentors" element={<MentorGrid mentors={MENTORS} />}>
                         <Route path="/mentors/:mentorNetID" element={<MentorPreview mentors={MENTORS} />}>
                             <Route path="book-appointment" element={<Appointment />} />
-                        </Route> 
-                    </Route> }
+                        </Route>
+                    </Route>}
                     <Route path="/login" element={< LoginPage />} />
                     <Route path="/choose-role" element={< ChooseRole />} />
                     <Route path="/profile" element={<Profile profileData={userData} meetingData={SAMPLE_MEETING} />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
                     <Route path="/update-profile" element={<UpdateProfile />} />
-                    <Route path="/mentor-profile" element={<MentorProfile />} />
+                    <Route path="/mentor-profile" element={<MentorProfile profileData={mentorData}/>} />
                     <Route path="update-mentor-profile" element={<UpdateMentorProfile />} />
                     <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>

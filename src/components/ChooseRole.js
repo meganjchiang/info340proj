@@ -18,15 +18,19 @@ export function ChooseRole() {
         event.preventDefault();
         // fetch userData from db
         const db = getDatabase();
-        const userRef = ref(db, "users/" + user.uid);
+        let userRef = null;
 
+        if (role == "student") {
+            userRef = ref(db, "users/" + user.uid);
+        } else if (role == "mentor") {
+            userRef = ref(db, "mentorApplicants/" + user.uid)
+        }
+        
         const userDataUpdate = {
-
             displayName: user.displayName,
             email: user.email,
             role: role,
             uid: user.uid
-
         };
 
         if (role !== "") {
@@ -38,8 +42,10 @@ export function ChooseRole() {
             .then(() => {
                 if (role === "") {
                     alert("Please choose a role before proceeding");
-                } else {
-                    navigate('/create-account', { state: { role: role } });
+                } else if (role == "student" ){
+                    navigate('/create-account');
+                } else if (role == "mentor") {
+                    navigate('/mentor-application');
                 }
             })
             .catch((error) => {
