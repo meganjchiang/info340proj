@@ -111,7 +111,7 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/mentor-application" element={<MentorApplicationPage />} />
+                    <Route path="/mentor-application" element={<MentorApplicationPage currentUser={currentUser}/>} />
                     <Route path="/mentors" element={<MentorGrid mentors={MENTORS} />} />
                     <Route path="/mentors/:mentorNetID" element={<MentorPreview />} />
                     <Route path="/mentors/:mentorNetID/book-appointment" element={<Appointment />} />

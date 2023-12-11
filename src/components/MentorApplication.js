@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue} from 'firebase/database';
+import { upload } from '@testing-library/user-event/dist/upload';
 
 
-export function MentorApplicationPage() {
-
+export function MentorApplicationPage(props) {
+  
   const handleClick = (event) => {
     console.log("clicked");
+    const storage = getStorage();
+    const imageRef = storageRef(storage, "mentorImages/"+props.currentUser.uid/+"img")
+    uploadBytes(imageRef, photo);
   }
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -15,12 +20,16 @@ export function MentorApplicationPage() {
   const [gradYear, setGradYear] = useState("");
   const [degree, setDegree] = useState("");
   const [career, setCareer] = useState("");
+  const [photo, setPhoto] = useState("");
   const [transcript, setTranscript] = useState("");
 
   const handleChange = (event) => {
     const inputValue = event.target.value;
   }
-
+ 
+  // const handleImage = (event) => {
+    
+  // }
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("submit form with");
@@ -34,7 +43,7 @@ export function MentorApplicationPage() {
     console.log("Path to Transcript", transcript);
 
     const db = getDatabase();
-    const mentorRef = ref(db, "allMentor");
+    const mentorRef = ref(db, "mentorApplicants");
     // firebaseSet(studentRef, {"email": email, "password":password});
     firebasePush(mentorRef, {"first": firstName, "lastn": lastName, "email": email, "gradYear": gradYear, "degree": degree, "career": career, "transcript":transcript});
 
@@ -44,8 +53,10 @@ export function MentorApplicationPage() {
     setGradYear("");
     setDegree("");
     setCareer("");
+    setPhoto("");
     setTranscript("");
-
+    
+console.log('photo');
   }
   return (
     <div className="application-form" onSubmit={handleSubmit}>
@@ -96,6 +107,11 @@ export function MentorApplicationPage() {
           <Form.Control type="file" required onChange={(e) => setTranscript(e.target.value)} value={transcript} />
         </Form.Group>
 
+        <Form.Group className="mb-3" controlId="photo">
+          <Form.Label>Please upload a photo of yourself <span className="required"> *</span></Form.Label>
+          <Form.Control type="file" required onChange={(e) => setPhoto(e.target.value)} value={photo}  />
+        </Form.Group>
+        
         <div className="col-12 text-center">
           <button className="submit btn tbn-primary" type="submit" onClick={handleClick} >Submit application</button>
         </div>

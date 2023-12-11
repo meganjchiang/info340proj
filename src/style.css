@@ -474,10 +474,10 @@ textarea {
     text-align: center;
 }
 
-.back-to-mentors-btn {
+.back-to-mentors-btn.btn-link{
     margin: 1rem 2rem;
     display: flex;
-    align-items: center;
+    justify-content: left;
     color: #7156a5;
 }
 

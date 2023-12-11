@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase, ref, onValue, push as firebasePush } from 'firebase/database';
 
 export function ApproveAdmin(props) {
     const [mentorStateArray, setMentorStateArray] = useState([]);
     
+    
     useEffect(() => {
       const db = getDatabase();
-      const allMentorRef = ref(db, "allMentor");
+      const allMentorRef = ref(db, "mentorApplicants");
 
       onValue(allMentorRef, function (snapshot) {
           const allMentorsObj = snapshot.val();
@@ -18,32 +19,22 @@ export function ApproveAdmin(props) {
               mentorObj.firebasekey = keyString;
               return mentorObj
           })
-          console.log(allMentorsArray);
+      
           // //update the state
           setMentorStateArray(allMentorsArray);
-          console.log(mentorStateArray);
       })
     }, [])
+    
+    const handleApprove = (userKey) => {
+        const db = getDatabase();
+        const mentorRef = ref(db, "mentorApplicants") 
+        onValue(mentorRef, function(snapshot){
+            const allMentorRefObj = snapshot.val();
+         
+        })
+        console.log(userKey);
+    }
 
-
-    //map here
-    // const mentorApplication = props.appliedMentors;
-    // const mentorRows = mentorApplication.map((mentor, index) => {
-    //     return (
-    //         <tr key={mentor.netId}>
-    //         <th scope="row">{index + 1}</th>
-    //         <td>{mentor.firstName}</td>
-    //         <td>{mentor.lastName}</td>
-    //         <td>
-    //         <Button variant="success">Approve</Button>{' '}
-    //         <Button variant="danger">Decline</Button>{' '}
-    //         </td>
-    //         <td>
-    //             <Button variant="secondary">Transcript</Button>{' '}
-    //         </td>
-    //     </tr>
-    //     );
-    // })
 
     const mentorRows = mentorStateArray.map((mentor, index) => {
         return (
@@ -52,7 +43,7 @@ export function ApproveAdmin(props) {
             <td>{mentor.first}</td>
             <td>{mentor.lastn}</td>
             <td>
-            <Button variant="success">Approve</Button>{' '}
+            <Button variant="success" onClick={handleApprove(mentor.firebasekey)}>Approve</Button>{' '}
             <Button variant="danger">Decline</Button>{' '}
             </td>
             <td>
