@@ -29,12 +29,22 @@ export function MentorApplicationPage(props) {
   const [imageFile, setImageFile] = useState(undefined);
   const [imageUrl, setImageUrl] = useState(' ');
 
+  const [transcriptFile, setTranscriptFile] = useState(undefined);
+  const [transcriptUrl, setTranscriptUrl] = useState(' ')
 
-  const handleChange = (event) => {
+  const handleChangeImage = (event) => {
     if(event.target.files.length > 0 && event.target.files[0]) {
       const imageFile = event.target.files[0];
       setImageFile(imageFile);
       setImageUrl(URL.createObjectURL(imageFile));
+    }
+  }
+  
+  const handleChangeTranscript = (event) => {
+    if(event.target.files.length > 0 && event.target.files[0]) {
+      const transcriptFile = event.target.files[0];
+      setTranscriptFile(transcriptFile);
+      setImageUrl(URL.createObjectURL(transcriptFile));
     }
   }
 
@@ -43,11 +53,18 @@ export function MentorApplicationPage(props) {
     const db = getDatabase();
 
     const storage = getStorage();
+    //transcript
+    const transcriptRef = storageRef(storage, "mentorTranscripts/"+user.uid+ ".pdf")
+    
+    await uploadBytes(transcriptRef, transcriptFile)
+    const transcriptUrl = await getDownloadURL(transcriptRef)
+    console.log(transcriptUrl);
+    //photo
     const imgFileType = imageFile.name.substring(imageFile.name.indexOf('.'), imageFile.name.length);
     const imageRef = storageRef(storage, "mentorImages/"+user.uid+imgFileType)
     
     await uploadBytes(imageRef, imageFile)
-    const url = await getDownloadURL(imageRef)
+    const photoUrl = await getDownloadURL(imageRef);
 
     const mentorRef = ref(db, "mentorApplicants");
 
@@ -63,8 +80,8 @@ export function MentorApplicationPage(props) {
       major: major,
       bio: bio,
       zoomLink: zoomLink,
-      photo: url
-      // transcript: transcript
+      photo: photoUrl,
+      transcript: transcriptUrl
     };
 
     firebasePush(mentorRef, mentorData)
@@ -79,10 +96,11 @@ export function MentorApplicationPage(props) {
     // setTranscript("");
     setBio("")
     setZoomLink("")
-
+    alert('Application Submitted');
+    navigate('/mentors');
   }
   return (
-    <div className="application-form" onSubmit={handleSubmit}>
+    <div className="application-form" >
       <h1>Become a Mentor!</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="firstName">
@@ -135,14 +153,14 @@ export function MentorApplicationPage(props) {
           <Form.Control type="text" required onChange={(e) => setBio(e.target.value)} value={bio} />
         </Form.Group>
 
-        {/* <Form.Group className="mb-3" controlId="transcript">
+        <Form.Group className="mb-3" controlId="transcript">
           <Form.Label>Please upload your transcript <span className="required"> *</span></Form.Label>
-          <Form.Control type="file" required onChange={(e) => setImageFile(e.target.files)} value={imageFile} onClick={handleChange} />
-        </Form.Group> */}
+          <Form.Control type="file" required onChange={handleChangeTranscript} />
+        </Form.Group>
 
         <Form.Group className="mb-3" controlId="photo">
           <Form.Label>Please upload a photo of yourself <span className="required"> *</span></Form.Label>
-          <Form.Control type="file" name="image" required onChange={handleChange} />
+          <Form.Control type="file" name="image" required onChange={handleChangeImage} />
         </Form.Group>
 
         <div className="col-12 text-center">

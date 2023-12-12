@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom'
 import { getDatabase, ref, onValue, push as firebasePush, remove } from 'firebase/database';
 
 export function ApproveAdmin(props) {
@@ -54,6 +55,7 @@ export function ApproveAdmin(props) {
 
 
     const mentorRows = mentorStateArray.map((mentor, index) => {
+        console.log(mentor.transcriptUrl);
         return (
             <tr key={mentor.firebasekey}>
                 <th scope="row">{index + 1}</th>
@@ -64,7 +66,7 @@ export function ApproveAdmin(props) {
                     <Button variant="danger" onClick={() => handleDecline(mentor.firebasekey)}>Decline</Button>{' '}
                 </td>
                 <td>
-                    <Button variant="secondary">Transcript</Button>{' '}
+                    <Button as={Link} variant="secondary" to={mentor.transcript}>Transcript</Button>
                 </td>
             </tr>
 
