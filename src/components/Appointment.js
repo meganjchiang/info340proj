@@ -106,10 +106,10 @@ export function Appointment() {
     <div className="appointment-form">
       <h1>Schedule an Appointment with {mentor && mentor.firstName}</h1>
       <Form onSubmit={handleSubmit}>
-        {/* <Form.Group className="mb-3" controlId="date">
+        <Form.Group className="mb-3" controlId="date">
           <Form.Label>Select Date<span className="required"> *</span></Form.Label>
           <Form.Control type="date" required onChange={handleDateChange} />
-        </Form.Group> */}
+        </Form.Group>
 
         <div className="row">
           <Form.Group className="col-6 mb-3" controlId="day">

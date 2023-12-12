@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Select from 'react-select';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from 'firebase/database';
 import { useNavigate } from 'react-router-dom'
@@ -8,67 +9,88 @@ import { getAuth } from 'firebase/auth';
 
 let mentorData = {};
 
+const timeOptions = [];
+for (let hour = 8; hour <= 21; hour++) {
+  const amPm = hour >= 12 ? 'PM' : 'AM';
+  const hourString = hour > 12 ? hour - 12 : hour;
+  const nextHourString = (hour + 1) > 12 ? (hour + 1) - 12 : (hour + 1);
+
+  const timeLabel = `${hourString}:00 ${amPm} - ${nextHourString}:00 ${amPm}`;
+  const value = `${hour}:00`;
+
+  console.log("value time", value);
+
+  timeOptions.push({
+    value,
+    label: timeLabel,
+  });
+}
+
 export function MentorApplicationPage(props) {
-
   const navigate = useNavigate();
-
   const auth = getAuth();
   const user = auth.currentUser;
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
   const [gradYear, setGradYear] = useState("");
   const [major, setMajor] = useState("");
   const [career, setCareer] = useState("");
   const [bio, setBio] = useState("");
   const [zoomLink, setZoomLink] = useState("");
-  // const [transcript, setTranscript] = useState("");
-
 
   const [imageFile, setImageFile] = useState(undefined);
-  const [imageUrl, setImageUrl] = useState(' ');
-
   const [transcriptFile, setTranscriptFile] = useState(undefined);
-  const [transcriptUrl, setTranscriptUrl] = useState(' ')
+
+  const [dailyAvailability, setDailyAvailability] = useState({
+    monday: [],
+    tuesday: [],
+    wednesday: [],
+    thursday: [],
+    friday: [],
+  });
 
   const handleChangeImage = (event) => {
-    if(event.target.files.length > 0 && event.target.files[0]) {
+    if (event.target.files.length > 0 && event.target.files[0]) {
       const imageFile = event.target.files[0];
       setImageFile(imageFile);
-      setImageUrl(URL.createObjectURL(imageFile));
     }
   }
-  
+
   const handleChangeTranscript = (event) => {
-    if(event.target.files.length > 0 && event.target.files[0]) {
+    if (event.target.files.length > 0 && event.target.files[0]) {
       const transcriptFile = event.target.files[0];
       setTranscriptFile(transcriptFile);
-      setImageUrl(URL.createObjectURL(transcriptFile));
     }
   }
+
+  const handleDailyAvailabilityChange = (day, selectedOptions) => {
+    const selectedTimes = selectedOptions.map((option) => option.value);
+    setDailyAvailability((prevAvailability) => ({
+      ...prevAvailability,
+      [day]: selectedTimes,
+    }));
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const db = getDatabase();
-
     const storage = getStorage();
-    //transcript
-    const transcriptRef = storageRef(storage, "mentorTranscripts/"+user.uid+ ".pdf")
-    
-    await uploadBytes(transcriptRef, transcriptFile)
-    const transcriptUrl = await getDownloadURL(transcriptRef)
-    console.log(transcriptUrl);
-    //photo
+
+    // Transcript
+    const transcriptRef = storageRef(storage, "mentorTranscripts/" + user.uid + ".pdf");
+    await uploadBytes(transcriptRef, transcriptFile);
+    const transcriptUrl = await getDownloadURL(transcriptRef);
+
+    // Photo
     const imgFileType = imageFile.name.substring(imageFile.name.indexOf('.'), imageFile.name.length);
-    const imageRef = storageRef(storage, "mentorImages/"+user.uid+imgFileType)
-    
-    await uploadBytes(imageRef, imageFile)
+    const imageRef = storageRef(storage, "mentorImages/" + user.uid + imgFileType);
+    await uploadBytes(imageRef, imageFile);
     const photoUrl = await getDownloadURL(imageRef);
 
     const mentorRef = ref(db, "mentorApplicants");
 
-    mentorData = {
+    const mentorData = {
       displayName: user.displayName,
       email: user.email,
       uid: user.uid,
@@ -81,29 +103,32 @@ export function MentorApplicationPage(props) {
       bio: bio,
       zoomLink: zoomLink,
       photo: photoUrl,
-      transcript: transcriptUrl
+      transcript: transcriptUrl,
+      availability: dailyAvailability,
     };
 
-    firebasePush(mentorRef, mentorData)
+    firebasePush(mentorRef, mentorData);
 
+    // Reset form fields
     setFirstName("");
     setLastName("");
-    setEmail("");
     setGradYear("");
     setMajor("");
     setCareer("");
-    setImageFile("")
-    // setTranscript("");
-    setBio("")
-    setZoomLink("")
+    setBio("");
+    setZoomLink("");
+    setImageFile(null);
+    setTranscriptFile(null);
+
     alert('Application Submitted');
     navigate('/mentors');
   }
+
   return (
-    <div className="application-form" >
+    <div className="application-form">
       <h1>Become a Mentor!</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="firstName">
+      <Form.Group className="mb-3" controlId="firstName">
           <Form.Label>First Name <span className="required"> *</span></Form.Label>
           <Form.Control type="text" placeholder="Enter your first name" required onChange={(e) => setFirstName(e.target.value)} value={firstName} />
         </Form.Group>
@@ -153,22 +178,86 @@ export function MentorApplicationPage(props) {
           <Form.Control type="text" required onChange={(e) => setBio(e.target.value)} value={bio} />
         </Form.Group>
 
+
+        {/* Transcript */}
         <Form.Group className="mb-3" controlId="transcript">
           <Form.Label>Please upload your transcript <span className="required"> *</span></Form.Label>
           <Form.Control type="file" required onChange={handleChangeTranscript} />
         </Form.Group>
 
+        {/* Photo */}
         <Form.Group className="mb-3" controlId="photo">
           <Form.Label>Please upload a photo of yourself <span className="required"> *</span></Form.Label>
           <Form.Control type="file" name="image" required onChange={handleChangeImage} />
         </Form.Group>
 
+        {/* Daily Availability */}
+        <div className="row">
+          <div className="col">
+            <label htmlFor="mondayAvailability" className="form-label">
+              Monday Availability
+            </label>
+            <Select
+              isMulti
+              options={timeOptions}
+              value={dailyAvailability.monday.map((time) => ({ value: time, label: time }))}
+              onChange={(selectedOptions) => handleDailyAvailabilityChange('monday', selectedOptions)}
+            />
+          </div>
+          <div className="col">
+            <label htmlFor="tuesdayAvailability" className="form-label">
+              Tuesday Availability
+            </label>
+            <Select
+              isMulti
+              options={timeOptions}
+              value={dailyAvailability.tuesday.map((time) => ({ value: time, label: time }))}
+              onChange={(selectedOptions) => handleDailyAvailabilityChange('tuesday', selectedOptions)}
+            />
+          </div>
+          <div className="col">
+            <label htmlFor="wednesdayAvailability" className="form-label">
+              Wednesday Availability
+            </label>
+            <Select
+              isMulti
+              options={timeOptions}
+              value={dailyAvailability.wednesday.map((time) => ({ value: time, label: time }))}
+              onChange={(selectedOptions) => handleDailyAvailabilityChange('wednesday', selectedOptions)}
+            />
+          </div>
+          <div className="col">
+            <label htmlFor="thursdayAvailability" className="form-label">
+              Thursday Availability
+            </label>
+            <Select
+             isMulti
+             options={timeOptions}
+             value={dailyAvailability.thursday.map((time) => ({ value: time, label: time }))}
+             onChange={(selectedOptions) => handleDailyAvailabilityChange('thursday', selectedOptions)}
+            />
+          </div>
+          <div className="col">
+            <label htmlFor="fridayAvailability" className="form-label">
+              Friday Availability
+            </label>
+            <Select
+             isMulti
+             options={timeOptions}
+             value={dailyAvailability.friday.map((time) => ({ value: time, label: time }))}
+             onChange={(selectedOptions) => handleDailyAvailabilityChange('friday', selectedOptions)}
+            />
+          </div>
+        </div>
+        
         <div className="col-12 text-center">
-          <button className="submit btn tbn-primary" type="submit" onSubmit={handleSubmit} >Submit application</button>
+          <Button className="submit btn tbn-primary" type="submit">
+            Submit application
+          </Button>
         </div>
       </Form>
     </div>
   );
-};
+}
 
-export default mentorData;
+export default MentorApplicationPage;
