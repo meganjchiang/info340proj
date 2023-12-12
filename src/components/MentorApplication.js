@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from 'firebase/database';
 import { useNavigate } from 'react-router-dom'
 import { upload } from '@testing-library/user-event/dist/upload';
@@ -24,28 +24,28 @@ export function MentorApplicationPage(props) {
   const [career, setCareer] = useState("");
   const [bio, setBio] = useState("");
   const [zoomLink, setZoomLink] = useState("");
-  const [photo, setPhoto] = useState("");
   const [transcript, setTranscript] = useState("");
 
-  const handleClick = (event) => {
-    
-  }
+
+  const [imageFile, setImageFile] = useState("");
+  let initialURL = user.photo;
+  const [imageUrl, setImageUrl] = useState(initialURL);
+
+
 
   const handleChange = (event) => {
-    const inputValue = event.target.value;
-    const storage = getStorage();
-    const imageRef = storageRef(storage, "mentorImages/" + props.currentUser.uid / +"img")
-    uploadBytes(imageRef, photo);
+    if(event.target.files.length > 0 && event.target.files[0]) {
+      const imageFile = event.target.files[0]
+      setImageFile(imageFile)
+      setImageUrl(URL.createObjectURL(imageFile))
+    }
   }
 
-  // const handleImage = (event) => {
-
-  // }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
     const db = getDatabase();
     const mentorRef = ref(db, "mentorApplicants");
+
 
     mentorData = {
       displayName: user.displayName,
@@ -59,22 +59,34 @@ export function MentorApplicationPage(props) {
       major: major,
       bio: bio,
       zoomLink: zoomLink,
-      photo: photo,
+      imageFile: imageFile,
+      imageUrl: imageUrl,
       transcript: transcript
-  };
+    };
 
-  console.log(mentorData);
+    const newMentorRef = await firebasePush(mentorRef, mentorData)
+    
 
-  // Use set with the updated data
-  // firebaseSet(mentorRef, mentorData)
-  //     .then(() => {
-  //         navigate('/mentor-profile');
-  //     })
-  //     .catch((error) => {
-  //         console.error("Error updating user data:", error);
-  //     });
+    const storage = getStorage();
+    const imageRef = storageRef(storage, "mentorImages/"+user.uid+".jpg")
+    
+    await uploadBytes(imageRef, imageFile);
+    const imageUrl = await getDownloadURL(imageRef);
+    const userImgRef = ref(db, "mentorImage/"+user.uid/+"img")
+    firebaseSet(userImgRef, {url: imageUrl })
+
+    console.log(mentorData);
+
+    // Use set with the updated datdba
+    // firebaseSet(mentorRef, mentorData)
+    //     .then(() => {
+    //         navigate('/mentor-profile');
+    //     })
+    //     .catch((error) => {
+    //         console.error("Error updating user data:", error);
+    //     });
     // firebaseSet(studentRef, {"email": email, "password":password});
-    firebasePush(mentorRef, { "firstName": firstName, "lastName": lastName, "email": email, "gradYear": gradYear, "major": major, "career": career, "transcript": transcript, "photo": photo, "bio": bio, "zoomLink": zoomLink, "uid": user.uid });
+    firebasePush(mentorRef, { "firstName": firstName, "lastName": lastName, "email": email, "gradYear": gradYear, "major": major, "career": career, "transcript": transcript, "photo": imageFile, "bio": bio, "zoomLink": zoomLink, "uid": user.uid });
 
     setFirstName("");
     setLastName("");
@@ -82,7 +94,7 @@ export function MentorApplicationPage(props) {
     setGradYear("");
     setMajor("");
     setCareer("");
-    setPhoto("");
+    setImageFile("")
     setTranscript("");
     setBio("")
     setZoomLink("")
@@ -91,7 +103,7 @@ export function MentorApplicationPage(props) {
   return (
     <div className="application-form" onSubmit={handleSubmit}>
       <h1>Become a Mentor!</h1>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="firstName">
           <Form.Label>First Name <span className="required"> *</span></Form.Label>
           <Form.Control type="text" placeholder="Enter your first name" required onChange={(e) => setFirstName(e.target.value)} value={firstName} />
@@ -144,16 +156,16 @@ export function MentorApplicationPage(props) {
 
         <Form.Group className="mb-3" controlId="transcript">
           <Form.Label>Please upload your transcript <span className="required"> *</span></Form.Label>
-          <Form.Control type="file" required onChange={(e) => setTranscript(e.target.value)} value={transcript} />
+          <Form.Control type="file" required onChange={(e) => setImageFile(e.target.files)} value={imageFile} onClick={handleChange} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="photo">
           <Form.Label>Please upload a photo of yourself <span className="required"> *</span></Form.Label>
-          <Form.Control type="file" required onChange={(e) => setPhoto(e.target.value)} value={photo} />
+          <Form.Control type="file" required onChange={handleChange} value={imageFile}  />
         </Form.Group>
 
         <div className="col-12 text-center">
-          <button className="submit btn tbn-primary" type="submit" onClick={handleClick} >Submit application</button>
+          <button className="submit btn tbn-primary" type="submit" onSubmit={handleSubmit} >Submit application</button>
         </div>
       </Form>
     </div>
@@ -161,3 +173,5 @@ export function MentorApplicationPage(props) {
 };
 
 export default mentorData;
+
+//setImageFile(e.target.files)
