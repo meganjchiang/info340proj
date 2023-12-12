@@ -75,7 +75,7 @@ export function NavBar() {
                                                 <ul>
                                                     <li><NavLink className="navbar-brand apply-nav" to="/mentor-application">Apply</NavLink></li>
                                                     <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
-                                                    <li><NavLink className="navbar-brand mentors-nav" to="/mentor-profile"> Profile</NavLink></li>
+                                                    {/* <li><NavLink className="navbar-brand mentors-nav" to="/mentor-profile"> Profile</NavLink></li> */}
 
                                                 </ul>
                                             </div>

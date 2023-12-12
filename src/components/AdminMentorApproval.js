@@ -14,7 +14,7 @@ export function ApproveAdmin(props) {
         if (allMentorRef === null) {
             setIsEmpty(true);
         }
-        onValue(allMentorRef, function(snapshot) {
+        onValue(allMentorRef, function (snapshot) {
             const allMentorsObj = snapshot.val();
             if (allMentorsObj) {
                 const keyArray = Object.keys(allMentorsObj);
@@ -35,7 +35,7 @@ export function ApproveAdmin(props) {
     const handleApprove = (userKey) => {
         const db = getDatabase();
         const mentorRef = ref(db, 'mentorApplicants/' + userKey);
-        onValue(mentorRef, function(snapshot) {
+        onValue(mentorRef, function (snapshot) {
             const mentorObj = snapshot.val();
             const allMentorsRef = ref(db, "allMentors")
             firebasePush(allMentorsRef, mentorObj)
@@ -89,10 +89,16 @@ export function ApproveAdmin(props) {
                             <th scope="col">Transcript</th>
                         </tr>
                     </thead>
+                    {isEmpty ? (
+                        <></>
+                    ) : (
+                        <>
+                            <tbody>
+                                {mentorRows}
+                            </tbody>
+                        </>
+                    )}
 
-                    <tbody>
-                        {mentorRows}
-                    </tbody>
                 </Table>
             </div >
 
