@@ -1,19 +1,34 @@
-import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams , Link } from 'react-router-dom';
+import { getDatabase, ref, onValue } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
 export function MentorProfile(props) {
-  const dataProfile = props.profileData;
-  console.log(props);
-  const firstName = dataProfile.firstn;
-  const lastName = dataProfile.lastName;
-  const bio = dataProfile.bio;
-  const career = dataProfile.career;
-  const major = dataProfile.major;
-  const gradYear = dataProfile.grad_year;
+ 
+  const params = useParams();
+  const userKey = params.firebasekey;
+  const [mentor, setMentor] = useState('')
+  const [meetingData, setMeetingData]= useState([])
 
-  const meetingData = props.meetingData;
-  console.log(meetingData);
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getDatabase();
+    const mentorRef = ref(db, 'allMentors/' + userKey);
+    onValue(mentorRef, function(snapshot) {
+      const mentorObj = snapshot.val();
+      setMentor(mentorObj);
+  })
+  const appointmentRef = ref(db, 'appointments/' + userKey);
+    onValue(appointmentRef, function(snapshot){
+      const appointmentObj = snapshot.val();
+      setMeetingData(appointmentObj);
+    })
+    console.log(appointmentRef);
+  }, [])
+
+
+  
 
   const meetingSchedule = meetingData.map((meet, index) => {
     const returnMeetings = (
@@ -41,20 +56,20 @@ export function MentorProfile(props) {
       <div className="row container">
         <div className="about-me-all">
           <div className="extra-info col-md-6">
-            <p className="name-profile special-title">{firstName}</p>
+            <p className="name-profile special-title">{mentor.firstName}</p>
             <p>
-              Major: <em>{major}</em>
+              Major: <em>{mentor.major}</em>
             </p>
             <p>
-              Grad Year: <em>{gradYear}</em>
+              Grad Year: <em>{mentor.gradYear}</em>
             </p>
             <p>
-              Career: <em>{props.career}</em>
+              Career: <em>{mentor.career}</em>
             </p>
           </div>
           <div className="bio">
             <p className="special-title col-md-9">Bio!</p>
-            <p>{bio}</p>
+            <p>{mentor.bio}</p>
           </div>
         </div>
         <div>
