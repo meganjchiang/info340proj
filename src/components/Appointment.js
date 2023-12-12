@@ -106,23 +106,21 @@ export function Appointment() {
     <div className="appointment-form">
       <h1>Schedule an Appointment with {mentor && mentor.firstName}</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="date">
+        {/* <Form.Group className="mb-3" controlId="date">
           <Form.Label>Select Date<span className="required"> *</span></Form.Label>
           <Form.Control type="date" required onChange={handleDateChange} />
-        </Form.Group>
+        </Form.Group> */}
 
         <div className="row">
           <Form.Group className="col-6 mb-3" controlId="day">
-            <Form.Label>Select Day<span className="required"> *</span></Form.Label>
+            <Form.Label>Select the Day<span className="required"> *</span></Form.Label>
             <Form.Select className="form-select" required onChange={handleDayChange} disabled={!selectedDate}>
-              <option disabled>Select Day</option>
-              <option value="sunday">Sunday</option>
+              <option disabled>Select the Day</option>
               <option value="monday">Monday</option>
               <option value="tuesday">Tuesday</option>
               <option value="wednesday">Wednesday</option>
               <option value="thursday">Thursday</option>
               <option value="friday">Friday</option>
-              <option value="saturday">Saturday</option>
             </Form.Select>
           </Form.Group>
 
