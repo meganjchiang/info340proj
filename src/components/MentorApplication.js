@@ -24,28 +24,39 @@ export function MentorApplicationPage(props) {
   const [career, setCareer] = useState("");
   const [bio, setBio] = useState("");
   const [zoomLink, setZoomLink] = useState("");
-  const [transcript, setTranscript] = useState("");
+  // const [transcript, setTranscript] = useState("");
 
 
-  const [imageFile, setImageFile] = useState("");
-  let initialURL = user.photo;
-  const [imageUrl, setImageUrl] = useState(initialURL);
-
+  const [imageFile, setImageFile] = useState(undefined);
+  // let initialURL = user.photo;
+  // console.log(user);
+  const [imageUrl, setImageUrl] = useState(' ');
 
 
   const handleChange = (event) => {
     if(event.target.files.length > 0 && event.target.files[0]) {
-      const imageFile = event.target.files[0]
-      setImageFile(imageFile)
-      setImageUrl(URL.createObjectURL(imageFile))
+      const imageFile = event.target.files[0];
+      setImageFile(imageFile);
+      setImageUrl(URL.createObjectURL(imageFile));
     }
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    
     const db = getDatabase();
-    const mentorRef = ref(db, "mentorApplicants");
 
+
+    const storage = getStorage();
+    const imageRef = storageRef(storage, "mentorImages/"+user.uid+".jpg")
+    
+    uploadBytes(imageRef, imageFile);
+    // const imageUrl = await getDownloadURL(imageRef);
+    // const userImgRef = ref(db, "mentorImage/"+user.uid/+"img")
+    // firebaseSet(userImgRef, {url: imageUrl })
+
+
+    const mentorRef = ref(db, "mentorApplicants");
 
     mentorData = {
       displayName: user.displayName,
@@ -59,23 +70,15 @@ export function MentorApplicationPage(props) {
       major: major,
       bio: bio,
       zoomLink: zoomLink,
-      imageFile: imageFile,
-      imageUrl: imageUrl,
-      transcript: transcript
+      // imageFile: imageFile,
+      // imageUrl: imageUrl,
+      // transcript: transcript
     };
 
-    const newMentorRef = await firebasePush(mentorRef, mentorData)
-    
+    firebasePush(mentorRef, mentorData)
+    // const newMentorRef = firebasePush(mentorRef, mentorData)
 
-    const storage = getStorage();
-    const imageRef = storageRef(storage, "mentorImages/"+user.uid+".jpg")
-    
-    await uploadBytes(imageRef, imageFile);
-    const imageUrl = await getDownloadURL(imageRef);
-    const userImgRef = ref(db, "mentorImage/"+user.uid/+"img")
-    firebaseSet(userImgRef, {url: imageUrl })
-
-    console.log(mentorData);
+    // console.log(mentorData);
 
     // Use set with the updated datdba
     // firebaseSet(mentorRef, mentorData)
@@ -86,7 +89,9 @@ export function MentorApplicationPage(props) {
     //         console.error("Error updating user data:", error);
     //     });
     // firebaseSet(studentRef, {"email": email, "password":password});
-    firebasePush(mentorRef, { "firstName": firstName, "lastName": lastName, "email": email, "gradYear": gradYear, "major": major, "career": career, "transcript": transcript, "photo": imageFile, "bio": bio, "zoomLink": zoomLink, "uid": user.uid });
+    // firebasePush(mentorRef, { "firstName": firstName, "lastName": lastName, "email": user.email, "gradYear": gradYear, "major": major, "career": career, "photo": imageFile, "bio": bio, "zoomLink": zoomLink, "uid": user.uid });
+
+    // "transcript": transcript,
 
     setFirstName("");
     setLastName("");
@@ -95,7 +100,7 @@ export function MentorApplicationPage(props) {
     setMajor("");
     setCareer("");
     setImageFile("")
-    setTranscript("");
+    // setTranscript("");
     setBio("")
     setZoomLink("")
 
@@ -154,14 +159,14 @@ export function MentorApplicationPage(props) {
           <Form.Control type="text" required onChange={(e) => setBio(e.target.value)} value={bio} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="transcript">
+        {/* <Form.Group className="mb-3" controlId="transcript">
           <Form.Label>Please upload your transcript <span className="required"> *</span></Form.Label>
           <Form.Control type="file" required onChange={(e) => setImageFile(e.target.files)} value={imageFile} onClick={handleChange} />
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group className="mb-3" controlId="photo">
           <Form.Label>Please upload a photo of yourself <span className="required"> *</span></Form.Label>
-          <Form.Control type="file" required onChange={handleChange} value={imageFile}  />
+          <Form.Control type="file" name="image" required onChange={handleChange} />
         </Form.Group>
 
         <div className="col-12 text-center">
