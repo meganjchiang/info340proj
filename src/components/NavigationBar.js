@@ -6,6 +6,7 @@ import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 export function NavBar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [isMentor, setIsMentor] = useState(false)
 
     useEffect(() => {
         const auth = getAuth();
@@ -16,7 +17,10 @@ export function NavBar() {
                 const userEmail = user.email;
                 if (userEmail === "admin@h2h.com") {
                     setIsAdmin(true);
-                } else {
+                } else if (user.role === "mentor") {
+                    setIsMentor(true);
+                }
+                else {
                     setIsAdmin(false);
                 }
             }
@@ -40,7 +44,7 @@ export function NavBar() {
                         {/* <NavLink to="/mentor-application">Apply</NavLink> */}
                         <NavLink to="/mentors">Mentors</NavLink>
                         {/*<NavLink to="/update-mentor-profile">Mentor Profile</NavLink>*/}
-                        
+
 
                         {/* https://legacy.reactjs.org/docs/conditional-rendering.html - referenced this website */}
                         {isAdmin ? (
@@ -84,7 +88,12 @@ export function NavBar() {
                                             <img src="img/profile-user.png" className="profile" alt="profile icon"></img>
                                             <div className="dropdown-menu navbar">
                                                 <ul>
-                                                    <NavLink className="navbar-brand profile-nav" to="/profile">Profile</NavLink>
+                                                    {isMentor ? (
+                                                        <NavLink className="navbar-brand profile-nav" to="/mentor-profile">Profile</NavLink>
+                                                    ) : (
+                                                        <NavLink className="navbar-brand profile-nav" to="/profile">Profile</NavLink>
+                                                    )}
+
                                                     <NavLink to="/" onClick={handleSignOut}>Sign Out</NavLink>
                                                 </ul>
                                             </div>
