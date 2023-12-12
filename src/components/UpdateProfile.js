@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, set as firebaseSet, onValue } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
-export function UpdateProfile() {
+export function UpdateProfile(props) {
+
+  console.log(props);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -11,13 +13,14 @@ export function UpdateProfile() {
   const [interests, setInterests] = useState("");
   const [aboutMeSummary, setAboutMeSummary] = useState("");
 
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const user = props.currentUser;
 
   const db = getDatabase();
   const userRef = ref(db, "users/" + user.uid);
 
   useEffect(() => {
+
+    if (!user) return; // Don't proceed if no user
 
     onValue(userRef, (snapshot) => {
       const fetchedData = snapshot.val();

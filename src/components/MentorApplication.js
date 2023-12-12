@@ -107,7 +107,13 @@ export function MentorApplicationPage(props) {
       availability: dailyAvailability,
     };
 
-    firebasePush(mentorRef, mentorData);
+    firebasePush(mentorRef, mentorData)
+    .then(() => {
+      alert('Application Submitted');
+    })
+    .catch((error) => {
+      console.error("Error updating user data:", error);
+    });
 
     // Reset form fields
     setFirstName("");

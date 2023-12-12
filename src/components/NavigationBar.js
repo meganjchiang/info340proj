@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'; //import React Component
 import { NavLink, Routes, Navigate, useNavigate } from 'react-router-dom'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
+import { firebase, getDatabase, get, ref, set as firebaseSet, push as firebasePush, onValue, set } from 'firebase/database';
 
 
-export function NavBar() {
+
+export function NavBar(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [role, setRole] = useState("");
     const [isAdmin, setIsAdmin] = useState(false);
-    const [isMentor, setIsMentor] = useState(false)
+    const [isMentor, setIsMentor] = useState(false);
 
     useEffect(() => {
         const auth = getAuth();
+        const user = props.currentUser;
+
         onAuthStateChanged(auth, (user) => {
             setIsLoggedIn(user !== null);
 
@@ -17,7 +22,7 @@ export function NavBar() {
                 const userEmail = user.email;
                 if (userEmail === "admin@h2h.com") {
                     setIsAdmin(true);
-                } else if (user.role === "mentor") {
+                } else if (role === "mentor") {
                     setIsMentor(true);
                 }
                 else {
@@ -25,7 +30,10 @@ export function NavBar() {
                 }
             }
         });
+        console.log(user);
     }, []);
+
+ 
 
     const handleSignOut = (event) => {
         event.preventDefault();

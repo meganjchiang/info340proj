@@ -17,9 +17,9 @@ import { NavBar } from './NavigationBar';
 import { UpdateProfile } from "./UpdateProfile.js"
 import { UpdateMentorProfile } from './UpdateMentorProfile.js';
 import { MentorProfile } from './MentorProfile.js';
-import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { firebase, getDatabase, get, ref, set as firebaseSet, push as firebasePush, onValue, set } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 
 
@@ -33,9 +33,6 @@ import SAMPLE_MEETING from '../data/upcomingMeetings.json';
 
 function App() {
     const [currentUser, setCurrentUser] = useState(null);
-    console.log("after first useState():", currentUser);
-    const [userData, setUserData] = useState();
-    const [mentorData, setMentorData] = useState();
 
     const navigate = useNavigate();
 
@@ -48,7 +45,6 @@ function App() {
 
                 setCurrentUser(firebaseUser);
                 console.log('logged in as', firebaseUser.displayName);
-                console.log('firebaseUser.uid:', firebaseUser.uid)
                 navigate('/mentors');
 
             } else {
@@ -59,12 +55,10 @@ function App() {
 
 
         });
-        console.log("working");
   
 
     }, []);
 
-    console.log("after first useEffect():", currentUser);
 
 
     useEffect(() => {
@@ -73,8 +67,6 @@ function App() {
 
         const auth = getAuth();
         console.log(auth);
-        // const user = auth.currentUser;
-        // console.log(user.uid);
       
         const db = getDatabase();
         const userRef = ref(db, 'users/' + currentUser.uid);
@@ -114,57 +106,6 @@ function App() {
 
 
 
-    // if (userRef) {
-
-    //     onValue(userRef, (snapshot) => {
-    //         const fetchedData = snapshot.val();
-    //         setUserData(fetchedData);
-    //         console.log(userData);
-
-    //         if (fetchedData != null) {
-    //             console.log("is not null")
-    //             // Check if the "role" field is an empty string
-    //             if (fetchedData.role === "") {
-    //                 // User is logging in for the first time, redirect to /choose-role
-    //                 navigate('/choose-role');
-    //                 console.log('role is empty')
-    //             } else {
-    //                 // User has a role, redirect accordingly
-    //                 if (fetchedData.role === "student") {
-    //                     console.log('role is student');
-    //                     navigate('/mentors');
-    //                 } else if (fetchedData.role === "admin") {
-    //                     navigate('/mentor-approval')
-    //                 }
-    //             }
-
-    //         } else {
-    //             navigate('/mentors');
-    //         }
-    //     })
-    // } else if (mentorRef) {
-    //     onValue(mentorRef, (snapshot) => {
-    //         const fetchedData = snapshot.val();
-    //         setMentorData(fetchedData);
-
-    //         if (fetchedData != null) {
-    //             // Check if the "role" field is an empty string
-    //             if (fetchedData.role === "") {
-    //                 // User is logging in for the first time, redirect to /choose-role
-    //                 navigate('/choose-role');
-    //             } else {
-    //                 navigate('/mentor-profile')
-    //             }
-    //         }
-    //     })
-    // }
-
-
-
-
-
-
-
 
     return (
         <div>
@@ -179,24 +120,14 @@ function App() {
                     <Route path="/mentors/:firebasekey/book-appointment" element={<Appointment />} />
                     <Route path="/login" element={< LoginPage />} />
                     <Route path="/choose-role" element={< ChooseRole />} />
-                    <Route path="/profile" element={<Profile meetingData={SAMPLE_MEETING} />} />
+                    <Route path="/profile" element={<Profile currentUser={currentUser} meetingData={SAMPLE_MEETING} />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
-                    <Route path="/update-profile" element={<UpdateProfile />} />
-                    <Route path="/mentor-profile" element={<MentorProfile profileData={mentorData} />} />
+                    <Route path="/update-profile" element={<UpdateProfile currentUser={currentUser}/>} />
+                    <Route path="/mentor-profile" element={<MentorProfile />} />
                     <Route path="update-mentor-profile" element={<UpdateMentorProfile />} />
                     <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>
-
-                {/* < Home /> */}
-                {/* < LoginPage /> */}
-                {/* <CreateAccountPage /> */}
-                {/* <MentorGrid mentors={MENTORS} /> */}
-                {/* <MentorApplicationPage /> */}
-                {/* <Appointment /> */}
-                {/* <ApproveAdmin appliedMentors={SAMPLE_MENTORS} /> */}
-                {/* <Profile profileData={SAMPLE_PROFILE} meetingData={SAMPLE_MEETING}/>  */}
-                {/* <UpdateProfile/>  */}
 
 
             </main>

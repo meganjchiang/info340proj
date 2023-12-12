@@ -6,20 +6,28 @@ import { getAuth } from 'firebase/auth';
 
 export function MentorProfile(props) {
  
-  const params = useParams();
-  const userKey = params.firebasekey;
+  // const params = useParams();
+  // const userKey = params.firebasekey;
   const [mentor, setMentor] = useState('')
   const [meetingData, setMeetingData]= useState([])
 
+  const auth = getAuth();
+  const user = auth.currentUser;
+  console.log("user", user);
+
   useEffect(() => {
-    const auth = getAuth();
+
+    if (!user) return; // Don't proceed if no user
+    
+
+    // const auth = getAuth();
     const db = getDatabase();
-    const mentorRef = ref(db, 'allMentors/' + userKey);
+    const mentorRef = ref(db, 'allMentors/' + user.uid);
     onValue(mentorRef, function(snapshot) {
       const mentorObj = snapshot.val();
       setMentor(mentorObj);
   })
-  const appointmentRef = ref(db, 'appointments/' + userKey);
+  const appointmentRef = ref(db, 'appointments/' + user.uid);
     onValue(appointmentRef, function(snapshot){
       const appointmentObj = snapshot.val();
       setMeetingData(appointmentObj);

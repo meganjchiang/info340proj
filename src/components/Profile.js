@@ -14,9 +14,7 @@ export function Profile(props) {
     const [interests, setInterests] = useState("");
     const [aboutMe, setAboutMe] = useState("");
 
-    const auth = getAuth();
-    const user = auth.currentUser;
-    console.log("user", user);
+    const user = props.currentUser;
 
     useEffect(() => {
 
@@ -64,6 +62,8 @@ export function Profile(props) {
         return returnMeetings;
 
     })
+
+
     return (
         <div className="profile-page">
             <div>
