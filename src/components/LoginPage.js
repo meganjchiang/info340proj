@@ -33,7 +33,6 @@ export function LoginPage() {
             role: "",
           });
 
-          return '/choose-role';
         }
 
         return false; //don't redirect after authentication
