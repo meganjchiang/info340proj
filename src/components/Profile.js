@@ -1,17 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
+import { getAuth } from 'firebase/auth';
+import { getDatabase, ref, set as firebaseSet, onValue } from 'firebase/database';
 
 
 export function Profile(props) {
-    const dataProfile = props.profileData;
-    const firstName = dataProfile.firstName;
-    const lastName = dataProfile.lastName;
-    const name = dataProfile.displayName;
-    const aboutMe = dataProfile.bio;
-    const interests = dataProfile.interests;
-    const major = dataProfile.major;
-    const gradYear = dataProfile.gradYear;
+
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [gradYear, setGradYear] = useState("");
+    const [major, setMajor] = useState("");
+    const [interests, setInterests] = useState("");
+    const [aboutMe, setAboutMe] = useState("");
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+    console.log("user", user);
+
+    useEffect(() => {
+
+        if (!user) return; // Don't proceed if no user
+
+        const db = getDatabase();
+        const userRef = ref(db, "users/" + user.uid);
+
+        onValue(userRef, (snapshot) => {
+            const dataProfile = snapshot.val();
+            console.log("?", dataProfile);
+            setFirstName(dataProfile.firstName);
+            setLastName(dataProfile.lastName);
+            setGradYear(dataProfile.gradYear);
+            setMajor(dataProfile.major);
+            setInterests(dataProfile.interests);
+            setAboutMe(dataProfile.bio);
+        },);
+    
+    
+    }, [user]);
+
+
+  
 
 
     const meetingData = props.meetingData;

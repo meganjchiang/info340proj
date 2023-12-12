@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, get, set as firebaseSet, onValue, update, set } from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, onValue } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
 export function UpdateProfile() {
@@ -16,7 +16,6 @@ export function UpdateProfile() {
 
   const db = getDatabase();
   const userRef = ref(db, "users/" + user.uid);
-
 
   useEffect(() => {
 
