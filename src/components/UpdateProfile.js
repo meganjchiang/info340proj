@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, set as firebaseSet, onValue, update, set } from 'firebase/database';
+import { getDatabase, ref, get, set as firebaseSet, onValue, update, set } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
 export function UpdateProfile() {
 
-  
-  const [loading, setLoading] = useState(true);
-
-
-  // firstN lastN
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gradYear, setGradYear] = useState("");
@@ -22,45 +17,47 @@ export function UpdateProfile() {
   const db = getDatabase();
   const userRef = ref(db, "users/" + user.uid);
 
-  // useEffect(() => {
 
-  //   onValue(userRef, (snapshot) => {
+  useEffect(() => {
 
-  //     const fetchedData = snapshot.val();
-  //     console.log(fetchedData)
-  //     setFirstName(fetchedData.firstName);
-  //     setLastName(fetchedData.lastName);
-  //     setGradYear(fetchedData.gradYear);
-  //     setMajor(fetchedData.major);
-  //     setInterests(fetchedData.interests);
-  //     setAboutMeSummary(fetchedData.bio);
-  //     setLoading(false);
+    onValue(userRef, (snapshot) => {
+      const fetchedData = snapshot.val();
+      console.log(fetchedData)
+      setFirstName(fetchedData.firstName);
+      setLastName(fetchedData.lastName);
+      setGradYear(fetchedData.gradYear);
+      setMajor(fetchedData.major);
+      setInterests(fetchedData.interests);
+      setAboutMeSummary(fetchedData.bio);
 
-  //   })
+    },);
 
 
-  // })
+  }, []);
 
-  const handleClick = (event) => {
-    console.log("clicked");
-  }
+
+
+
+  // const handleClick = (event) => {
+  //   console.log("clicked");
+  // }
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // console.log("Submit form with:");
-    // console.log("Name:", name);
-    // console.log("Major:", major);
-    // console.log("Interest:", interest);
-    // console.log("About Me:", aboutMeSummary);
+    console.log("Submit form with:");
+    console.log("Name:", firstName);
+    console.log("Major:", major);
+    console.log("Interest:", interests);
+    console.log("About Me:", aboutMeSummary);
 
-    setFirstName(firstName);
-    setLastName(lastName);
-    setGradYear(gradYear);
-    setMajor(major);
-    setInterests(interests);
-    setAboutMeSummary(aboutMeSummary);
+    // setFirstName(firstName);
+    // setLastName(lastName);
+    // setGradYear(gradYear);
+    // setMajor(major);
+    // setInterests(interests);
+    // setAboutMeSummary(aboutMeSummary);
 
     const userData = {
       displayName: user.displayName,
@@ -86,12 +83,6 @@ export function UpdateProfile() {
 
 
   }
-
-  if (!loading) {
-    return <p>Loading...</p>; // You can replace this with a loading spinner or any other loading indicator
-  }
-
-
 
 
   return (
@@ -137,7 +128,7 @@ export function UpdateProfile() {
           </div>
 
           <div className="col-12 text-center">
-            <button className="submit btn tbn-primary" type="submit" onClick={handleClick} >
+            <button className="submit btn tbn-primary" type="submit" >
               Save Changes
             </button>
           </div>
