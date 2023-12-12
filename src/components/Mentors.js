@@ -6,7 +6,6 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 
 function MentorCard(props) {
     const mentorData = props.mentorData;
-    console.log(mentorData);
     const mentorFirstName = mentorData.firstName;
     const mentorLastName = mentorData.lastName;
     const mentorImg = mentorData.photo;
@@ -67,7 +66,7 @@ export function MentorGrid() {
 
     const handleClickSearch = () => {
         const matchedMentors = mentors.filter((mentor) => {
-            const mentorFullName = mentor.first + ' ' + mentor.lastn;
+            const mentorFullName = mentor.firstName + ' ' + mentor.lastName;
             const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
             return nameMatch;
         });
@@ -80,7 +79,7 @@ export function MentorGrid() {
 
         if (typedValue !== '') {
             filteredMentors = filteredMentors.filter((mentor) => {
-                const mentorFullName = mentor.first + ' ' + mentor.lastn;
+                const mentorFullName = mentor.firstName + ' ' + mentor.lastName;
                 const nameMatch = mentorFullName.toLowerCase().includes(typedValue.toLowerCase());
                 return nameMatch;
             });
