@@ -31,7 +31,7 @@ export function MentorPreview() {
             <h1 className="mentor-preview-name">{mentor.firstName} {mentor.lastName}</h1>
             <div className="row mentor-preview">
                 <div className="col">
-                    <img src={"/" + mentor.photo} alt={mentor.firstName + ' ' + mentor.lastName}></img>
+                    <img src={mentor.photo} alt={mentor.firstName + ' ' + mentor.lastName}></img>
                 </div>
                 <div className="col mentor-preview-info">
                     <p><span className="info-label">Career:</span> {mentor.career}</p>

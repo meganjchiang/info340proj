@@ -6,6 +6,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 
 function MentorCard(props) {
     const mentorData = props.mentorData;
+    console.log(mentorData);
     const mentorFirstName = mentorData.firstName;
     const mentorLastName = mentorData.lastName;
     const mentorImg = mentorData.photo;

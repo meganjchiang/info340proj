@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from 'firebase/database';
 import { useNavigate } from 'react-router-dom'
-import { upload } from '@testing-library/user-event/dist/upload';
 import { getAuth } from 'firebase/auth';
 
 let mentorData = {};
@@ -28,8 +27,6 @@ export function MentorApplicationPage(props) {
 
 
   const [imageFile, setImageFile] = useState(undefined);
-  // let initialURL = user.photo;
-  // console.log(user);
   const [imageUrl, setImageUrl] = useState(' ');
 
 
@@ -41,20 +38,16 @@ export function MentorApplicationPage(props) {
     }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
     const db = getDatabase();
 
-
     const storage = getStorage();
-    const imageRef = storageRef(storage, "mentorImages/"+user.uid+".jpg")
+    const imgFileType = imageFile.name.substring(imageFile.name.indexOf('.'), imageFile.name.length);
+    const imageRef = storageRef(storage, "mentorImages/"+user.uid+imgFileType)
     
-    uploadBytes(imageRef, imageFile);
-    // const imageUrl = await getDownloadURL(imageRef);
-    // const userImgRef = ref(db, "mentorImage/"+user.uid/+"img")
-    // firebaseSet(userImgRef, {url: imageUrl })
-
+    await uploadBytes(imageRef, imageFile)
+    const url = await getDownloadURL(imageRef)
 
     const mentorRef = ref(db, "mentorApplicants");
 
@@ -70,28 +63,11 @@ export function MentorApplicationPage(props) {
       major: major,
       bio: bio,
       zoomLink: zoomLink,
-      // imageFile: imageFile,
-      // imageUrl: imageUrl,
+      photo: url
       // transcript: transcript
     };
 
     firebasePush(mentorRef, mentorData)
-    // const newMentorRef = firebasePush(mentorRef, mentorData)
-
-    // console.log(mentorData);
-
-    // Use set with the updated datdba
-    // firebaseSet(mentorRef, mentorData)
-    //     .then(() => {
-    //         navigate('/mentor-profile');
-    //     })
-    //     .catch((error) => {
-    //         console.error("Error updating user data:", error);
-    //     });
-    // firebaseSet(studentRef, {"email": email, "password":password});
-    // firebasePush(mentorRef, { "firstName": firstName, "lastName": lastName, "email": user.email, "gradYear": gradYear, "major": major, "career": career, "photo": imageFile, "bio": bio, "zoomLink": zoomLink, "uid": user.uid });
-
-    // "transcript": transcript,
 
     setFirstName("");
     setLastName("");
@@ -178,5 +154,3 @@ export function MentorApplicationPage(props) {
 };
 
 export default mentorData;
-
-//setImageFile(e.target.files)
