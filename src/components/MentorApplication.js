@@ -18,8 +18,6 @@ for (let hour = 8; hour <= 21; hour++) {
   const timeLabel = `${hourString}:00 ${amPm} - ${nextHourString}:00 ${amPm}`;
   const value = `${hour}:00`;
 
-  console.log("value time", value);
-
   timeOptions.push({
     value,
     label: timeLabel,
@@ -143,21 +141,6 @@ export function MentorApplicationPage(props) {
           <Form.Label>Last Name <span className="required"> *</span></Form.Label>
           <Form.Control type="text" placeholder="Enter your last name" required onChange={(e) => setLastName(e.target.value)} value={lastName} />
         </Form.Group>
-
-        {/* <Form.Group className="mb-3" controlId="email-mentor">
-          <Form.Label>Email address <span className="required"> *</span></Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" required onChange={(e) => setEmail(e.target.value)} value={email} />
-        </Form.Group> */}
-
-        {/* <Form.Group className="mb-3" controlId="gender">
-          <Form.Label>Gender <span className="required"> *</span></Form.Label>
-          <Form.Select aria-label="Select Gender" required onChange={handleChange} >
-            <option disabled>Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Preferred not to say">Preferred not to say</option>
-          </Form.Select>
-        </Form.Group> */}
 
         <Form.Group className="mb-3" controlId="gradYear">
           <Form.Label>Graduation Year <span className="required"> *</span></Form.Label>

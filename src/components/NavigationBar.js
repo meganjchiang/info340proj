@@ -30,14 +30,12 @@ export function NavBar(props) {
                 }
             }
         });
-        console.log(user);
     }, []);
 
  
 
     const handleSignOut = (event) => {
         event.preventDefault();
-        console.log("Signing Out");
         signOut(getAuth());
         setIsAdmin(false);
     }
@@ -48,11 +46,8 @@ export function NavBar(props) {
                 <NavLink to="/home" className="logo"><img src="img/smile.png" alt="husky to husky logo"></img></NavLink>
                 <div className="navbar-profile">
                     <nav className="navbar">
-                        {/* <NavLink to="/choose-role">Role</NavLink> */}
-                        {/* <NavLink to="/mentor-application">Apply</NavLink> */}
                         <NavLink to="/mentors">Mentors</NavLink>
-                        {/*<NavLink to="/update-mentor-profile">Mentor Profile</NavLink>*/}
-
+            
 
                         {/* https://legacy.reactjs.org/docs/conditional-rendering.html - referenced this website */}
                         {isAdmin ? (
@@ -87,7 +82,6 @@ export function NavBar(props) {
                                                 <ul>
                                                     <li><NavLink className="navbar-brand apply-nav" to="/mentor-application">Apply</NavLink></li>
                                                     <li><NavLink className="navbar-brand mentors-nav" to="/mentors">Mentors</NavLink></li>
-                                                    {/* <li><NavLink className="navbar-brand mentors-nav" to="/mentor-profile"> Profile</NavLink></li> */}
 
                                                 </ul>
                                             </div>

@@ -16,8 +16,6 @@ for (let hour = 8; hour <= 21; hour++) {
   const timeLabel = `${hourString}:00 ${amPm} - ${nextHourString}:00 ${amPm}`;
   const value = `${hour}:00`;
 
-  console.log("value time", value);
-
   timeOptions.push({
     value,
     label: timeLabel,
@@ -111,7 +109,6 @@ export function UpdateMentorProfile() {
         availability: userData.availability,
       });
 
-      console.log('User data:', userData);
     }
   };
 

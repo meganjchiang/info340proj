@@ -25,7 +25,6 @@ export function Profile(props) {
 
         onValue(userRef, (snapshot) => {
             const dataProfile = snapshot.val();
-            console.log("?", dataProfile);
             setFirstName(dataProfile.firstName);
             setLastName(dataProfile.lastName);
             setGradYear(dataProfile.gradYear);
@@ -42,7 +41,6 @@ export function Profile(props) {
 
 
     const meetingData = props.meetingData;
-    console.log(meetingData);
 
     const meetingSchedule = meetingData.map((meet, index) => {
         const returnMeetings = (
@@ -89,7 +87,6 @@ export function Profile(props) {
                 </div>
                 <div>
                     <div className="text-center">
-                        {/* <button className="submit btn tbn-primary" type="submit">Edit Profile</button> */}
                         <Link to="/update-profile" className="submit btn tbn-primary">Edit Profile</Link>
                     </div>
                 </div>
@@ -97,7 +94,6 @@ export function Profile(props) {
                 <div className="row container ">
                     <div className="upcoming-meetings col-md-11">
                         <p className="special-title"> Upcoming Meetings </p>
-                        {/* Upcoming meetings */}
                         {meetingSchedule}
                     </div>
                 </div>

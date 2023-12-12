@@ -39,23 +39,19 @@ function App() {
     useEffect(() => {
         const auth = getAuth();
         onAuthStateChanged(auth, function (firebaseUser) {
-            console.log("login status changed");
 
             if (firebaseUser) {
-
                 setCurrentUser(firebaseUser);
-                console.log('logged in as', firebaseUser.displayName);
                 navigate('/mentors');
 
             } else {
-                console.log("logged out");
                 setCurrentUser(null);
                 navigate('/home')
             }
 
 
         });
-  
+
 
     }, []);
 
@@ -66,8 +62,7 @@ function App() {
         if (!currentUser) return; // Don't proceed if no user
 
         const auth = getAuth();
-        console.log(auth);
-      
+
         const db = getDatabase();
         const userRef = ref(db, 'users/' + currentUser.uid);
 
@@ -76,16 +71,14 @@ function App() {
             const fetchedData = snapshot.val();
 
             if (fetchedData != null) {
-                console.log("is not null")
+
                 // Check if the "role" field is an empty string
                 if (fetchedData.role === "") {
                     // User is logging in for the first time, redirect to /choose-role
                     navigate('/choose-role');
-                    console.log('role is empty');
                 } else {
                     // User has a role, redirect accordingly
                     if (fetchedData.role === "student") {
-                        console.log('role is student');
                         navigate('/mentors');
                     } else if (fetchedData.role === "admin") {
                         navigate('/mentor-approval')
@@ -123,7 +116,7 @@ function App() {
                     <Route path="/profile" element={<Profile currentUser={currentUser} meetingData={SAMPLE_MEETING} />} />
                     <Route path="/mentor-approval" element={<ApproveAdmin appliedMentors={SAMPLE_MENTORS} />} />
                     <Route path="/create-account" element={<CreateAccountPage />} />
-                    <Route path="/update-profile" element={<UpdateProfile currentUser={currentUser}/>} />
+                    <Route path="/update-profile" element={<UpdateProfile currentUser={currentUser} />} />
                     <Route path="/mentor-profile" element={<MentorProfile />} />
                     <Route path="update-mentor-profile" element={<UpdateMentorProfile />} />
                     <Route path="*" element={<Navigate to="/home" />} />

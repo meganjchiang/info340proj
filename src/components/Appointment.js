@@ -53,7 +53,6 @@ export function Appointment() {
   const handleDateChange = (event) => {
     const selectedDate = new Date(event.target.value);
     const dayOfWeek = selectedDate.getDay();
-    console.log(dayOfWeek);
 
     setSelectedDate(selectedDate);
     setSelectedDay(""); // Reset selected day when date changes
@@ -91,12 +90,10 @@ export function Appointment() {
   
       // Additional logic if needed after submitting the appointment
       alert('Appointment submitted');
-      // console.log('Appointment submitted:', newAppointment);
 
       // Clear form fields
       setReason("");
       setNotes("");
-      // setSelectedDate(null); // Reset selectedDate to null
       setSelectedTime("");
       setSelectedDay("");
     } else {
@@ -109,10 +106,6 @@ export function Appointment() {
     <div className="appointment-form">
       <h1>Schedule an Appointment with {mentor.firstName}</h1>
       <Form onSubmit={handleSubmit}>
-        {/* <Form.Group className="mb-3" controlId="date">
-          <Form.Label>Select Date<span className="required"> *</span></Form.Label>
-          <Form.Control type="date" required onChange={handleDateChange} />
-        </Form.Group> */}
 
         <div className="row">
           <Form.Group className="col-6 mb-3" controlId="day">

@@ -37,8 +37,6 @@ function CreateAccountForm() {
             interests: interests
         };
 
-        console.log(userData);
-
         // Use set with the updated data
         firebaseSet(userRef, userData)
             .then(() => {
@@ -55,7 +53,7 @@ function CreateAccountForm() {
 
     return (
         <form className='application-form' onSubmit={handleSubmit}>
-            {/* <div className="container"> */}
+
                 <div className='row'>
                     <div className="col">
                         <label htmlFor="first-name" className="form-label">First Name <span className="required"> *</span></label>
@@ -66,7 +64,6 @@ function CreateAccountForm() {
                         <label htmlFor="last-name" className="form-label">Last Name<span className="required"> *</span></label>
                         <input type="text" className="form-control" onChange={(e) => setLastN(e.target.value)} value={lastn} id="last-name" required></input>
                     </div>
-                {/* </div> */}
 
                 <div className='row'>
                     <div className="col">

@@ -8,7 +8,7 @@ import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } f
 export function LoginPage() {
 
   const firebaseUIConfig = {
-    signInOptions: [ //array of sign in options supported
+    signInOptions: [ 
       //array can include just "Provider IDs", or objects with the IDs and options
       GoogleAuthProvider.PROVIDER_ID,
       { provider: EmailAuthProvider.PROVIDER_ID, requiredDisplayName: true },
@@ -35,7 +35,7 @@ export function LoginPage() {
 
         }
 
-        return false; //don't redirect after authentication
+        return false; 
 
       }
     }

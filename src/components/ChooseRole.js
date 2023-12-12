@@ -56,12 +56,6 @@ export function ChooseRole() {
 
     }
 
-    const handleClick = () => {
-        console.log('clicked');
-    }
-
-    console.log(role);
-
     return (
         <div>
             <form onSubmit={handleSubmit}>

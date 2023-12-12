@@ -4,8 +4,6 @@ import { getAuth } from 'firebase/auth';
 
 export function UpdateProfile(props) {
 
-  console.log(props);
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gradYear, setGradYear] = useState("");
@@ -24,7 +22,6 @@ export function UpdateProfile(props) {
 
     onValue(userRef, (snapshot) => {
       const fetchedData = snapshot.val();
-      console.log(fetchedData)
       setFirstName(fetchedData.firstName);
       setLastName(fetchedData.lastName);
       setGradYear(fetchedData.gradYear);
@@ -37,30 +34,8 @@ export function UpdateProfile(props) {
 
   }, []);
 
-
-
-
-  // const handleClick = (event) => {
-  //   console.log("clicked");
-  // }
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    console.log("Submit form with:");
-    console.log("Name:", firstName);
-    console.log("Major:", major);
-    console.log("Interest:", interests);
-    console.log("About Me:", aboutMeSummary);
-
-    // setFirstName(firstName);
-    // setLastName(lastName);
-    // setGradYear(gradYear);
-    // setMajor(major);
-    // setInterests(interests);
-    // setAboutMeSummary(aboutMeSummary);
-
     const userData = {
       displayName: user.displayName,
       email: user.email,
@@ -81,8 +56,6 @@ export function UpdateProfile(props) {
       .catch((error) => {
         console.error("Error updating user data:", error);
       });
-
-
 
   }
 
