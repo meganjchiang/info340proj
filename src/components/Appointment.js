@@ -10,7 +10,7 @@ export function Appointment() {
   const params = useParams();
   const userKey = params.firebasekey;
 
-  const [mentor, setMentor] = useState(null);
+  const [mentor, setMentor] = useState({});
   const [reason, setReason] = useState("");
   const [notes, setNotes] = useState("");
   const [selectedDate, setSelectedDate] = useState(null); // Initialize with null
@@ -48,11 +48,12 @@ export function Appointment() {
         setTimeOptions(newTimeOptions);
       }
     });
-  }, [userKey]);
+  }, []);
 
   const handleDateChange = (event) => {
     const selectedDate = new Date(event.target.value);
     const dayOfWeek = selectedDate.getDay();
+    console.log(dayOfWeek);
 
     setSelectedDate(selectedDate);
     setSelectedDay(""); // Reset selected day when date changes
@@ -76,10 +77,11 @@ export function Appointment() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (userKey && mentor && selectedDate !== null && selectedTime !== "") {
+    if (userKey && mentor && selectedTime !== "") {
       const appointmentsRef = ref(getDatabase(), `appointments/${userKey}`);
       const newAppointment = {
-        date: selectedDate.toISOString(),
+        // date: selectedDate.toISOString(),
+        day: selectedDay,
         time: selectedTime,
         reason,
         notes,
@@ -89,12 +91,12 @@ export function Appointment() {
   
       // Additional logic if needed after submitting the appointment
       alert('Appointment submitted');
-      console.log('Appointment submitted:', newAppointment);
+      // console.log('Appointment submitted:', newAppointment);
 
       // Clear form fields
       setReason("");
       setNotes("");
-      setSelectedDate(null); // Reset selectedDate to null
+      // setSelectedDate(null); // Reset selectedDate to null
       setSelectedTime("");
       setSelectedDay("");
     } else {
@@ -102,19 +104,20 @@ export function Appointment() {
     }
   };
 
+
   return (
     <div className="appointment-form">
-      <h1>Schedule an Appointment with {mentor && mentor.firstName}</h1>
+      <h1>Schedule an Appointment with {mentor.firstName}</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="date">
+        {/* <Form.Group className="mb-3" controlId="date">
           <Form.Label>Select Date<span className="required"> *</span></Form.Label>
           <Form.Control type="date" required onChange={handleDateChange} />
-        </Form.Group>
+        </Form.Group> */}
 
         <div className="row">
           <Form.Group className="col-6 mb-3" controlId="day">
-            <Form.Label>Select the Day<span className="required"> *</span></Form.Label>
-            <Form.Select className="form-select" required onChange={handleDayChange} disabled={!selectedDate}>
+            <Form.Label>Select Day<span className="required"> *</span></Form.Label>
+            <Form.Select className="form-select" required onChange={handleDayChange} >
               <option disabled>Select the Day</option>
               <option value="monday">Monday</option>
               <option value="tuesday">Tuesday</option>
